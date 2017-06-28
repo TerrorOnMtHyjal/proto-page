@@ -5,7 +5,11 @@ export const SEED_FONTS_REQUESTED = 'SEED_FONTS_REQUESTED';
 export const SEED_FONTS_SUCCESSFUL = 'SEED_FONTS_SUCCESSFUL';
 export const SEED_FONTS_ERROR = 'SEED_FONTS_ERROR';
 
-export const APPLY_INITIAL_FONTS = 'APPLY_INITIAL_FONTS';
+export const UPDATE_FONTS = 'UPDATE_FONTS';
+
+export const APPLY_FONTS = 'APPLY_FONTS';
+export const NEW_FONTS_REQUESTED = 'NEW_FONTS_REQUESTED';
+export const NEW_FONTS_SUCCESSFUL = 'NEW_FONTS_SUCCESSFUL';
 
 export const seedFonts = () => (dispatch) => {
   dispatch(seedFontsRequested());
@@ -62,14 +66,65 @@ function seedFontsError(err) {
   };
 }
 
-export const applyFonts = (header, subheader, paragraph) => {
+export const applyFonts = () => (dispatch, getState) => {
+  const currentState = getState();
+  const activeFonts = currentState.activeFonts;
+  
   WebFont.load({
+    loading: function() {
+      dispatch(newFontsRequested());
+    },
+    active: function() {
+      dispatch(newFontsSuccessful());
+    },
     google: {
-      families: [header.family, subheader.family, paragraph.family]
+      families: [activeFonts.header.family, activeFonts.subheader.family, activeFonts.paragraph.family]
     }
   });
+}
 
+function newFontsRequested(){
   return {
-    type: APPLY_INITIAL_FONTS
-  };
+    type : NEW_FONTS_REQUESTED,
+    isFetchingFonts : true
+  }
+}
+
+function newFontsSuccessful(){
+  return {
+    type : NEW_FONTS_SUCCESSFUL,
+    isFetchingFonts : false
+  }
+}
+
+export const randomizeFonts = () => (dispatch, getState) => {
+  const currentState = getState();
+  const locks = currentState.controls.isLocked;
+  const newFonts = {};
+
+  for (let element in locks) {
+    if(!locks[element]){
+      const newFont = getRandomFont(currentState.fontsLibrary[currentState.controls.categories[element]]);
+      newFonts[element] = {
+        family : newFont.family,
+        variant : 'regular'
+      }
+    } else {
+      newFonts[element] = currentState.activeFonts[element];
+    }
+  }
+
+  dispatch(updateFonts(newFonts));
+  dispatch(applyFonts());
+};
+
+function updateFonts(newFonts){
+  return {
+    type : UPDATE_FONTS,
+    newFonts
+  }
+};
+
+function getRandomFont(category){
+  return category[Math.floor(Math.random()*category.length)];
 }
