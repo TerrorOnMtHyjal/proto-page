@@ -4,12 +4,21 @@ const initialState= {
   isFetchingSeed : false,
   fontsLibrary : {},
   activeFonts : {
-    header : 'Droid Serif',
-    subheader : 'Droid Serif',
-    paragraph : 'Droid Sans'
+    header : {
+      family : 'Droid Serif',
+      variant : 'regular'
+    },
+    subheader : {
+      family : 'Droid Serif',
+      variant : 'regular'
+    },
+    paragraph : {
+      family : 'Droid Sans',
+      variant : 'regular'
+    }
   },
   isLocked : {
-    headers : false,
+    headersSynced : false,
     header : false,
     subheader : false,
     paragraph : false

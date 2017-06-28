@@ -1,7 +1,11 @@
+const WebFont = require('webfontloader');
+
 export const SEED_FONTS = 'SEED_FONTS';
 export const SEED_FONTS_REQUESTED = 'SEED_FONTS_REQUESTED';
 export const SEED_FONTS_SUCCESSFUL = 'SEED_FONTS_SUCCESSFUL';
 export const SEED_FONTS_ERROR = 'SEED_FONTS_ERROR';
+
+export const APPLY_INITIAL_FONTS = 'APPLY_INITIAL_FONTS';
 
 export const seedFonts = () => (dispatch) => {
   dispatch(seedFontsRequested());
@@ -55,5 +59,17 @@ function seedFontsError(err) {
     type : SEED_FONTS_ERROR,
     isFetchingSeed : false,
     err
+  };
+}
+
+export const applyFonts = (header, subheader, paragraph) => {
+  WebFont.load({
+    google: {
+      families: [header.family, subheader.family, paragraph.family]
+    }
+  });
+
+  return {
+    type: APPLY_INITIAL_FONTS
   };
 }
