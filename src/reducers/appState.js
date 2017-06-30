@@ -42,9 +42,13 @@ export default function appState(state=initialState, action){
     case actions.UPDATE_FONTS:
       return { ...state, activeFonts : action.newFonts};
     case actions.NEW_FONTS_REQUESTED:
-      return { ...state, isFetchingFonts : action.isFetchingFonts}
+      return { ...state, isFetchingFonts : action.isFetchingFonts};
     case actions.NEW_FONTS_SUCCESSFUL:
-      return { ...state, isFetchingFonts : action.isFetchingFonts}
+      return { ...state, isFetchingFonts : action.isFetchingFonts};
+    case actions.TOGGLE_LOCK:
+      const updatedControls = {...state.controls};
+      updatedControls.isLocked[action.lockToToggle] = !updatedControls.isLocked[action.lockToToggle];
+      return {...state, controls : updatedControls };
     default:
       return state;
   }

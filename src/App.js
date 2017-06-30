@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { seedFonts, applyFonts } from './actions/actions';
 import styled from 'styled-components';
+import { seedFonts, applyFonts } from './actions/actions';
 import ReactLoading from 'react-loading';
 import Controls from './components/Controls';
+import TemplateBuilder from './containers/TemplateBuilder';
+import { templates } from './lib/templates';
 
+const StyledControls = styled(Controls)`
+  position: fixed;
+  bottom: 0;
+  left: 0;
+`;
 
 class App extends Component {
   componentWillMount(){
@@ -13,29 +20,15 @@ class App extends Component {
   }
 
   render() {
-    const StyledPara = styled.p`
-      font-family: ${this.props.activeFonts.paragraph.family};
-    `;
-
-    const StyledHeader = styled.h1`
-      font-family: ${this.props.activeFonts.header.family};
-    `;
-
-    const StyledSubheader = styled.h3`
-      font-family: ${this.props.activeFonts.subheader.family};
-    `;
-
     if(this.props.isFetchingSeed || this.props.isFetchingFonts){
       return (
-        <ReactLoading type={"bars"} color={"#ff00ae"} height={100} width={100} delay={100}/>
+        <ReactLoading type={"bars"} color={"#ff00ae"} height={100} width={100} delay={500}/>
       )
     } else {
       return (
         <div className="App">
-          <StyledHeader>Oh hello</StyledHeader>
-          <StyledSubheader>Subheader, yo.</StyledSubheader>
-          <StyledPara>This is my test paragraph, is this working yo?</StyledPara>
-          <Controls/>
+          <TemplateBuilder template={templates[0]}/>
+          <StyledControls/>
         </div>
       );
     }
@@ -43,7 +36,6 @@ class App extends Component {
 }
 
 const mapState = (state) => ({
-  activeFonts : state.activeFonts,
   isFetchingFonts : state.isFetchingFonts,
   isFetchingSeed : state.isFetchingSeed
 });

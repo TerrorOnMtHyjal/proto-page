@@ -1,4 +1,4 @@
-const WebFont = require('webfontloader');
+import WebFont from 'webfontloader';
 
 export const SEED_FONTS = 'SEED_FONTS';
 export const SEED_FONTS_REQUESTED = 'SEED_FONTS_REQUESTED';
@@ -11,10 +11,12 @@ export const APPLY_FONTS = 'APPLY_FONTS';
 export const NEW_FONTS_REQUESTED = 'NEW_FONTS_REQUESTED';
 export const NEW_FONTS_SUCCESSFUL = 'NEW_FONTS_SUCCESSFUL';
 
+export const TOGGLE_LOCK = 'TOGGLE_LOCK';
+
 export const seedFonts = () => (dispatch) => {
   dispatch(seedFontsRequested());
 
-  fetch("https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyAoq2H7SrmQO7EeyXNvdwYWXHYYM4Xh0Ms&sort=popularity")
+  return fetch("https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyAoq2H7SrmQO7EeyXNvdwYWXHYYM4Xh0Ms&sort=popularity")
     .then(response => {
       if(!response.ok){
         throw new Error(response.statusText);
@@ -24,6 +26,7 @@ export const seedFonts = () => (dispatch) => {
     .then(fonts => {
       const fontsLibrary = {};
 
+//move this logic into reducer
       fonts.items.forEach(font => {
         if(!fontsLibrary[font.category]){
           fontsLibrary[font.category] = [];
@@ -67,8 +70,7 @@ function seedFontsError(err) {
 }
 
 export const applyFonts = () => (dispatch, getState) => {
-  const currentState = getState();
-  const activeFonts = currentState.activeFonts;
+  const { activeFonts } = getState();
   
   WebFont.load({
     loading: function() {
@@ -128,3 +130,10 @@ function updateFonts(newFonts){
 function getRandomFont(category){
   return category[Math.floor(Math.random()*category.length)];
 }
+
+export const toggleLock = (lockToToggle) => {
+  return {
+    type: TOGGLE_LOCK,
+    lockToToggle
+  }
+};
