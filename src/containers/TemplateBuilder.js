@@ -7,7 +7,6 @@ const StyledMain = styled.main`
   flex-direction: column;
   margin: 0 auto;
   width: 70vw;
-  height: 100vh;
 `;
 
 class TemplateBuilder extends Component {
@@ -18,7 +17,6 @@ class TemplateBuilder extends Component {
     for(let row in template){
       const Row = styled.div` 
         display: flex;
-        width: 100%;
         ${template[row].rules}
       `;
 

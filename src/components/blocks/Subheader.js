@@ -6,7 +6,8 @@ class Subheader extends Component {
   render() {
 
     const StyledSubheader = styled.h3`
-      font-family: ${this.props.subheaderFont}
+      font-family: ${this.props.subheaderFont};
+      ${this.props.rules}
     `;
 
     const subheaders = [
@@ -14,11 +15,9 @@ class Subheader extends Component {
 
       `Laborum ullamco nisi, shank nulla meatloaf brisket t-bone shoulder boudin eu shankle sunt.`,
 
-      `Bacon ipsum dolor amet swine sunt shank ball tip porchetta, et aliquip short ribs elit shoulder filet mignon 
-      ribeye andouille velit spare ribs.`,
+      `Bacon ipsum dolor amet swine sunt shank ball tip porchetta, et aliquip short ribs elit shoulder filet mignon.`,
 
-      `Capicola ea pastrami, sausage corned beef doner beef ribs short loin lorem kielbasa consectetur boudin 
-      filet mignon anim aliquip.`
+      `Capicola ea pastrami, sausage corned beef doner beef ribs short loin lorem kielbasa consectetur boudin.`
     ];
 
     return (

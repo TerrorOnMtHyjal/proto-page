@@ -6,19 +6,20 @@ class Header extends Component {
   render() {
 
     const StyledHeader = styled.h1`
-      font-family: ${this.props.headerFont}
+      font-family: ${this.props.headerFont};
+      ${this.props.rules}
     `;
 
     const headers = [
-      `Pork ex adipisicing ut, picanha corned beef pig meatloaf shoulder shankle excepteur.`,
+      `PORK EX ADIPISICING UT, PICANHA CORNED BEEF PIG MEATLOAF SHOULDER SHANKLE EXCEPTEUR.`,
 
-      `Laborum ullamco nisi, shank nulla meatloaf brisket t-bone shoulder boudin eu shankle sunt.`,
+      `LABORUM ULLAMCO NISI, SHANK NULLA MEATLOAF BRISKET T-BONE SHOULDER BOUDIN EU SHANKLE SUNT.`,
 
-      `Bacon ipsum dolor amet swine sunt shank ball tip porchetta, et aliquip short ribs elit shoulder filet mignon 
-      ribeye andouille velit spare ribs.`,
+      `BACON IPSUM DOLOR AMET SWINE SUNT SHANK BALL TIP PORCHETTA, ET ALIQUIP SHORT RIBS ELIT SHOULDER FILET MIGNON 
+      RIBEYE ANDOUILLE VELIT SPARE RIBS.`,
 
-      `Capicola ea pastrami, sausage corned beef doner beef ribs short loin lorem kielbasa consectetur boudin 
-      filet mignon anim aliquip.`
+      `CAPICOLA EA PASTRAMI, SAUSAGE CORNED BEEF DONER BEEF RIBS SHORT LOIN LOREM KIELBASA CONSECTETUR BOUDIN 
+      FILET MIGNON ANIM ALIQUIP.`
     ];
 
     return (
