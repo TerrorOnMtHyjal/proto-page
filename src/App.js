@@ -9,8 +9,15 @@ import { templates } from './lib/templates';
 
 const StyledControls = styled(Controls)`
   position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  width: 100vw;
   bottom: 0;
   left: 0;
+  background-color: #333333;
+  color: white;
 `;
 
 class App extends Component {

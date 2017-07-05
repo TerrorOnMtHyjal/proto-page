@@ -14,9 +14,7 @@ const template1 = {
       width: 100vw;
       position: relative;
       left: 50%;
-      right: 50%;
-      margin-left: -50vw;
-      margin-right: -50vw;
+      transform: translateX(-50%);
       flex-flow : column;
       text-align: center;
       justify-content : center;
@@ -55,7 +53,7 @@ const template1 = {
   5 : {
     rules : `
       justify-content : space-between;
-      margin-top: 500px;
+      margin-top: 50px;
     `,
     elements : [<Paragraph rules="width : 40%; color: purple;"/>, <Paragraph rules="width : 40%;"/>]
   }
