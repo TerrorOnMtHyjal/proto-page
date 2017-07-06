@@ -6,19 +6,48 @@ import ReactLoading from 'react-loading';
 import Controls from './components/Controls';
 import TemplateBuilder from './containers/TemplateBuilder';
 import { templates } from './lib/templates';
+import Menu from './components/Menu';
 
 const StyledControls = styled(Controls)`
-  position: fixed;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100px;
-  width: 100vw;
-  bottom: 0;
-  left: 0;
-  background-color: #333333;
+  flex-flow: column;
   color: white;
 `;
+
+const menuStyles = {
+  bmBurgerButton: {
+    position: 'fixed',
+    width: '36px',
+    height: '30px',
+    left: '36px',
+    top: '36px'
+  },
+  bmBurgerBars: {
+    background: '#373a47'
+  },
+  bmCrossButton: {
+    height: '24px',
+    width: '24px'
+  },
+  bmCross: {
+    background: '#bdc3c7'
+  },
+  bmMenu: {
+    background: '#373a47',
+    padding: '2.5em 0 0',
+    fontSize: '1.15em',
+    width: '100%'
+  },
+  bmMorphShape: {
+    fill: '#373a47'
+  },
+  bmItemList: {
+    color: '#b8b7ad'
+  },
+  bmOverlay: {
+    background: 'rgba(0, 0, 0, 0.3)'
+  }
+}
 
 class App extends Component {
   componentWillMount(){
@@ -27,24 +56,22 @@ class App extends Component {
   }
 
   render() {
-    if(this.props.isFetchingSeed || this.props.isFetchingFonts){
       return (
-        <ReactLoading type={"bars"} color={"#ff00ae"} height={100} width={100} delay={500}/>
-      )
-    } else {
-      return (
-        <div className="App">
-          <TemplateBuilder template={templates[0]}/>
-          <StyledControls/>
+        <div className="App" id="outer-container">
+          <Menu pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" } styles={menuStyles}>
+            <StyledControls />
+          </Menu>
+          <div id="page-wrap">
+            <TemplateBuilder template={templates[0]}/>
+          </div>
         </div>
       );
     }
-  }
 }
 
 const mapState = (state) => ({
-  isFetchingFonts : state.isFetchingFonts,
-  isFetchingSeed : state.isFetchingSeed
+  isFetchingFonts : state.appState.isFetchingFonts,
+  isFetchingSeed : state.appState.isFetchingSeed
 });
 
 export default connect(mapState)(App);

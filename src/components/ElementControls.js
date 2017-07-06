@@ -1,36 +1,45 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import ToggleButton from 'react-toggle-button';
+import {RadioGroup, Radio} from 'react-radio-group';
 
 const ControlWrapper = styled.div`
   display: flex;
   flex-flow: column;
-  margin: 0 20px;
-  padding: 10px 0;
+  margin-bottom: 20px;
+  width: 100%;
 `;
 
 const ControlHeader = styled.div`
   display: flex;
   justify-content: space-between;
   text-transform: uppercase;
-  margin-bottom: 10px;
   font-weight: 700;
+  width: 100%;
 `;
 
 const Controls = styled.div`
   display: flex;
   flex-flow: column;
-  width: 250px;
 `;
 
 const CurrentFont = styled.div`
   display: flex;
   justify-content: space-between;
   font-style: italic;
+  margin-bottom: 10px;
 `;
 
-const Variant = styled.div`
+const Variants = styled.div`
+  display: flex;
+  flex-flow: column;
+  background-color: #333;
+  width: 100%;
+`;
 
+const StyledRadioGroup = styled(RadioGroup)`
+  display: flex;
+  flex-flow: column;
 `;
 
 class ElementControls extends Component {
@@ -53,9 +62,17 @@ class ElementControls extends Component {
           <CurrentFont>
             <p>{this.props.activeFont.family}</p>
           </CurrentFont>
-          {/*<Variant>
-            <p>Variant: {this.props.activeFont.variant}</p>
-          </Variant>*/}
+          <Variants>
+            <StyledRadioGroup>
+              {this.props.activeFont.availableVariants.map(variant => {
+                return (
+                  <label>
+                    <Radio value={variant} />{variant}
+                  </label>
+                )
+              })}
+            </StyledRadioGroup>
+          </Variants>
         </Controls>
       </ControlWrapper>
     );

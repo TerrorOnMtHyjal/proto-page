@@ -29,7 +29,7 @@ class Subheader extends Component {
 }
 
 const mapState = (state) => ({
-  subheaderFont : state.activeFonts.subheader.family,
+  subheaderFont : state.appState.activeFonts.subheader.family,
 });
 
 export default connect(mapState)(Subheader);

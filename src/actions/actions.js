@@ -70,7 +70,7 @@ function seedFontsError(err) {
 }
 
 export const applyFonts = () => (dispatch, getState) => {
-  const { activeFonts } = getState();
+  const { activeFonts } = getState().appState;
   
   WebFont.load({
     loading: function() {
@@ -100,7 +100,7 @@ function newFontsSuccessful(){
 }
 
 export const randomizeFonts = () => (dispatch, getState) => {
-  const currentState = getState();
+  const currentState = getState().appState;
   const locks = currentState.controls.isLocked;
   const newFonts = {};
 
@@ -109,7 +109,8 @@ export const randomizeFonts = () => (dispatch, getState) => {
       const newFont = getRandomFont(currentState.fontsLibrary[currentState.controls.categories[element]]);
       newFonts[element] = {
         family : newFont.family,
-        variant : 'regular'
+        variant : 'regular',
+        availableVariants : newFont.variants
       }
     } else {
       newFonts[element] = currentState.activeFonts[element];

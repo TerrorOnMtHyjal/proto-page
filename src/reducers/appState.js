@@ -7,15 +7,18 @@ const initialState= {
   activeFonts : {
     header : {
       family : 'Droid Serif',
-      variant : 'regular'
+      variant : 'regular',
+      availableVariants : ["regular","italic","700","700italic"]
     },
     subheader : {
       family : 'Droid Serif',
-      variant : 'regular'
+      variant : 'regular',
+      availableVariants : ["regular","italic","700","700italic"]
     },
     paragraph : {
       family : 'Droid Sans',
-      variant : 'regular'
+      variant : 'regular',
+      availableVariants : ["regular","700"]
     }
   },
   controls : {

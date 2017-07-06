@@ -31,7 +31,7 @@ class Header extends Component {
 }
 
 const mapState = (state) => ({
-  headerFont : state.activeFonts.header.family,
+  headerFont : state.appState.activeFonts.header.family,
 });
 
 export default connect(mapState)(Header);

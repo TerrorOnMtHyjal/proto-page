@@ -47,8 +47,8 @@ class Controls extends Component {
 }
 
 const mapState = (state) => ({
-  controls : state.controls,
-  activeFonts : state.activeFonts
+  controls : state.appState.controls,
+  activeFonts : state.appState.activeFonts
 });
 
 export default connect(mapState)(Controls);

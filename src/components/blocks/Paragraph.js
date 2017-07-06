@@ -43,7 +43,7 @@ class Paragraph extends Component {
 }
 
 const mapState = (state) => ({
-  paragraphFont : state.activeFonts.paragraph.family,
+  paragraphFont : state.appState.activeFonts.paragraph.family,
 });
 
 export default connect(mapState)(Paragraph);
