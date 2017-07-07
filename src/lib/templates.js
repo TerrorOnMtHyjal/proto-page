@@ -1,11 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import Paragraph from '../components/blocks/Paragraph';
-import Header from '../components/blocks/Header';
-import Subheader from '../components/blocks/Subheader';
 import Image from '../components/blocks/Image';
 import FeatureCard from '../components/blocks/FeatureCard';
 import Socials from '../components/blocks/Socials';
+import Text from '../components/blocks/Text';
 
 //change to array
 const template1 = {
@@ -24,7 +22,7 @@ const template1 = {
       color : white;
       border-bottom: 2px solid gray;
     `,
-    elements : [<Header rules="width: 60%;" />]
+    elements : [<Text type="header" size="h1" rules="width: 60%"/>]
   },
   2 : {
     rules : `
@@ -32,7 +30,7 @@ const template1 = {
       align-items: center;
       margin: 20px 0;
     `,
-    elements : [<Subheader />, <Socials />]
+    elements : [<Text type="subheader" size="h3" />, <Socials />]
   },
   3 : {
     rules : `
@@ -40,7 +38,7 @@ const template1 = {
       padding: 0;
     `,
     elements : [
-      <Paragraph /> 
+      <Text type="paragraph" size="p"/> 
     ]
   },
   4 : {
@@ -55,7 +53,7 @@ const template1 = {
       justify-content : space-between;
       margin-top: 50px;
     `,
-    elements : [<Paragraph rules="width : 40%; color: purple;"/>, <Paragraph rules="width : 40%;"/>]
+    elements : [<Text type="paragraph" size="p" rules="width : 40%; color: purple;"/>, <Text type="paragraph" size="p" rules="width : 40%;"/>]
   }
 };
 

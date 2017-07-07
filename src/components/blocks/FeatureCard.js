@@ -23,9 +23,11 @@ class FeatureCard extends Component {
       width: 100px;
       height: 100px;
     `;
+
     const StyledParagraph = styled.p`
       font-family: ${this.props.paragraphFont};
     `;
+     
     const Card = styled.div`
       display: flex;
       flex-flow: column;

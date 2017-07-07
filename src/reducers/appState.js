@@ -8,17 +8,17 @@ const initialState= {
     header : {
       family : 'Droid Serif',
       variant : 'regular',
-      availableVariants : ["regular","italic","700","700italic"]
+      availableVariants : ['regular','italic','700','700italic']
     },
     subheader : {
       family : 'Droid Serif',
       variant : 'regular',
-      availableVariants : ["regular","italic","700","700italic"]
+      availableVariants : ['regular','italic','700','700italic']
     },
     paragraph : {
       family : 'Droid Sans',
       variant : 'regular',
-      availableVariants : ["regular","700"]
+      availableVariants : ['regular','700']
     }
   },
   controls : {
@@ -44,6 +44,10 @@ export default function appState(state=initialState, action){
       return { ...state, isFetchingSeed : action.isFetchingSeed, fontsLibrary : action.fontsLibrary};
     case actions.UPDATE_FONTS:
       return { ...state, activeFonts : action.newFonts};
+    case actions.UPDATE_VARIANT:
+      const updatedState = {...state};
+      updatedState.activeFonts[action.element].variant = action.variant;
+      return { ...updatedState };
     case actions.NEW_FONTS_REQUESTED:
       return { ...state, isFetchingFonts : action.isFetchingFonts};
     case actions.NEW_FONTS_SUCCESSFUL:

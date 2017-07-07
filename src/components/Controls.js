@@ -25,9 +25,6 @@ class Controls extends Component {
         <ElementControls
           key={element}
           type={element} 
-          isLocked={this.props.controls.isLocked[element]} 
-          activeFont={this.props.activeFonts[element]}
-          onToggle={this.onToggle}
         />
       )
     }
