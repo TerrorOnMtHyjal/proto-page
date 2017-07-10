@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import ToggleButton from 'react-toggle-button';
-import { toggleLock } from '../actions/actions';
+import { toggleLock, updateActiveFonts, updateCategory } from '../actions/actions';
 import { connect } from 'react-redux';
-import { updateActiveFonts } from '../actions/actions';
 import {RadioGroup, Radio} from 'react-radio-group';
 
 const ControlWrapper = styled.div`
@@ -47,6 +46,13 @@ const Variants = styled.div`
   width: 100%;
 `;
 
+const Categories = styled.div`
+  display: flex;
+  flex-flow: column;
+  background-color: #666;
+  width: 100%;
+`;
+
 const StyledRadioGroup = styled(RadioGroup)`
   display: flex;
   flex-flow: column;
@@ -54,13 +60,16 @@ const StyledRadioGroup = styled(RadioGroup)`
 `;
 
 class ElementControls extends Component {
-  onRadioChange(variant){
-    this.props.dispatch(updateActiveFonts("variant", {element: this.props.type, variant }));
-    this.forceUpdate();
+  onRadioChange(type, change){
+    if(type === "variant"){
+      this.props.dispatch(updateActiveFonts(type, {element: this.props.type, variant : change}));
+    } else if(type === "category") {
+      this.props.dispatch(updateCategory({element: this.props.type, category : change}));
+    }
   }
 
   render() {
-    console.log(this.props.type, this.props.activeFonts[this.props.type].variant)
+    console.log("checked")
     return (
       <ControlWrapper>
 
@@ -81,10 +90,15 @@ class ElementControls extends Component {
 
         <Controls>
           <Variants>
-            <StyledRadioGroup name={`${this.props.type}Variants`} selectedValue={this.props.activeFonts[this.props.type].variant} onChange={(value) => this.onRadioChange(value)}>
+            <StyledRadioGroup name={`${this.props.type}Variants`} selectedValue={this.props.activeFonts[this.props.type].variant} onChange={(value) => this.onRadioChange("variant", value)}>
               {this.props.activeFonts[this.props.type].availableVariants.map(variant => <label key={`${this.props.type}${variant}`}> <Radio value={variant} />{variant}</label>)}
             </StyledRadioGroup>
           </Variants>
+          <Categories>
+            <StyledRadioGroup name={`${this.props.type}Categories`} selectedValue={this.props.controls.categories[this.props.type]} onChange={(value) => this.onRadioChange("category", value)}>
+              {this.props.categories.available.map(category => <label key={`${this.props.type}${category}`}> <Radio value={category} />{category}</label>)}
+            </StyledRadioGroup>
+          </Categories>
         </Controls>
 
       </ControlWrapper>
@@ -94,7 +108,8 @@ class ElementControls extends Component {
 
 const mapState = (state) => ({
   controls : state.appState.controls,
-  activeFonts : state.appState.activeFonts
+  activeFonts : state.appState.activeFonts,
+  categories : state.appState.controls.categories
 });
 
 export default connect(mapState)(ElementControls);

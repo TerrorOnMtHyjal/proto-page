@@ -41,7 +41,7 @@ const strings = {
 
 class Text extends Component {
   
-  generateElement(){
+  render(){
     const {family, variant} = this.props[this.props.type];  
     const Tag = this.props.size;
     const content = strings[this.props.type][Math.floor(Math.random()*[this.props.type].length)];
@@ -66,12 +66,6 @@ class Text extends Component {
     return (
       <StyledTag>{content}</StyledTag>
     )
-  }
-
-  render() {
-    return (
-      this.generateElement()
-    );
   }
 }
 

@@ -6,6 +6,7 @@ export const SEED_FONTS_SUCCESSFUL = 'SEED_FONTS_SUCCESSFUL';
 export const SEED_FONTS_ERROR = 'SEED_FONTS_ERROR';
 export const UPDATE_FONTS = 'UPDATE_FONTS';
 export const UPDATE_VARIANT = 'UPDATE_VARIANT';
+export const UPDATE_CATEGORY = 'UPDATE_CATEGORY';
 export const APPLY_FONTS = 'APPLY_FONTS';
 export const NEW_FONTS_REQUESTED = 'NEW_FONTS_REQUESTED';
 export const NEW_FONTS_SUCCESSFUL = 'NEW_FONTS_SUCCESSFUL';
@@ -141,6 +142,14 @@ export const updateVariant = ({element, variant}) => {
     type : UPDATE_VARIANT,
     element,
     variant
+  }
+}
+
+export const updateCategory = ({element, category}) => {
+  return {
+    type : UPDATE_CATEGORY,
+    element,
+    category
   }
 }
 

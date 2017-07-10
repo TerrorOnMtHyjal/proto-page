@@ -12,7 +12,7 @@ const initialState= {
     },
     subheader : {
       family : 'Droid Serif',
-      variant : 'regular',
+      variant : '700',
       availableVariants : ['regular','italic','700','700italic']
     },
     paragraph : {
@@ -29,6 +29,7 @@ const initialState= {
       paragraph : false
     },
     categories: {
+      available : ['sans-serif', 'serif', 'handwriting', 'monospace', 'display'],
       header : 'serif',
       subheader : 'serif',
       paragraph : 'sans-serif'
@@ -45,9 +46,29 @@ export default function appState(state=initialState, action){
     case actions.UPDATE_FONTS:
       return { ...state, activeFonts : action.newFonts};
     case actions.UPDATE_VARIANT:
-      const updatedState = {...state};
-      updatedState.activeFonts[action.element].variant = action.variant;
-      return { ...updatedState };
+      return {
+        ...state,
+        activeFonts: {
+          ...state.activeFonts,
+          [action.element]: {
+            ...state.activeFonts[action.element],
+            variant: action.variant
+          }
+        }
+      }
+
+    case actions.UPDATE_CATEGORY:
+      return {
+        ...state,
+        controls : {
+          ...state.controls,
+          categories: {
+            ...state.controls.categories,
+            [action.element] : action.category
+          }
+        }
+      }
+
     case actions.NEW_FONTS_REQUESTED:
       return { ...state, isFetchingFonts : action.isFetchingFonts};
     case actions.NEW_FONTS_SUCCESSFUL:
