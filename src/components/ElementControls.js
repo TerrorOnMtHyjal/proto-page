@@ -4,6 +4,7 @@ import ToggleButton from 'react-toggle-button';
 import { toggleLock, updateActiveFonts, updateCategory } from '../actions/actions';
 import { connect } from 'react-redux';
 import {RadioGroup, Radio} from 'react-radio-group';
+import CategoryList from './CategoryList';
 
 const ControlWrapper = styled.div`
   display: flex;
@@ -27,6 +28,15 @@ const ElementLock = styled.div`
   width: 100%;
 `;
 
+const LockControl = styled.div`
+  display: flex;
+  align-items: center;
+
+  & > i {
+    margin-right: 10px;
+  }
+`;
+
 const Controls = styled.div`
   display: flex;
   flex-flow: column;
@@ -47,9 +57,6 @@ const Variants = styled.div`
 `;
 
 const Categories = styled.div`
-  display: flex;
-  flex-flow: column;
-  background-color: #666;
   width: 100%;
 `;
 
@@ -57,6 +64,10 @@ const StyledRadioGroup = styled(RadioGroup)`
   display: flex;
   flex-flow: column;
   padding-left: 20px;
+`;
+
+const StyledCategoryList = styled(CategoryList)`
+
 `;
 
 class ElementControls extends Component {
@@ -69,18 +80,20 @@ class ElementControls extends Component {
   }
 
   render() {
-    console.log("checked")
     return (
       <ControlWrapper>
 
         <ControlHeader>
           <ElementLock>
             <p>{this.props.type}</p>
-            <ToggleButton 
-              value={this.props.controls.isLocked[this.props.type]} 
-              onToggle={() => this.props.dispatch(toggleLock(this.props.type))} 
-              colors={{active : {base: 'rgb(255,0,174)'}}}
-            />
+            <LockControl>
+              <i className="fa fa-lock"></i>
+              <ToggleButton 
+                value={this.props.controls.isLocked[this.props.type]} 
+                onToggle={() => this.props.dispatch(toggleLock(this.props.type))} 
+                colors={{active : {base: 'rgb(255,0,174)'}}}
+              />
+            </LockControl>
           </ElementLock>
 
           <CurrentFont>
@@ -95,9 +108,16 @@ class ElementControls extends Component {
             </StyledRadioGroup>
           </Variants>
           <Categories>
-            <StyledRadioGroup name={`${this.props.type}Categories`} selectedValue={this.props.controls.categories[this.props.type]} onChange={(value) => this.onRadioChange("category", value)}>
+            <StyledCategoryList
+              type={this.props.type} 
+              categories={{
+                selected : this.props.categories[this.props.type], 
+                available : this.props.categories.available.filter(category => category !== this.props.categories[this.props.type])
+              }}
+            />
+            {/*<StyledRadioGroup name={`${this.props.type}Categories`} selectedValue={this.props.controls.categories[this.props.type]} onChange={(value) => this.onRadioChange("category", value)}>
               {this.props.categories.available.map(category => <label key={`${this.props.type}${category}`}> <Radio value={category} />{category}</label>)}
-            </StyledRadioGroup>
+            </StyledRadioGroup>*/}
           </Categories>
         </Controls>
 
