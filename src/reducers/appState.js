@@ -10,7 +10,7 @@ const initialState= {
       variant : 'regular',
       availableVariants : ['regular','italic','700','700italic'],
       category: 'serif',
-      size : 1,
+      size : 100,
       locked : false
     },
     subheader : {
@@ -18,7 +18,7 @@ const initialState= {
       variant : '700',
       availableVariants : ['regular','italic','700','700italic'],
       category : 'serif',
-      size : 1,
+      size : 100,
       locked : false
     },
     paragraph : {
@@ -26,7 +26,7 @@ const initialState= {
       variant : 'regular',
       availableVariants : ['regular','700'],
       category : 'sans-serif',
-      size : 1,
+      size : 100,
       locked: false
     }
   },
@@ -44,7 +44,7 @@ const initialState= {
       paragraph : 'sans-serif'
     },
   },
-  sizes : [0.5, 1, 2, 3, 4, 5],
+  sizes : [50, 100, 200, 300, 400, 500],
   categories : ['sans-serif', 'serif', 'handwriting', 'monospace', 'display']
 }
 

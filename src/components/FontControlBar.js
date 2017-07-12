@@ -86,6 +86,9 @@ class FontControlBar extends Component {
       formattedOption = tempFormat.replace(/(\b[a-z](?!\s))/g, x => x.toUpperCase());
     }
 
+    if(typeof option === 'number'){
+      formattedOption += "%";
+    }
     return formattedOption;
   }
 
@@ -126,7 +129,7 @@ class FontControlBar extends Component {
             <i className="fa fa-italic fa-lg" aria-hidden="true"></i> {type.currentVariant}
           </ControlButton>
           <ControlButton onClick={() => this.changeMenuState("size")}>
-            <i className="fa fa-text-height fa-lg" aria-hidden="true"></i> {type.currentSize}x
+            <i className="fa fa-text-height fa-lg" aria-hidden="true"></i> {type.currentSize}%
           </ControlButton>
         </ControlButtonsWrapper>
 

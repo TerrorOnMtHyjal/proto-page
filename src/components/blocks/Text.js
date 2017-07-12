@@ -57,6 +57,7 @@ class Text extends Component {
     }
 
     const StyledTag = styled(Tag)`
+      overflow: hidden;
       ${this.props.rules};
     `;
 
@@ -64,7 +65,7 @@ class Text extends Component {
       font-family: ${family};
       font-weight: ${weight};
       font-style: ${style};
-      font-size: ${100 * size}%;
+      font-size: ${size}%;
     `;
 
     return (
