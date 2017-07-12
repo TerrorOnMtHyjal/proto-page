@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 
+const OPTION_HEIGHT = 25;
+const OPTION_VERTICAL_PADDING = 5;
+const OPTION_HORIZONTAL_PADDING = 20;
+const OPTION_TOTAL_HEIGHT = (OPTION_VERTICAL_PADDING * 2) + OPTION_HEIGHT;
+
 const ControlButtonsWrapper = styled.div`
   display: flex;
   justify-content: space-between;
@@ -12,11 +17,11 @@ const ControlButton = styled.button`
 
 `;
 
-//convert height and padding to constants
 const OptionButton = styled.div`
-  height: 25px;
-  padding: 5px 20px;
-  display: block;
+  display: flex;
+  align-items: center;
+  height: ${OPTION_HEIGHT}px;
+  padding: ${OPTION_VERTICAL_PADDING}px ${OPTION_HORIZONTAL_PADDING}px;
   outline: none;
 
   &:hover {
@@ -28,9 +33,8 @@ const OptionsWrapper = styled.div`
   background-color: #0e83cd;
 `;
 
-//convert height and padding to constants
 const Options = styled.div`
-  height: ${props => props.isOpen ? `${props.items * 35}px` : "0px"};
+  height: ${props => props.isOpen ? `${props.items * OPTION_TOTAL_HEIGHT}px` : "0px"};
   transition: height 0.5s ease-in-out;
   overflow-y: hidden;
 `;
@@ -77,7 +81,6 @@ class FontControlBar extends Component {
       let tempFormat = option.replace(/(\d+)/g, (_, num) => {
         return ' ' + num + ' ';
       }).trim();
-
       formattedOption = tempFormat.replace(/(\b[a-z](?!\s))/g, x => x.toUpperCase());
     }
 
@@ -86,11 +89,11 @@ class FontControlBar extends Component {
 
   generateOptions(menu){
     return this.props[menu].map(option => {
-      const baseOption =  <OptionButton onClick={() => console.log(option, this.props.type)}>{this.formatOption(option)}</OptionButton>;
+      const baseOption =  <OptionButton key={`${option}${this.props.type}`} onClick={() => console.log(option, this.props.type)}>{this.formatOption(option)}</OptionButton>;
 
       if(option === this.props.category || option === this.props.variant || option === this.props.size){
         return (
-        <CheckedOption>
+        <CheckedOption key={`checked${option}${this.props.type}`}>
           {baseOption}
           <i className="fa fa-check fa-lg" aria-hidden="true"></i>
         </CheckedOption>

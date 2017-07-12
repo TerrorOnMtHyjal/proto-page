@@ -23,9 +23,7 @@ class Controls extends Component {
     return (
       <ControlsWrapper className={this.props.className}>
         {this.generateControls(this.props.activeFonts)}
-        <button onClick={() => this.props.dispatch(randomizeFonts())}>
-          Randomize Fonts
-        </button>
+        <button onClick={() => this.props.dispatch(randomizeFonts())}> Randomize Fonts </button>
       </ControlsWrapper>
     );
   }
