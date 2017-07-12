@@ -7,27 +7,13 @@ import ElementControls from './ElementControls';
 
 class Controls extends Component {
 
-  constructor(props){
-    super(props);
-    this.onToggle = this.onToggle.bind(this);
-  }
-
-//move this into the ElementControls component
-  onToggle(element){
-    this.props.dispatch(toggleLock(element));
-  }
-
   generateControls(elements){
     const controls = [];
 
     for (let element in elements){
-      controls.push(
-        <ElementControls
-          key={element}
-          type={element} 
-        />
-      )
+      controls.push(<ElementControls key={element} type={element} />)
     }
+    
     return controls;
   }
 

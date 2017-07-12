@@ -50,12 +50,16 @@ const initialState= {
 
 export default function appState(state=initialState, action){
   switch (action.type){
+    
     case actions.SEED_FONTS_REQUESTED:
       return { ...state, isFetchingSeed : action.isFetchingSeed};
+
     case actions.SEED_FONTS_SUCCESSFUL:
       return { ...state, isFetchingSeed : action.isFetchingSeed, fontsLibrary : action.fontsLibrary};
+
     case actions.UPDATE_FONTS:
       return { ...state, activeFonts : action.newFonts};
+
     case actions.UPDATE_VARIANT:
       return {
         ...state,
@@ -82,8 +86,10 @@ export default function appState(state=initialState, action){
 
     case actions.NEW_FONTS_REQUESTED:
       return { ...state, isFetchingFonts : action.isFetchingFonts};
+
     case actions.NEW_FONTS_SUCCESSFUL:
       return { ...state, isFetchingFonts : action.isFetchingFonts};
+
     case actions.TOGGLE_LOCK:
       return {
         ...state,
@@ -95,6 +101,7 @@ export default function appState(state=initialState, action){
           }
         }
       }
+
     default:
       return state;
   }

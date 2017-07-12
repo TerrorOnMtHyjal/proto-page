@@ -90,7 +90,7 @@ class ElementControls extends Component {
             <LockControl>
               <i className="fa fa-lock"></i>
               <ToggleButton 
-                value={this.props.controls.isLocked[this.props.type]} 
+                value={this.props.locked} 
                 onToggle={() => this.props.dispatch(toggleLock(this.props.type))} 
                 colors={{active : {base: 'rgb(255,0,174)'}}}
               />
@@ -124,7 +124,8 @@ class ElementControls extends Component {
   }
 }
 
-const mapState = (state) => ({
+const mapState = (state, ownProps) => ({
+  locked : state.appState.activeFonts[ownProps.type].locked,
   controls : state.appState.controls,
   activeFonts : state.appState.activeFonts,
   categories : state.appState.controls.categories
