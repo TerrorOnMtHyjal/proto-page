@@ -12,8 +12,7 @@ class Controls extends Component {
 
     for (let element in elements){
       controls.push(<ElementControls key={element} type={element} />)
-    }
-    
+    }  
     return controls;
   }
 
@@ -30,7 +29,6 @@ class Controls extends Component {
 }
 
 const mapState = (state) => ({
-  controls : state.appState.controls,
   activeFonts : state.appState.activeFonts
 });
 
