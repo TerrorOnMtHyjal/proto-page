@@ -11,6 +11,7 @@ export const APPLY_FONTS = 'APPLY_FONTS';
 export const NEW_FONTS_REQUESTED = 'NEW_FONTS_REQUESTED';
 export const NEW_FONTS_SUCCESSFUL = 'NEW_FONTS_SUCCESSFUL';
 export const TOGGLE_LOCK = 'TOGGLE_LOCK';
+export const UPDATE_ACTIVE_FONT = 'UPDATE_ACTIVE_FONT';
 
 export const seedFonts = () => (dispatch) => {
   dispatch(seedFontsRequested());
@@ -45,14 +46,12 @@ export const seedFonts = () => (dispatch) => {
     });
 };
 
-export const updateActiveFonts = (type, payload) => (dispatch) => {
-  if(type === "variant"){
-    dispatch(updateVariant(payload));
-  } else if(type === "fonts"){
-    dispatch(updateFonts(payload));
-  }
-  dispatch(applyFonts()); 
-}
+export const updateActiveFont = (option, element, updateType) => ({
+  type : UPDATE_ACTIVE_FONT,
+  option,
+  updateType,
+  element
+});
 
 function seedFontsRequested() {
   return {
@@ -146,22 +145,6 @@ export const updateFonts = (newFonts) => {
     newFonts
   }
 };
-
-export const updateVariant = ({element, variant}) => {
-  return {
-    type : UPDATE_VARIANT,
-    element,
-    variant
-  }
-}
-
-export const updateCategory = ({element, category}) => {
-  return {
-    type : UPDATE_CATEGORY,
-    element,
-    category
-  }
-}
 
 function getRandomFont(category){
   return category[Math.floor(Math.random()*category.length)];

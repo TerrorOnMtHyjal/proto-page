@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
+import { updateActiveFont } from '../actions/actions';
 
 const OPTION_HEIGHT = 25;
 const OPTION_VERTICAL_PADDING = 5;
@@ -11,6 +12,7 @@ const ControlButtonsWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 0 20px;
+  margin-bottom: 10px;
 `;
 
 const ControlButton = styled.button`
@@ -89,7 +91,13 @@ class FontControlBar extends Component {
 
   generateOptions(menu){
     return this.props[menu].map(option => {
-      const baseOption =  <OptionButton key={`${option}${this.props.type}`} onClick={() => console.log(option, this.props.type)}>{this.formatOption(option)}</OptionButton>;
+      const baseOption = 
+        <OptionButton 
+          key={`${option}${this.props.type}`} 
+          onClick={() => this.props.dispatch(updateActiveFont(option, this.props.type, menu))}
+        >
+          {this.formatOption(option)}
+        </OptionButton>;
 
       if(option === this.props.category || option === this.props.variant || option === this.props.size){
         return (
@@ -111,14 +119,14 @@ class FontControlBar extends Component {
     return (
       <div>
         <ControlButtonsWrapper>
-          <ControlButton onClick={() => this.changeMenuState("categories")}>
-            <i className="fa fa-list fa-lg" aria-hidden="true"></i> {type.category}
+          <ControlButton onClick={() => this.changeMenuState("category")}>
+            <i className="fa fa-list fa-lg" aria-hidden="true"></i> {type.currentCategory}
           </ControlButton>
-          <ControlButton onClick={() => this.changeMenuState("availableVariants")}>
-            <i className="fa fa-italic fa-lg" aria-hidden="true"></i> {type.variant}
+          <ControlButton onClick={() => this.changeMenuState("variant")}>
+            <i className="fa fa-italic fa-lg" aria-hidden="true"></i> {type.currentVariant}
           </ControlButton>
-          <ControlButton onClick={() => this.changeMenuState("sizes")}>
-            <i className="fa fa-text-height fa-lg" aria-hidden="true"></i> {type.size}x
+          <ControlButton onClick={() => this.changeMenuState("size")}>
+            <i className="fa fa-text-height fa-lg" aria-hidden="true"></i> {type.currentSize}x
           </ControlButton>
         </ControlButtonsWrapper>
 
@@ -133,10 +141,14 @@ class FontControlBar extends Component {
 }
 
 const mapState = ({ appState }, ownProps) => {
+  const activeFont = appState.activeFonts[ownProps.type];
   return {
-    ...appState.activeFonts[ownProps.type],
-    sizes : appState.sizes,
-    categories : appState.categories,
+    currentVariant : activeFont.variant,
+    currentSize : activeFont.size,
+    currentCategory : activeFont.category,
+    variant : activeFont.availableVariants,
+    size : appState.sizes,
+    category : appState.categories,
     default : []
   }
 };

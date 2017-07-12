@@ -42,8 +42,8 @@ const strings = {
 class Text extends Component {
   
   render(){
-    const {family, variant} = this.props[this.props.type];  
-    const Tag = this.props.size;
+    const {family, variant, size} = this.props[this.props.type];  
+    const Tag = this.props.tag;
     const content = strings[this.props.type][Math.floor(Math.random()*[this.props.type].length)];
     let weight = variant.replace(/\D/g,'');
     let style = variant.replace(/[0-9]/g, '');    
@@ -57,14 +57,18 @@ class Text extends Component {
     }
 
     const StyledTag = styled(Tag)`
-      font-family: ${family};
-      font-weight: ${weight};
-      font-style: ${style};
       ${this.props.rules};
     `;
 
+    const Scaler = styled.span`
+      font-family: ${family};
+      font-weight: ${weight};
+      font-style: ${style};
+      font-size: ${100 * size}%;
+    `;
+
     return (
-      <StyledTag>{content}</StyledTag>
+      <StyledTag><Scaler>{content}</Scaler></StyledTag>
     )
   }
 }

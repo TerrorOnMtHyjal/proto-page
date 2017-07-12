@@ -60,30 +60,6 @@ export default function appState(state=initialState, action){
     case actions.UPDATE_FONTS:
       return { ...state, activeFonts : action.newFonts};
 
-    case actions.UPDATE_VARIANT:
-      return {
-        ...state,
-        activeFonts: {
-          ...state.activeFonts,
-          [action.element]: {
-            ...state.activeFonts[action.element],
-            variant: action.variant
-          }
-        }
-      }
-
-    case actions.UPDATE_CATEGORY:
-      return {
-        ...state,
-        controls : {
-          ...state.controls,
-          categories: {
-            ...state.controls.categories,
-            [action.element] : action.category
-          }
-        }
-      }
-
     case actions.NEW_FONTS_REQUESTED:
       return { ...state, isFetchingFonts : action.isFetchingFonts};
 
@@ -98,6 +74,18 @@ export default function appState(state=initialState, action){
           [action.element]: {
             ...state.activeFonts[action.element],
             locked: !state.activeFonts[action.element].locked
+          }
+        }
+      }
+
+    case actions.UPDATE_ACTIVE_FONT:
+      return {
+        ...state,
+        activeFonts : {
+          ...state.activeFonts,
+          [action.element] : {
+            ...state.activeFonts[action.element],
+            [action.updateType] : action.option
           }
         }
       }

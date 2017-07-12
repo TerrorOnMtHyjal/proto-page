@@ -20,7 +20,7 @@ const template1 = {
       color : white;
       border-bottom: 2px solid gray;
     `,
-    elements : [<Text type="header" size="h1" rules="width: 60%"/>]
+    elements : [<Text type="header" tag="h1" rules="width: 60%"/>]
   },
   2 : {
     rules : `
@@ -28,7 +28,7 @@ const template1 = {
       align-items: center;
       margin: 20px 0;
     `,
-    elements : [<Text type="subheader" size="h3" />, <Socials />]
+    elements : [<Text type="subheader" tag="h3" />, <Socials />]
   },
   3 : {
     rules : `
@@ -36,7 +36,7 @@ const template1 = {
       padding: 0;
     `,
     elements : [
-      <Text type="paragraph" size="p"/> 
+      <Text type="paragraph" tag="p"/> 
     ]
   },
   4 : {
@@ -51,7 +51,7 @@ const template1 = {
       justify-content : space-between;
       margin-top: 50px;
     `,
-    elements : [<Text type="paragraph" size="p" rules="width : 40%; color: purple;"/>, <Text type="paragraph" size="p" rules="width : 40%;"/>]
+    elements : [<Text type="paragraph" tag="p" rules="width : 40%; color: purple;"/>, <Text type="paragraph" tag="p" rules="width : 40%;"/>]
   }
 };
 
