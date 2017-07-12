@@ -109,24 +109,34 @@ function newFontsSuccessful(){
 
 export const randomizeFonts = function() {
   return (dispatch, getState) => {
-    const currentState = getState().appState;
-    const locks = currentState.controls.isLocked;
-    const newFonts = {};
+    // const currentState = getState().appState;
+    // const locks = currentState.controls.isLocked;
+    // const newFonts = {};
 
-    for (let element in locks) {
-      if(!locks[element]){
-        const newFont = getRandomFont(currentState.fontsLibrary[currentState.controls.categories[element]]);
-        newFonts[element] = {
-          family : newFont.family,
-          variant : 'regular',
-          availableVariants : newFont.variants
-        }
-      } else {
-        newFonts[element] = currentState.activeFonts[element];
+    // for (let element in locks) {
+    //   if(!locks[element]){
+    //     const newFont = getRandomFont(currentState.fontsLibrary[currentState.controls.categories[element]]);
+    //     newFonts[element] = {
+    //       family : newFont.family,
+    //       variant : 'regular',
+    //       availableVariants : newFont.variants,
+    //       size : 1,
+    //       category :
+    //     }
+    //   } else {
+    //     newFonts[element] = currentState.activeFonts[element];
+    //   }
+    // }
+
+    // dispatch(updateActiveFonts("fonts", newFonts));
+    const activeFonts = getState().appState.activeFonts;
+
+    for(let element in activeFonts){
+      if(!activeFonts[element].locked){
+        console.log("unlocked")
       }
     }
 
-    dispatch(updateActiveFonts("fonts", newFonts));
   }
 };
 
@@ -157,9 +167,9 @@ function getRandomFont(category){
   return category[Math.floor(Math.random()*category.length)];
 }
 
-export const toggleLock = (lockToToggle) => {
+export const toggleLock = (element) => {
   return {
     type: TOGGLE_LOCK,
-    lockToToggle
+    element
   }
 };

@@ -5,6 +5,7 @@ import { toggleLock, updateActiveFonts, updateCategory } from '../actions/action
 import { connect } from 'react-redux';
 import {RadioGroup, Radio} from 'react-radio-group';
 import CategoryList from './CategoryList';
+import FontControlBar from './FontControlBar';
 
 const ControlWrapper = styled.div`
   display: flex;
@@ -100,8 +101,8 @@ class ElementControls extends Component {
             <p>{this.props.activeFonts[this.props.type].family}</p>
           </CurrentFont>
         </ControlHeader>
-
-        <Controls>
+        <FontControlBar type={this.props.type}/>
+        {/*<Controls>
           <Variants>
             <StyledRadioGroup name={`${this.props.type}Variants`} selectedValue={this.props.activeFonts[this.props.type].variant} onChange={(value) => this.onRadioChange("variant", value)}>
               {this.props.activeFonts[this.props.type].availableVariants.map(variant => <label key={`${this.props.type}${variant}`}> <Radio value={variant} />{variant}</label>)}
@@ -115,11 +116,8 @@ class ElementControls extends Component {
                 available : this.props.categories.available.filter(category => category !== this.props.categories[this.props.type])
               }}
             />
-            {/*<StyledRadioGroup name={`${this.props.type}Categories`} selectedValue={this.props.controls.categories[this.props.type]} onChange={(value) => this.onRadioChange("category", value)}>
-              {this.props.categories.available.map(category => <label key={`${this.props.type}${category}`}> <Radio value={category} />{category}</label>)}
-            </StyledRadioGroup>*/}
           </Categories>
-        </Controls>
+        </Controls>*/}
 
       </ControlWrapper>
     );
