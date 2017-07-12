@@ -59,7 +59,7 @@ class FontControlBar extends Component {
   }
 
   changeMenuState(clicked){
-    if(clicked == this.state.loadedMenu && this.state.isOpen){
+    if(clicked === this.state.loadedMenu && this.state.isOpen){
       this.setState({...this.state.loadedMenu, isOpen : false}, () => {
 
       })
@@ -88,7 +88,7 @@ class FontControlBar extends Component {
     return this.props[menu].map(option => {
       const baseOption =  <OptionButton onClick={() => console.log(option, this.props.type)}>{this.formatOption(option)}</OptionButton>;
 
-      if(option == this.props.category || option == this.props.variant || option == this.props.size){
+      if(option === this.props.category || option === this.props.variant || option === this.props.size){
         return (
         <CheckedOption>
           {baseOption}

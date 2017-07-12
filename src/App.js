@@ -1,18 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import styled from 'styled-components';
 import { seedFonts, applyFonts } from './actions/actions';
 import ReactLoading from 'react-loading';
 import Controls from './components/Controls';
 import TemplateBuilder from './containers/TemplateBuilder';
 import { templates } from './lib/templates';
 import Menu from './components/Menu';
-
-const StyledControls = styled(Controls)`
-  display: flex;
-  flex-flow: column;
-  color: white;
-`;
 
 const menuStyles = {
   bmBurgerButton: {
@@ -59,7 +52,7 @@ class App extends Component {
       return (
         <div className="App" id="outer-container">
           <Menu pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" } styles={menuStyles}>
-            <StyledControls />
+            <Controls />
           </Menu>
           <div id="page-wrap">
             <TemplateBuilder template={templates[0]}/>

@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { randomizeFonts, toggleLock } from '../actions/actions';
+import { randomizeFonts } from '../actions/actions';
 import styled from 'styled-components';
-
 import ElementControls from './ElementControls';
+
+const ControlsWrapper = styled.div`
+  color: white;
+`;
 
 class Controls extends Component {
 
@@ -18,12 +21,12 @@ class Controls extends Component {
 
   render() {
     return (
-      <div className={this.props.className}>
+      <ControlsWrapper className={this.props.className}>
         {this.generateControls(this.props.activeFonts)}
         <button onClick={() => this.props.dispatch(randomizeFonts())}>
           Randomize Fonts
         </button>
-      </div>
+      </ControlsWrapper>
     );
   }
 }

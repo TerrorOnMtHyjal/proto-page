@@ -1,6 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
-import Image from '../components/blocks/Image';
 import FeatureCard from '../components/blocks/FeatureCard';
 import Socials from '../components/blocks/Socials';
 import Text from '../components/blocks/Text';

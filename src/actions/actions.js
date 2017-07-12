@@ -48,7 +48,7 @@ export const seedFonts = () => (dispatch) => {
 export const updateActiveFonts = (type, payload) => (dispatch) => {
   if(type === "variant"){
     dispatch(updateVariant(payload));
-  } else if(type == "fonts"){
+  } else if(type === "fonts"){
     dispatch(updateFonts(payload));
   }
   dispatch(applyFonts()); 
