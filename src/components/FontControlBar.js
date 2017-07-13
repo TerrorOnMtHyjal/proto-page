@@ -10,13 +10,20 @@ const OPTION_TOTAL_HEIGHT = (OPTION_VERTICAL_PADDING * 2) + OPTION_HEIGHT;
 
 const ControlButtonsWrapper = styled.div`
   display: flex;
+  flex-flow: column;
   justify-content: space-between;
   padding: 0 20px;
   margin-bottom: 10px;
 `;
 
-const ControlButton = styled.button`
-  flex-grow: 1;
+const ControlButton = styled.div`
+  padding: 5px 0;
+  &:hover {
+    background-color: orange;
+  }
+  & > i {
+    width: 40%;
+  }
 `;
 
 const OptionButton = styled.div`
@@ -104,13 +111,16 @@ class FontControlBar extends Component {
       <div>
         <ControlButtonsWrapper>
           <ControlButton onClick={() => this.changeMenuState("category")}>
-            <i className="fa fa-list fa-lg" aria-hidden="true"></i> {this.formatOption(type.currentCategory)}
+            <i className="fa fa-list fa-lg" aria-hidden="true"></i> 
+            {this.formatOption(type.currentCategory)}
           </ControlButton>
           <ControlButton onClick={() => this.changeMenuState("variant")}>
-            <i className="fa fa-italic fa-lg" aria-hidden="true"></i> {this.formatOption(type.currentVariant)}
+            <i className="fa fa-italic fa-lg" aria-hidden="true"></i> 
+            {this.formatOption(type.currentVariant)}
           </ControlButton>
           <ControlButton onClick={() => this.changeMenuState("size")}>
-            <i className="fa fa-text-height fa-lg" aria-hidden="true"></i> {this.formatOption(type.currentSize)}
+            <i className="fa fa-text-height fa-lg" aria-hidden="true"></i> 
+            {this.formatOption(type.currentSize)}
           </ControlButton>
         </ControlButtonsWrapper>
 
