@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { toggleLock } from '../actions/actions';
+import { toggleLock, updateActiveFont } from '../actions/actions';
 import ToggleButton from 'react-toggle-button';
 import styled from 'styled-components';
 
@@ -30,7 +30,7 @@ class ElementLock extends Component {
           <i className="fa fa-lock"></i>
           <ToggleButton 
             value={this.props.locked} 
-            onToggle={() => this.props.dispatch(toggleLock(this.props.type))} 
+            onToggle={() => this.props.dispatch(updateActiveFont(!this.props.locked, this.props.type, "locked"))} 
             colors={{active : {base: 'rgb(255,0,174)'}}}
           />
         </LockControl>

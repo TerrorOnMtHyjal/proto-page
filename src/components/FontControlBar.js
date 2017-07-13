@@ -92,6 +92,7 @@ class FontControlBar extends Component {
     return formattedOption;
   }
 
+  //why the hell do you need another div when you have a div dingus!? <i>!?!?!?</i>
   generateOptions(menu){
     return this.props[menu].map(option => {
       const baseOption = 
@@ -145,6 +146,7 @@ class FontControlBar extends Component {
 
 const mapState = ({ appState }, ownProps) => {
   const activeFont = appState.activeFonts[ownProps.type];
+  
   return {
     currentVariant : activeFont.variant,
     currentSize : activeFont.size,

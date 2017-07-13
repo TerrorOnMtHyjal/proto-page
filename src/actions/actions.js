@@ -12,6 +12,7 @@ export const NEW_FONTS_REQUESTED = 'NEW_FONTS_REQUESTED';
 export const NEW_FONTS_SUCCESSFUL = 'NEW_FONTS_SUCCESSFUL';
 export const TOGGLE_LOCK = 'TOGGLE_LOCK';
 export const UPDATE_ACTIVE_FONT = 'UPDATE_ACTIVE_FONT';
+export const REPLACE_ACTIVE_FONTS = 'REPLACE_ACTIVE_FONTS';
 
 export const seedFonts = () => (dispatch) => {
   dispatch(seedFontsRequested());
@@ -80,6 +81,7 @@ export const applyFonts = () => (dispatch, getState) => {
   const { header, subheader, paragraph } = getState().appState.activeFonts;
 
   WebFont.load({
+    classes : false,
     loading: function() {
       dispatch(newFontsRequested());
     },
@@ -87,7 +89,7 @@ export const applyFonts = () => (dispatch, getState) => {
       dispatch(newFontsSuccessful());
     },
     google: {
-      families: [`${header.family}:${header.variant}`, `${subheader.family}:${subheader.variant}`, `${paragraph.family}:${paragraph.variant}`]
+      families: [`${header.family}:${header.availableVariants.join()}`, `${subheader.family}:${subheader.availableVariants.join()}`, `${paragraph.family}:${paragraph.availableVariants.join()}`]
     }
   });
 }
@@ -106,53 +108,38 @@ function newFontsSuccessful(){
   }
 }
 
-export const randomizeFonts = function() {
-  return (dispatch, getState) => {
-    // const currentState = getState().appState;
-    // const locks = currentState.controls.isLocked;
-    // const newFonts = {};
+export const randomizeFonts = () => (dispatch, getState) => {
+  const {activeFonts, fontsLibrary} = getState().appState;
+  const newFonts = {};
 
-    // for (let element in locks) {
-    //   if(!locks[element]){
-    //     const newFont = getRandomFont(currentState.fontsLibrary[currentState.controls.categories[element]]);
-    //     newFonts[element] = {
-    //       family : newFont.family,
-    //       variant : 'regular',
-    //       availableVariants : newFont.variants,
-    //       size : 1,
-    //       category :
-    //     }
-    //   } else {
-    //     newFonts[element] = currentState.activeFonts[element];
-    //   }
-    // }
+  for(let element in activeFonts){
+    const currentElement = activeFonts[element];
 
-    // dispatch(updateActiveFonts("fonts", newFonts));
-    const activeFonts = getState().appState.activeFonts;
+    if(!currentElement.locked){
+      const newFont = getRandomFont(fontsLibrary[currentElement.category]);
 
-    for(let element in activeFonts){
-      if(!activeFonts[element].locked){
-        console.log("unlocked")
+      newFonts[element] = {
+        family : newFont.family,
+        variant : 'regular',
+        availableVariants : newFont.variants,
+        category: currentElement.category,
+        size : 100,
+        locked : false
       }
     }
-
   }
-};
 
-export const updateFonts = (newFonts) => {
+  dispatch(replaceActiveFonts(newFonts));
+  dispatch(applyFonts());
+}
+
+function replaceActiveFonts(newFonts){
   return {
-    type : UPDATE_FONTS,
+    type : REPLACE_ACTIVE_FONTS,
     newFonts
   }
-};
+}
 
 function getRandomFont(category){
   return category[Math.floor(Math.random()*category.length)];
 }
-
-export const toggleLock = (element) => {
-  return {
-    type: TOGGLE_LOCK,
-    element
-  }
-};

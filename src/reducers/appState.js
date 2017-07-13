@@ -66,18 +66,6 @@ export default function appState(state=initialState, action){
     case actions.NEW_FONTS_SUCCESSFUL:
       return { ...state, isFetchingFonts : action.isFetchingFonts};
 
-    case actions.TOGGLE_LOCK:
-      return {
-        ...state,
-        activeFonts : {
-          ...state.activeFonts,
-          [action.element]: {
-            ...state.activeFonts[action.element],
-            locked: !state.activeFonts[action.element].locked
-          }
-        }
-      }
-
     case actions.UPDATE_ACTIVE_FONT:
       return {
         ...state,
@@ -89,6 +77,20 @@ export default function appState(state=initialState, action){
           }
         }
       }
+
+    case actions.REPLACE_ACTIVE_FONTS:
+      const newState = {
+        ...state,
+        activeFonts : {
+          ...state.activeFonts
+        }
+      }
+
+      for(let element in action.newFonts){
+        newState.activeFonts[element] = action.newFonts[element];
+      }
+
+      return newState;
 
     default:
       return state;
