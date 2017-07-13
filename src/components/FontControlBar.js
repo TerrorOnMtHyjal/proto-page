@@ -16,12 +16,13 @@ const ControlButtonsWrapper = styled.div`
 `;
 
 const ControlButton = styled.button`
-
+  flex-grow: 1;
 `;
 
 const OptionButton = styled.div`
   display: flex;
   align-items: center;
+  justify-content: space-between;
   height: ${OPTION_HEIGHT}px;
   padding: ${OPTION_VERTICAL_PADDING}px ${OPTION_HORIZONTAL_PADDING}px;
   outline: none;
@@ -39,17 +40,6 @@ const Options = styled.div`
   height: ${props => props.isOpen ? `${props.items * OPTION_TOTAL_HEIGHT}px` : "0px"};
   transition: height 0.5s ease-in-out;
   overflow-y: hidden;
-`;
-
-const CheckedOption = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-right: 20px;
-
-  &:hover {
-    background-color: orange;
-  }
 `;
 
 class FontControlBar extends Component {
@@ -92,27 +82,17 @@ class FontControlBar extends Component {
     return formattedOption;
   }
 
-  //why the hell do you need another div when you have a div dingus!? <i>!?!?!?</i>
   generateOptions(menu){
     return this.props[menu].map(option => {
-      const baseOption = 
-        <OptionButton 
-          key={`${option}${this.props.type}`} 
-          onClick={() => this.props.dispatch(updateActiveFont(option, this.props.type, menu))}
-        >
+      return (
+        <OptionButton key={`${option}${this.props.type}`} onClick={() => this.props.dispatch(updateActiveFont(option, this.props.type, menu))}>
           {this.formatOption(option)}
-        </OptionButton>;
-
-      if(option === this.props.category || option === this.props.variant || option === this.props.size){
-        return (
-        <CheckedOption key={`checked${option}${this.props.type}`}>
-          {baseOption}
-          <i className="fa fa-check fa-lg" aria-hidden="true"></i>
-        </CheckedOption>
-        );
-      }else{
-        return baseOption;
-      }
+          {
+            option === this.props.currentCategory || option === this.props.currentVariant || option === this.props.currentSize 
+            ? <i className="fa fa-check fa-lg" aria-hidden="true"></i> : undefined
+          }
+        </OptionButton>
+      )
     });
   }
 
@@ -124,13 +104,13 @@ class FontControlBar extends Component {
       <div>
         <ControlButtonsWrapper>
           <ControlButton onClick={() => this.changeMenuState("category")}>
-            <i className="fa fa-list fa-lg" aria-hidden="true"></i> {type.currentCategory}
+            <i className="fa fa-list fa-lg" aria-hidden="true"></i> {this.formatOption(type.currentCategory)}
           </ControlButton>
           <ControlButton onClick={() => this.changeMenuState("variant")}>
-            <i className="fa fa-italic fa-lg" aria-hidden="true"></i> {type.currentVariant}
+            <i className="fa fa-italic fa-lg" aria-hidden="true"></i> {this.formatOption(type.currentVariant)}
           </ControlButton>
           <ControlButton onClick={() => this.changeMenuState("size")}>
-            <i className="fa fa-text-height fa-lg" aria-hidden="true"></i> {type.currentSize}%
+            <i className="fa fa-text-height fa-lg" aria-hidden="true"></i> {this.formatOption(type.currentSize)}
           </ControlButton>
         </ControlButtonsWrapper>
 
@@ -146,7 +126,7 @@ class FontControlBar extends Component {
 
 const mapState = ({ appState }, ownProps) => {
   const activeFont = appState.activeFonts[ownProps.type];
-  
+
   return {
     currentVariant : activeFont.variant,
     currentSize : activeFont.size,
