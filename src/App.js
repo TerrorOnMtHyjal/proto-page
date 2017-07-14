@@ -13,11 +13,10 @@ const menuStyles = {
     width: '36px',
     height: '30px',
     left: '36px',
-    top: '36px',
-    "z-index": 20000
+    top: '36px'
   },
   bmBurgerBars: {
-    background: '#ff00ae',
+    background: '#ff00ae'
   },
   bmCrossButton: {
     height: '24px',

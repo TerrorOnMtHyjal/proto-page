@@ -6,7 +6,7 @@ const initialState= {
   fontsLibrary : {},
   activeFonts : {
     header : {
-      family : 'Droid Serif',
+      family : 'Lora',
       variant : 'regular',
       availableVariants : ['regular','italic','700','700italic'],
       category: 'serif',
@@ -15,7 +15,7 @@ const initialState= {
     },
     subheader : {
       family : 'Droid Serif',
-      variant : '700',
+      variant : 'regular',
       availableVariants : ['regular','italic','700','700italic'],
       category : 'serif',
       size : 100,

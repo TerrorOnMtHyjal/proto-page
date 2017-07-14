@@ -4,15 +4,16 @@ import { connect } from 'react-redux';
 
 const strings = {
   header : [
-    `PICANHA CORNED BEEF PIG MEATLOAF SHOULDER SHANKLE EXCEPTEUR`,
+    `Eat meat over the cloud`,
     // `BRISKET T-BONE SHOULDER BOUDIN EU SHANKLE SUNT`,
     // `BACON IPSUM DOLOR AMET SWINE SUNT SHANK BALL TIP PORCHETTA`,
     // `CAPICOLA EA PASTRAMI, SAUSAGE CORNED BEEF`
   ],
   subheader : [
-    `Pork ex adipisicing ut, picanha corned beef pig meatloaf shoulder shankle excepteur.`,
+    //`Pork ex adipisicing ut, picanha corned beef pig meatloaf shoulder shankle excepteur.`,
     // `Laborum ullamco nisi, shank nulla meatloaf brisket t-bone shoulder boudin eu shankle sunt.`,
-    // `Bacon ipsum dolor amet swine sunt shank ball tip porchetta, et aliquip short ribs elit shoulder filet mignon.`,
+     `Startup bacon ipsum solutions and deliverable ham technologies.`,
+    //`Startup bacon ipsum ${<span>solutions</span>} and ${<span>deliverable</span>} ham solutions`,
     // `Capicola ea pastrami, sausage corned beef doner beef ribs short loin lorem kielbasa consectetur boudin.`
   ],
   paragraph : [
@@ -63,7 +64,13 @@ class Text extends Component {
       font-family: ${family};
       font-weight: ${weight};
       font-style: ${style};
-      font-size: ${this.props.tag === "h1" ? size * 2 : size}%;
+      font-size: ${this.props.scale ? size * this.props.scale : size}%;
+      margin: 0;
+      padding: 0;
+
+      & > span {
+        color: black;
+      }
     `;
 
     return (

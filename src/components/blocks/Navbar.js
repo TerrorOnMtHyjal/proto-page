@@ -8,8 +8,7 @@ class Navbar extends Component {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      width: 70%;
-      margin: 0 auto;
+      width: 100%;
     `;
 
     const Logo = styled.div`

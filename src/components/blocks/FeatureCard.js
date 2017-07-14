@@ -18,13 +18,8 @@ const features = [
 class FeatureCard extends Component {
   render() {
 
-    const StyledImage = styled.img`
-      border-radius : 50px;
-      width: 100px;
-      height: 100px;
-    `;
-
     const StyledParagraph = styled.p`
+      margin-top: 15px;
       font-family: ${this.props.paragraphFont};
     `;
      
@@ -35,9 +30,14 @@ class FeatureCard extends Component {
       text-align: center;
     `;
 
+    const Icon = styled.i`
+      font-size: 9em;
+      color: #008fb3;
+    `;
+
     return (
       <Card>
-        <StyledImage src={`http://lorempixel.com/100/100/technics/${Math.floor(Math.random() * 10) + 1}`} />
+        <Icon className={this.props.iconType}></Icon>
         <StyledParagraph>{features[Math.floor(Math.random()*features.length)]}</StyledParagraph>
       </Card>
     );

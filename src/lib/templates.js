@@ -3,16 +3,18 @@ import FeatureCard from '../components/blocks/FeatureCard';
 import Socials from '../components/blocks/Socials';
 import Text from '../components/blocks/Text';
 import Navbar from '../components/blocks/Navbar';
+import Button from '../components/blocks/Button';
 
 export const template1 = [
   {
     rules : `
       position: absolute;
       top: 0;
-      left: 0;
+      left: 15%;
+      right: 15%;
       z-index: 1000;
-      height: 100px;
-      width: 100vw;
+      height: 105px;
+      width: 70%;
       background-color: transparent;
       color: white;
     `,
@@ -21,18 +23,14 @@ export const template1 = [
   {
     rules : `
       width: 100vw;
-      position: relative;
-      left: 50%;
-      transform: translateX(-50%);
-      flex-flow : column;
-      text-align: center;
-      justify-content : center;
-      align-items : center;
+      display: flex;
+      align-items: center;
       height : 800px;
-      background-image: url(https://static.pexels.com/photos/325229/pexels-photo-325229.jpeg);
-      background-position: center;
-      background-size: cover;
+      background-image: url(https://static.pexels.com/photos/186461/pexels-photo-186461.jpeg);
+      background-attachment: fixed;
+      background-position: 100%;
       background-repeat: no-repeat;
+      background-size: cover;
       color : white;
 
       &:before {
@@ -42,35 +40,52 @@ export const template1 = [
         right: 0;
         bottom: 0;
         left: 0;
-        background-image: linear-gradient(to right, #1fa2ff, #12d8fa, #a6ffcb);
-        opacity: .2; 
+        background-image: linear-gradient(to left, #00d2ff, #928dab);
+        opacity: .4;
+        height: 800px; 
+      }
+
+      & > div {
+        z-index: 10;
+        display: flex;
+        margin: 0 15%;
+        align-items: left;
+        flex-flow: column;
+        width: 40%;
       }
     `,
-    elements : [<Text type="header" tag="h1" rules="width: 70%; z-index: 100;"/>]
+    elements : [<div><Text type="header" tag="h1" scale="2.5" rules="width: 80%; margin-bottom: 10px;"/> <Text type="subheader" tag="h3" scale="2"/> <Button/></div>]
   },
   {
     rules : `
-      justify-content: space-between;
+      width: 100%
+      margin: 0 auto;
+      padding: 75px 0 0 0;
+      color: white;
+      justify-content: center;
       align-items: center;
-      margin: 20px 0;
+      text-align: center;
+      background-color: #1b1d1f;
     `,
-    elements : [<Text type="subheader" tag="h3" />, <Socials />]
+    elements : [<Text type="subheader" tag="h3" scale="2"/>]
   },
   {
     rules : `
-      margin: 0;
-      padding: 0;
-    `,
-    elements : [
-      <Text type="paragraph" tag="p"/> 
-    ]
-  },
-  {
-    rules : `
-      justify-content: space-around;
       margin-top: 50px;
+      width: 100%;
+      background-color: #1b1d1f;
+      margin: 0 auto;
+      padding: 75px 0;
+
+      & > div {
+        display: flex;
+        width: 70%;
+        margin: 0 auto;
+        justify-content: space-around;
+        color: white;
+      }
     `,
-    elements : [<FeatureCard />, <FeatureCard />, <FeatureCard />]
+    elements : [<div><FeatureCard iconType="fa fa-pie-chart"/><FeatureCard iconType="fa fa-cloud-upload" /><FeatureCard iconType="fa fa-server"/></div>]
   },
   {
     rules : `

@@ -4,8 +4,7 @@ import styled from 'styled-components';
 const StyledMain = styled.main`
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
-  width: 70vw;
+  width: 100vw;
 `;
 
 class TemplateBuilder extends Component {
