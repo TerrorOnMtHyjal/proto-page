@@ -4,7 +4,7 @@ import { seedFonts, applyFonts } from './actions/actions';
 import ReactLoading from 'react-loading';
 import Controls from './components/Controls';
 import TemplateBuilder from './containers/TemplateBuilder';
-import { templates } from './lib/templates';
+import { template1 } from './lib/templates';
 import Menu from './components/Menu';
 
 const menuStyles = {
@@ -13,10 +13,11 @@ const menuStyles = {
     width: '36px',
     height: '30px',
     left: '36px',
-    top: '36px'
+    top: '36px',
+    "z-index": 20000
   },
   bmBurgerBars: {
-    background: '#373a47'
+    background: '#ff00ae',
   },
   bmCrossButton: {
     height: '24px',
@@ -56,7 +57,7 @@ class App extends Component {
             <Controls />
           </Menu>
           <div id="page-wrap">
-            <TemplateBuilder template={templates[0]}/>
+            <TemplateBuilder template={template1}/>
           </div>
         </div>
       );
