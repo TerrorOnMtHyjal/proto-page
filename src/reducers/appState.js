@@ -79,18 +79,13 @@ export default function appState(state=initialState, action){
       }
 
     case actions.REPLACE_ACTIVE_FONTS:
-      const newState = {
+      return {
         ...state,
         activeFonts : {
-          ...state.activeFonts
+          ...state.activeFonts,
+          ...action.newFonts
         }
       }
-
-      for(let element in action.newFonts){
-        newState.activeFonts[element] = action.newFonts[element];
-      }
-
-      return newState;
 
     default:
       return state;

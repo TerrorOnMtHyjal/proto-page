@@ -51,7 +51,7 @@ class App extends Component {
 //move menu and styles to Menu.js, export entire component
   render() {
       return (
-        <div className="App" id="outer-container">
+        <div id="outer-container">
           <Menu pageWrapId="page-wrap" outerContainerId="outer-container" styles={menuStyles}>
             <Controls />
           </Menu>

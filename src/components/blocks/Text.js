@@ -12,14 +12,14 @@ const strings = {
   subheader : [
     //`Pork ex adipisicing ut, picanha corned beef pig meatloaf shoulder shankle excepteur.`,
     // `Laborum ullamco nisi, shank nulla meatloaf brisket t-bone shoulder boudin eu shankle sunt.`,
-     `Startup bacon ipsum solutions and deliverable ham technologies.`,
-    //`Startup bacon ipsum ${<span>solutions</span>} and ${<span>deliverable</span>} ham solutions`,
+     //`Startup bacon ipsum solutions and deliverable ham technologies.`,
+    <span>Startup bacon ipsum <span>solutions</span> and <span>deliverable</span> ham technologies</span>,
     // `Capicola ea pastrami, sausage corned beef doner beef ribs short loin lorem kielbasa consectetur boudin.`
   ],
   paragraph : [
     `Spicy jalapeno bacon ipsum dolor amet corned beef meatball ullamco hamburger laborum ipsum et 
     pork belly culpa exercitation. Do voluptate pork belly nisi meatball lorem short loin hamburger 
-    aliqua short ribs. Pork ex adipisicing ut, picanha corned beef pig meatloaf shoulder shankle excepteur.`,
+    aliqua short ribs.`,
     // `Fatback hamburger brisket, occaecat minim leberkas corned beef ut velit shoulder ham hock tempor bacon. 
     // Beef venison fatback quis sint tri-tip est nisi. Ad anim kielbasa, sausage aliquip shoulder dolore aliqua 
     // magna sunt nisi ipsum. Laborum ullamco nisi, shank nulla meatloaf brisket t-bone shoulder boudin eu shankle 
@@ -56,7 +56,6 @@ class Text extends Component {
     }
 
     const StyledTag = styled(Tag)`
-      overflow: hidden;
       ${this.props.rules};
     `;
 
@@ -65,11 +64,21 @@ class Text extends Component {
       font-weight: ${weight};
       font-style: ${style};
       font-size: ${this.props.scale ? size * this.props.scale : size}%;
+      line-height: ${(this.props.scale ? 16 * this.props.scale : 16) * 2}px;
       margin: 0;
       padding: 0;
 
       & > span {
-        color: black;
+        font-family: inherit;
+        font-weight: inherit;
+        font-style: inherit;
+      }
+
+      & > span > span {
+        font-family: inherit;
+        font-weight: inherit;
+        font-style: inherit;
+        color: #fce326;
       }
     `;
 

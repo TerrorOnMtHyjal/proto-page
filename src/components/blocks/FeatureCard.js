@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
+import Text from './Text';
 
 const features = [
   "TONGUE NULLA HAM",
@@ -27,18 +28,20 @@ class FeatureCard extends Component {
       display: flex;
       flex-flow: column;
       align-items: center;
-      text-align: center;
+      width: 33%;
+      padding: 30px;
     `;
 
     const Icon = styled.i`
       font-size: 9em;
-      color: #008fb3;
+      color: #268dfc;
+      margin-bottom: 30px;
     `;
 
     return (
       <Card>
         <Icon className={this.props.iconType}></Icon>
-        <StyledParagraph>{features[Math.floor(Math.random()*features.length)]}</StyledParagraph>
+        <Text type="paragraph" tag="p"/>
       </Card>
     );
   }

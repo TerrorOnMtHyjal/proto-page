@@ -40,7 +40,7 @@ const StyledButton = styled.a`
 	  width: 60px;
 	  z-index: 2;
     content: "\f178";
-    font-family: "FontAwesome"
+    font-family: "FontAwesome";
   }
 
   &:after{

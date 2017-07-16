@@ -53,29 +53,20 @@ export const template1 = [
         flex-flow: column;
         width: 40%;
       }
+
+      @media only screen and (max-width: 1650px){
+        & > div {
+          width: 50%;
+        }
+      }
     `,
     elements : [<div><Text type="header" tag="h1" scale="2.5" rules="width: 80%; margin-bottom: 10px;"/> <Text type="subheader" tag="h3" scale="2"/> <Button/></div>]
   },
   {
     rules : `
-      width: 100%
-      margin: 0 auto;
-      padding: 75px 0 0 0;
-      color: white;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      background-color: #1b1d1f;
-    `,
-    elements : [<Text type="subheader" tag="h3" scale="2"/>]
-  },
-  {
-    rules : `
-      margin-top: 50px;
       width: 100%;
       background-color: #1b1d1f;
       margin: 0 auto;
-      padding: 75px 0;
 
       & > div {
         display: flex;
@@ -83,15 +74,9 @@ export const template1 = [
         margin: 0 auto;
         justify-content: space-around;
         color: white;
+        margin-top: 75px;
       }
     `,
     elements : [<div><FeatureCard iconType="fa fa-pie-chart"/><FeatureCard iconType="fa fa-cloud-upload" /><FeatureCard iconType="fa fa-server"/></div>]
-  },
-  {
-    rules : `
-      justify-content : space-between;
-      margin-top: 50px;
-    `,
-    elements : [<Text type="paragraph" tag="p" rules="width : 40%; color: purple;"/>, <Text type="paragraph" tag="p" rules="width : 40%;"/>]
   }
 ];
