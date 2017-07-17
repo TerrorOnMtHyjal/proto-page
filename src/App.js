@@ -4,7 +4,7 @@ import { seedFonts, applyFonts } from './actions/actions';
 import ReactLoading from 'react-loading';
 import Controls from './components/Controls';
 import TemplateBuilder from './containers/TemplateBuilder';
-import { template1 } from './lib/templates';
+import { template1, template2 } from './lib/templates';
 import Menu from './components/Menu';
 
 const menuStyles = {
@@ -56,7 +56,7 @@ class App extends Component {
             <Controls />
           </Menu>
           <div id="page-wrap">
-            <TemplateBuilder template={template1}/>
+            <TemplateBuilder template={template2}/>
           </div>
         </div>
       );

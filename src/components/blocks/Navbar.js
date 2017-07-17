@@ -38,14 +38,14 @@ class Navbar extends Component {
     return (
       <NavbarWrapper>
         <Logo>Proto<span>Page</span></Logo>
-        <NavbarMenu>
+        {/*<NavbarMenu>
           <li>Beef Patties</li>
           <li>Special Sauce</li>
           <li>Lettuce</li>
           <li>Cheese</li>
           <li>Pickles</li>
           <li>Onions</li>
-        </NavbarMenu>
+        </NavbarMenu>*/}
       </NavbarWrapper>
     );
   }

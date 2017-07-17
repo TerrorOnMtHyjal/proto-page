@@ -64,7 +64,7 @@ class Text extends Component {
       font-weight: ${weight};
       font-style: ${style};
       font-size: ${this.props.scale ? size * this.props.scale : size}%;
-      line-height: ${(this.props.scale ? 16 * this.props.scale : 16) * 2}px;
+      // line-height: ${(this.props.scale ? 16 * this.props.scale : 16) * 2}px;
       margin: 0;
       padding: 0;
 

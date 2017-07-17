@@ -12,16 +12,41 @@ class TemplateBuilder extends Component {
   generateTemplate(template){
     const generatedTemplate = [];
 
-    for(let row in template){
-      const Row = styled.div` 
+    for(let current in template){
+      const currentRow = template[current];
+
+      const Row = styled.div`
         display: flex;
-        ${template[row].rules}
+        ${currentRow.rowStyle}
       `;
 
-      generatedTemplate.push(<Row>{template[row].elements}</Row>);
+      const InnerWrapper = styled.div`
+        ${currentRow.row.wrapper ? currentRow.row.wrapper.baseStyle : undefined};
+        ${currentRow.row.wrapper ? this.generateInnerMedias(currentRow.row.wrapper.medias) : undefined};
+      `;
+
+      generatedTemplate.push(
+        <Row>
+          {currentRow.row.wrapper ? <InnerWrapper> {currentRow.row.elements} </InnerWrapper> : currentRow.row.elements}
+        </Row>
+      );
     }
 
     return generatedTemplate;
+  }
+
+  generateInnerMedias(medias){
+    let queries = ``;
+    console.log(medias)
+    for(let media in medias){
+      queries += `
+        @media only screen and (min-width: ${media}px){
+          ${medias[media]}
+        }
+      `;
+    }
+    console.log(queries)
+    return queries;
   }
 
   render() { 

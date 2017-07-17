@@ -6,7 +6,7 @@ import styled from 'styled-components';
 const StyledButton = styled.a`
 	background: none;
 	cursor: pointer;
-	padding: 25px 120px 25px 60px;
+	padding: 0.75em 2.5em 0.75em 0.75em;
 	overflow: hidden;
 	display: inline-block;
 	margin: 50px 0;
@@ -18,7 +18,8 @@ const StyledButton = styled.a`
 	transition: all 0.3s;
   background: #fcad26;
 	color: #fff;
-  width: 100px;
+  width: 6em;
+  font-size: 0.75em;
 
   &:hover {
 	  background: #f29e0d;
@@ -33,10 +34,10 @@ const StyledButton = styled.a`
     position: absolute;
 	  height: 100%;
 	  left: auto;
-    right: -5px;
+    right: -0.5em;
 	  top: 0;
 	  line-height: 2.2;
-	  font-size: 200%;
+	  font-size: 1.5em;
 	  width: 60px;
 	  z-index: 2;
     content: "\f178";
@@ -44,7 +45,7 @@ const StyledButton = styled.a`
   }
 
   &:after{
-    width: 35%;
+    width: 38%;
     height: 200%;
     background: rgba(255,255,255,0.1);
     z-index: 1;
@@ -59,7 +60,7 @@ const StyledButton = styled.a`
   }
 
   &:hover:after{
-    width: 42%;
+    width: 40%;
   }
 `;
 

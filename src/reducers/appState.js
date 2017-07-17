@@ -6,18 +6,18 @@ const initialState= {
   fontsLibrary : {},
   activeFonts : {
     header : {
-      family : 'Lora',
-      variant : 'regular',
-      availableVariants : ['regular','italic','700','700italic'],
-      category: 'serif',
+      family : 'Montserrat',
+      variant : '600',
+      availableVariants : ['100','100italic','200','200italic','300','300italic','regular','italic','500','500italic','600','600italic','700','700italic','800','800italic','900','900italic'],
+      category: 'sans-serif',
       size : 100,
       locked : false
     },
     subheader : {
-      family : 'Droid Serif',
+      family : 'Montserrat',
       variant : 'regular',
-      availableVariants : ['regular','italic','700','700italic'],
-      category : 'serif',
+      availableVariants : ['100','100italic','200','200italic','300','300italic','regular','italic','500','500italic','600','600italic','700','700italic','800','800italic','900','900italic'],
+      category : 'sans-serif',
       size : 100,
       locked : false
     },
@@ -44,7 +44,7 @@ const initialState= {
       paragraph : 'sans-serif'
     },
   },
-  sizes : [50, 100, 200, 300, 400, 500],
+  sizes : [50, 100, 150, 200, 300],
   categories : ['sans-serif', 'serif', 'handwriting', 'monospace', 'display']
 }
 
