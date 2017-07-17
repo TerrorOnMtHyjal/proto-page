@@ -7,6 +7,7 @@ const StyledMain = styled.main`
   width: 100vw;
 `;
 
+//put generation in a lifecycle function
 class TemplateBuilder extends Component {
 
   generateTemplate(template){
@@ -37,7 +38,7 @@ class TemplateBuilder extends Component {
 
   generateInnerMedias(medias){
     let queries = ``;
-    console.log(medias)
+    console.log(medias);
     for(let media in medias){
       queries += `
         @media only screen and (min-width: ${media}px){
@@ -45,7 +46,7 @@ class TemplateBuilder extends Component {
         }
       `;
     }
-    console.log(queries)
+    console.log(queries);
     return queries;
   }
 

@@ -86,11 +86,9 @@ export const template2 = [
     rowStyle : `
       position: absolute;
       top: 0;
-      left: 15%;
-      right: 15%;
+      width: 100%;
       z-index: 1000;
       height: 105px;
-      width: 70%;
       background-color: transparent;
       color: white;
     `,
@@ -102,6 +100,7 @@ export const template2 = [
   {
     rowStyle : `
       width: 100vw;
+      position: relative;
       display: flex;
       align-items: center;
       background-image: url(https://static.pexels.com/photos/186461/pexels-photo-186461.jpeg);
@@ -159,9 +158,9 @@ export const template2 = [
           `,
           "1650" : `
             font-size: 32px;
-            margin: 150px 15% 0 15%;
-            width: 40%;
-          `,
+            margin: 150px 15% 75px 15%;
+            width: 35%;     
+          `
         }
       },
       elements : [
@@ -170,5 +169,6 @@ export const template2 = [
         <Button/>
       ],
     }
-  }
+  },
+  
 ];

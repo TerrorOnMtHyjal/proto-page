@@ -6,17 +6,24 @@ import Controls from './components/Controls';
 import TemplateBuilder from './containers/TemplateBuilder';
 import { template1, template2 } from './lib/templates';
 import Menu from './components/Menu';
+import styled from 'styled-components';
+
+const CogWrapper = styled.div`
+
+`;
 
 const menuStyles = {
   bmBurgerButton: {
     position: 'fixed',
-    width: '36px',
-    height: '30px',
-    left: '36px',
-    top: '36px'
+    left: '0',
+    bottom: '45px',
+    color: '#ff00ae',
+    padding:"10px 10px 10px 50px",
+    "border-radius": "0 30px 30px 0",
+    "background-color": "#373a47"
   },
   bmBurgerBars: {
-    background: '#ff00ae'
+
   },
   bmCrossButton: {
     height: '24px',
@@ -52,7 +59,7 @@ class App extends Component {
   render() {
       return (
         <div id="outer-container">
-          <Menu pageWrapId="page-wrap" outerContainerId="outer-container" styles={menuStyles}>
+          <Menu customBurgerIcon={ <CogWrapper><i className="fa fa-cog fa-spin fa-3x" aria-hidden="true"></i></CogWrapper> } pageWrapId="page-wrap" outerContainerId="outer-container" styles={menuStyles}>
             <Controls />
           </Menu>
           <div id="page-wrap">
