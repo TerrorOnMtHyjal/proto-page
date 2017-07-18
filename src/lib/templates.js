@@ -168,9 +168,9 @@ export const template = [
         }
       },
       elements :[
-                  <FeatureCard key="chartCard" iconType="fa fa-pie-chart" string="0" />,
-                  <FeatureCard key="cloudCard" iconType="fa fa-cloud-upload" string="1"/>,
-                  <FeatureCard key="serverCard" iconType="fa fa-server" string="2"/>
+                  <FeatureCard key="chartCard" iconType="fa fa-pie-chart" para="0" head="4" />,
+                  <FeatureCard key="cloudCard" iconType="fa fa-cloud-upload" para="1" head="5"/>,
+                  <FeatureCard key="serverCard" iconType="fa fa-server" para="2" head="6"/>
                 ]
     }
   }

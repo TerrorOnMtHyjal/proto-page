@@ -35,7 +35,7 @@ class FeatureCard extends Component {
 
       @media only screen and (min-width: 768px){
         width: 70%;
-        margin: 0 auto;
+        margin: 40px auto 0 auto;
       }
 
       @media only screen and (min-width: 1400px){
@@ -48,12 +48,24 @@ class FeatureCard extends Component {
 
     const TextWrapper = styled.div`
       display: flex;
+      flex-flow: column;
       justify-content: space-between;
-      margin-top: 20px;
+      align-items: center;
+      margin-top: 0.8em;
+
+      & > h1 {
+        font-size: 1.5em;
+        padding-bottom: 0.8em;
+      }
 
       @media only screen and (min-width: 650px){
+        align-items: flex-start;
         margin-top: 0;
         width: 70%;
+
+        & > h1 {
+          padding-bottom: 0.2em;
+        }
       }
 
       @media only screen and (min-width: 768px){
@@ -78,7 +90,10 @@ class FeatureCard extends Component {
     return (
       <Card>
         <Icon className={this.props.iconType}></Icon>
-        <TextWrapper><Text type="paragraph" tag="p" string={this.props.string}/></TextWrapper>
+        <TextWrapper>
+          <Text type="header" tag="h1" string={this.props.head}></Text>
+          <Text type="paragraph" tag="p" string={this.props.para}/>
+        </TextWrapper>
       </Card>
     );
   }
