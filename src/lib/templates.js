@@ -107,7 +107,7 @@ export const template = [
           align-items: center;
           justify-content: center;
           color: white;
-          margin: 75px 8% 20px 8%;
+          margin: 0 8% 20px 8%;
         `,
         medias : {
           "550" : `

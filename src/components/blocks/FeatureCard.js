@@ -30,12 +30,17 @@ class FeatureCard extends Component {
       @media only screen and (min-width: 768px){
         width: 65%;
       }
+
+      @media only screen and (min-width: 970px){
+        width: 70%;
+      }
     `;
      
     const Card = styled.div`
       display: flex;
       flex-flow: column;
       align-items: center;
+      margin-top: 70px;
       
       @media only screen and (min-width: 650px){
         flex-flow: row;
@@ -58,7 +63,7 @@ class FeatureCard extends Component {
     const Icon = styled.i`
       font-size: 9em;
       color: #268dfc;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
     `;
 
     return (
