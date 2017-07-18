@@ -87,16 +87,65 @@ export const template = [
         }
       },
       elements : [
-        <Text key="heroHeader" type="header" tag="h1" />,
-        <Text key="heroSubheader" type="subheader" tag="h3" />,
+        <Text key="heroHeader" type="header" tag="h1" string="0" />,
+        <Text key="heroSubheader" type="subheader" tag="h3" string="0" />,
         <Button key="heroButton" />
       ],
     }
   },
   {
     rowStyle : `
+      display: flex;
+      justify-content: center;
       width: 100%;
-      background-color: #1b1d1f;
+      text-align: center;
+      background-color: #white;
+      padding: 50px 0;
+      color: #1b1d1f;
+    `,
+    row : {
+      wrapper : {
+        baseStyle : `
+          display: flex;
+          flex-flow: column;
+          width: 80%;
+          
+          & > h1 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+          }
+
+          & > h3 {
+            font-size: 0.9em;
+            margin-bottom: 35px;
+          }
+        `,
+        medias : {
+          "650" : `
+            font-size: 18px;
+          `,
+          "768" : `
+            font-size: 20px;
+          `,
+          "1024" : `
+            font-size: 22px;
+          `,
+          "1650" : `
+            font-size: 24px;
+          `
+        }
+      },
+      elements : [
+                  <Text key="callHeader" type="header" string="1" tag="h1"/>, 
+                  <Text key="callSubheader" type="subheader" string="1" tag="h3"/>
+                ]
+    }
+  },
+  {
+    rowStyle : `
+      width: 100%;
+      background-color: white;
       margin: 0 auto;
     `,
     row : {
@@ -104,26 +153,24 @@ export const template = [
         baseStyle : `
           display: flex;
           flex-flow: column;
-          align-items: center;
-          justify-content: center;
-          color: white;
+          color: #1b1d1f;
           margin: 0 8% 20px 8%;
         `,
         medias : {
-          "550" : `
-            margin: 75px 5% 20px 2%;
+          "650" : `
+            margin: 0 8% 20px 2%;
           `,
           "1400" : `
             flex-flow: row;
             justify-content: space-around;
-            margin: 75px 15% 20px 15%;
+            margin: 0 15% 20px 15%;
           `,
         }
       },
       elements :[
-                  <FeatureCard key="chartCard" iconType="fa fa-pie-chart" />,
-                  <FeatureCard key="cloudCard" iconType="fa fa-cloud-upload" />,
-                  <FeatureCard key="serverCard" iconType="fa fa-server"/>
+                  <FeatureCard key="chartCard" iconType="fa fa-pie-chart" string="0" />,
+                  <FeatureCard key="cloudCard" iconType="fa fa-cloud-upload" string="1"/>,
+                  <FeatureCard key="serverCard" iconType="fa fa-server" string="2"/>
                 ]
     }
   }

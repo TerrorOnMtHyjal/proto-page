@@ -19,11 +19,40 @@ const features = [
 class FeatureCard extends Component {
   render() {
 
+    const Card = styled.div`
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      justify-content: center;
+      margin-top: 40px;
+      font-size: 14px;
+      
+      @media only screen and (min-width: 650px){
+        flex-flow: row;
+        justify-content: space-between;
+        font-size: 15px;
+      }
+
+      @media only screen and (min-width: 768px){
+        width: 70%;
+        margin: 0 auto;
+      }
+
+      @media only screen and (min-width: 1400px){
+        flex-flow: column;
+        justify-content: flex-start;
+        width: 33%;
+        font-size: 16px;
+      }
+    `;
+
     const TextWrapper = styled.div`
       display: flex;
       justify-content: space-between;
+      margin-top: 20px;
 
-      @media only screen and (min-width: 550px){
+      @media only screen and (min-width: 650px){
+        margin-top: 0;
         width: 70%;
       }
 
@@ -34,42 +63,22 @@ class FeatureCard extends Component {
       @media only screen and (min-width: 970px){
         width: 70%;
       }
-    `;
-     
-    const Card = styled.div`
-      display: flex;
-      flex-flow: column;
-      align-items: center;
-      margin-top: 70px;
-      
-      @media only screen and (min-width: 650px){
-        flex-flow: row;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-      }
-
-      @media only screen and (min-width: 768px){
-        width: 70%;
-      }
 
       @media only screen and (min-width: 1400px){
-        flex-flow: column;
-        width: 33%;
+        margin-top: 20px;
+        width: 70%;
       }
     `;
-
-
+     
     const Icon = styled.i`
       font-size: 9em;
       color: #268dfc;
-      margin-bottom: 20px;
     `;
 
     return (
       <Card>
         <Icon className={this.props.iconType}></Icon>
-        <TextWrapper><Text type="paragraph" tag="p"/></TextWrapper>
+        <TextWrapper><Text type="paragraph" tag="p" string={this.props.string}/></TextWrapper>
       </Card>
     );
   }

@@ -22,9 +22,9 @@ const initialState= {
       locked : false
     },
     paragraph : {
-      family : 'Droid Sans',
+      family : 'Roboto Slab',
       variant : 'regular',
-      availableVariants : ['regular','700'],
+      availableVariants : ['100','300','regular','700'],
       category : 'sans-serif',
       size : 100,
       locked: false

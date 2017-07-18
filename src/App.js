@@ -19,8 +19,8 @@ const menuStyles = {
     bottom: '45px',
     color: '#ff00ae',
     padding:"10px 10px 10px 50px",
-    "border-radius": "0 30px 30px 0",
-    "background-color": "#373a47"
+    borderRadius: "0 30px 30px 0",
+    backgroundColor: "#373a47"
   },
   bmBurgerBars: {
 
