@@ -27,18 +27,17 @@ class TemplateBuilder extends Component {
       `;
 
       generatedTemplate.push(
-        <Row>
-          {currentRow.row.wrapper ? <InnerWrapper> {currentRow.row.elements} </InnerWrapper> : currentRow.row.elements}
+        <Row key={`Row${current}`}>
+          {currentRow.row.wrapper ? <InnerWrapper key={`${current}Inner`}> {currentRow.row.elements} </InnerWrapper> : currentRow.row.elements}
         </Row>
       );
     }
-
     return generatedTemplate;
   }
 
   generateInnerMedias(medias){
     let queries = ``;
-    console.log(medias);
+
     for(let media in medias){
       queries += `
         @media only screen and (min-width: ${media}px){
@@ -46,7 +45,7 @@ class TemplateBuilder extends Component {
         }
       `;
     }
-    console.log(queries);
+
     return queries;
   }
 

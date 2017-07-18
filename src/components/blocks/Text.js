@@ -83,7 +83,7 @@ class Text extends Component {
     `;
 
     return (
-      <StyledTag><Scaler>{content}</Scaler></StyledTag>
+      <StyledTag><Scaler className="text">{content}</Scaler></StyledTag>
     )
   }
 }

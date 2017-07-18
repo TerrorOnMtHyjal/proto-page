@@ -19,18 +19,41 @@ const features = [
 class FeatureCard extends Component {
   render() {
 
-    const StyledParagraph = styled.p`
-      margin-top: 15px;
-      font-family: ${this.props.paragraphFont};
+    const TextWrapper = styled.div`
+      display: flex;
+      justify-content: space-between;
+
+      @media only screen and (min-width: 550px){
+        width: 70%;
+      }
+
+      @media only screen and (min-width: 768px){
+        width: 65%;
+      }
     `;
      
     const Card = styled.div`
       display: flex;
       flex-flow: column;
       align-items: center;
-      width: 33%;
-      padding: 30px;
+      
+      @media only screen and (min-width: 650px){
+        flex-flow: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+      }
+
+      @media only screen and (min-width: 768px){
+        width: 70%;
+      }
+
+      @media only screen and (min-width: 1400px){
+        flex-flow: column;
+        width: 33%;
+      }
     `;
+
 
     const Icon = styled.i`
       font-size: 9em;
@@ -41,7 +64,7 @@ class FeatureCard extends Component {
     return (
       <Card>
         <Icon className={this.props.iconType}></Icon>
-        <Text type="paragraph" tag="p"/>
+        <TextWrapper><Text type="paragraph" tag="p"/></TextWrapper>
       </Card>
     );
   }
