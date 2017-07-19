@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import { updateActiveFont } from '../actions/actions';
-
-const OPTION_HEIGHT = 25;
-const OPTION_VERTICAL_PADDING = 5;
-const OPTION_HORIZONTAL_PADDING = 20;
-const OPTION_TOTAL_HEIGHT = (OPTION_VERTICAL_PADDING * 2) + OPTION_HEIGHT;
+import OptionsSlider from './OptionsSlider';
+import { formatOption } from '../lib/tools';
 
 const ControlButtonsWrapper = styled.div`
   display: flex;
@@ -29,83 +25,27 @@ const ControlButton = styled.div`
   }
 `;
 
-const OptionButton = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: ${OPTION_HEIGHT}px;
-  padding: ${OPTION_VERTICAL_PADDING}px ${OPTION_HORIZONTAL_PADDING}px;
-  outline: none;
-
-  &:hover {
-    background-color: orange;
-  }
-`;
-
-const OptionsWrapper = styled.div`
-  background-color: #0e83cd;
-`;
-
-const Options = styled.div`
-  height: ${props => props.isOpen ? `${props.items * OPTION_TOTAL_HEIGHT}px` : "0px"};
-  transition: height 0.5s ease-in-out;
-  overflow-y: hidden;
-`;
-
 class FontControlBar extends Component {
 
   constructor(props){
     super(props);
 
-//use loadedMenu to trigger isOpen state
     this.state = {
-      isOpen : false,
-      loadedMenu : "default"
+      loadedMenu : undefined
     }
   }
 
   changeMenuState(clicked){
-    if(clicked === this.state.loadedMenu && this.state.isOpen){
-      this.setState({...this.state.loadedMenu, isOpen : false}, () => {
+    if(clicked === this.state.loadedMenu){
+      this.setState({loadedMenu : undefined}, () => {
 
       })
     } else {
-      this.setState({isOpen: true, loadedMenu : clicked}, () => {
+      this.setState({loadedMenu : clicked}, () => {
 
       });
     }
   }
-
-  formatOption(option){
-    let formattedOption = option;
-
-    if(typeof option === 'string'){
-      let tempFormat = option.replace(/(\d+)/g, (_, num) => {
-        return ' ' + num + ' ';
-      }).trim();
-      formattedOption = tempFormat.replace(/(\b[a-z](?!\s))/g, x => x.toUpperCase());
-    }
-
-    if(typeof option === 'number'){
-      formattedOption += "%";
-    }
-    return formattedOption;
-  }
-
-  generateOptions(menu){
-    return this.props[menu].map(option => {
-      return (
-        <OptionButton key={`${option}${this.props.type}`} onClick={() => this.props.dispatch(updateActiveFont(option, this.props.type, menu))}>
-          {this.formatOption(option)}
-          {
-            option === this.props.currentCategory || option === this.props.currentVariant || option === this.props.currentSize 
-            ? <i className="fa fa-check fa-lg" aria-hidden="true"></i> : undefined
-          }
-        </OptionButton>
-      )
-    });
-  }
-
 
   render() {
     const type = this.props;
@@ -115,19 +55,14 @@ class FontControlBar extends Component {
         <ControlButtonsWrapper>
           <ControlButton onClick={() => this.changeMenuState("variant")}>
             <i className="fa fa-italic fa-lg" aria-hidden="true"></i> 
-            <p>{this.formatOption(type.currentVariant)}</p>
+            <p>{formatOption(type.currentVariant)}</p>
           </ControlButton>
           <ControlButton onClick={() => this.changeMenuState("size")}>
             <i className="fa fa-text-height fa-lg" aria-hidden="true"></i> 
-            <p>{this.formatOption(type.currentSize)}</p>
+            <p>{formatOption(type.currentSize)}</p>
           </ControlButton>
         </ControlButtonsWrapper>
-
-        <OptionsWrapper>
-          <Options isOpen={this.state.isOpen} items={this.props[this.state.loadedMenu].length}>
-            {this.generateOptions(this.state.loadedMenu)}
-          </Options>
-        </OptionsWrapper>
+        <OptionsSlider type={this.props.type} loadedMenu={this.state.loadedMenu} items={this.props[this.state.loadedMenu]} />
       </div>
     );
   }
@@ -142,8 +77,7 @@ const mapState = ({ appState }, ownProps) => {
     currentCategory : activeFont.category,
     variant : activeFont.availableVariants,
     size : appState.sizes,
-    category : appState.categories,
-    default : []
+    category : appState.categories
   }
 };
 

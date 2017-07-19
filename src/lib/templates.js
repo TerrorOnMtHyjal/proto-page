@@ -110,11 +110,11 @@ export const template = [
         top: 0;
         content: '';
         display: block;
-        height: 50%;
+        height: 75%;
         left: 0;
         position: absolute;
         right: 0;
-        transform: skewY(-2.5deg);
+        transform: skewY(-4deg);
         transform-origin: 1%;
         z-index: -1;
       }
