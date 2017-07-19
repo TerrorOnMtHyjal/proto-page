@@ -12,29 +12,12 @@ const ControlWrapper = styled.div`
   width: 100%;
 `;
 
-const ControlHeaderOld = styled.div`
-  display: flex;
-  flex-flow: column;
-  justify-content: space-between;
-  padding: 0 20px;
-  margin-bottom: 10px;
-
-  & > p {
-    font-style: italic;
-  }
-`;
-
 class ElementControls extends Component {
   render() {
     return (
       <ControlWrapper>
         <ControlHeader type={this.props.type} locked={this.props.locked} family={this.props.activeFonts[this.props.type].family} />
         <FontControlBar type={this.props.type} />
-        {/*<ControlHeader>
-          <ElementLock locked={this.props.locked} type={this.props.type}/>
-          <p>{this.props.activeFonts[this.props.type].family}</p>
-        </ControlHeader>
-        <FontControlBar type={this.props.type}/>*/}
       </ControlWrapper>
     );
   }

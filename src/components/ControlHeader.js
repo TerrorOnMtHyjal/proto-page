@@ -4,29 +4,54 @@ import styled from 'styled-components';
 
 const ControlWrapper = styled.div`
   display: flex;
-  width: 100%;
-  padding: 0 20px;
+  padding: 0 20px 10px 20px;
 `;
 
 const CategoryButton = styled.button`
-  margin-right: 10px;
-  min-width: 50px;
+  margin-right: 15px;
+  min-width: 40px;
+  min-height: 40px;
+  background-color: #4CAF50; 
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 3px #2f6a31;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #3e8e41;
+  }
+
+  &:active {
+    background-color: #3e8e41;
+    box-shadow: 0 2px #2f6a31;
+    transform: translateY(2px);
+  }
+
+  &:focus {
+    outline: 0;
+  }
 `;
 
 const FontControls = styled.div`
   display: flex;
   flex-flow: column;
-  width: 100%;
+  justify-content: space-between;
   text-overflow: ellipsis;
 `;
 
 const CurrentFont = styled.p`
   width: 200px;
+  font-size: 16px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   font-style: italic;
-  opacity: 0.7;
+  opacity: 0.8;
 `;
 
 class ControlHeader extends Component {
@@ -41,7 +66,7 @@ class ControlHeader extends Component {
 
 
         <FontControls>
-          <ElementLock locked={this.props.locked} type={this.props.type}/>
+          <ElementLock locked={ this.props.locked } type={ this.props.type }/>
           <CurrentFont> { this.props.family } </CurrentFont>
         </FontControls>
 
