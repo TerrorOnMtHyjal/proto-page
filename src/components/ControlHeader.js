@@ -4,6 +4,12 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 import OptionsSlider from './OptionsSlider';
 
+const activeStyles = `
+  background-color: #367c39;
+  box-shadow: 0 2px #2f6a31;
+  transform: translateY(2px);
+`;
+
 const HeaderWrapper = styled.div`
   display: flex;
   flex-flow: column;
@@ -11,10 +17,11 @@ const HeaderWrapper = styled.div`
 
 const Controls = styled.div`
   display: flex;
-  padding: 0 20px 10px 20px;
+  padding: 0 20px;
 `;
 
 const CategoryButton = styled.button`
+
   margin-right: 15px;
   min-width: 40px;
   min-height: 40px;
@@ -34,14 +41,15 @@ const CategoryButton = styled.button`
   }
 
   &:active {
-    background-color: #367c39;
-    box-shadow: 0 2px #2f6a31;
-    transform: translateY(2px);
+    ${activeStyles}
   }
+
+  ${props => props.isOpen && activeStyles}
 
   &:focus {
     outline: 0;
   }
+
 `;
 
 const FontControls = styled.div`
@@ -98,7 +106,6 @@ class ControlHeader extends Component {
     this.state = {
       isOpen : false
     }
-
   }
 
   changeMenuState(){
@@ -111,7 +118,7 @@ class ControlHeader extends Component {
       <HeaderWrapper>
 
         <Controls>
-          <CategoryButton onClick={() => this.changeMenuState()}>
+          <CategoryButton isOpen={this.state.isOpen} onClick={() => this.changeMenuState()}>
             <CategoryLetter family={this.props.currentCategory}>S</CategoryLetter> 
           </CategoryButton>
 
@@ -121,7 +128,13 @@ class ControlHeader extends Component {
           </FontControls>
         </Controls>
 
-        <OptionsSlider current={[this.props.currentCategory]} type={this.props.type} isOpen={this.state.isOpen} loadedMenu={"category"} items={this.props.categories}/>
+        <OptionsSlider 
+          current={[this.props.currentCategory]} 
+          type={this.props.type} 
+          isOpen={this.state.isOpen} 
+          loadedMenu={"category"} 
+          items={this.props.categories}
+        />
 
       </HeaderWrapper>
     );

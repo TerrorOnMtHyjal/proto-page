@@ -20,15 +20,17 @@ const menuStyles = {
     color: '#ff00ae',
     padding:"10px 10px 10px 50px",
     borderRadius: "0 30px 30px 0",
-    backgroundColor: "#373a47",
-    zIndex:"2"
+    backgroundColor: "#273259",
+    zIndex:"2",
+    cursor: "pointer"
   },
   bmBurgerBars: {
 
   },
   bmCrossButton: {
     height: '24px',
-    width: '24px'
+    width: '24px',
+    zIndex: '100'
   },
   bmCross: {
     background: '#bdc3c7'
@@ -37,13 +39,13 @@ const menuStyles = {
     zIndex:"3"
   },
   bmMenu: {
-    background: '#373a47',
-    padding: '2.5em 0 0',
+    background: 'linear-gradient(0deg, #36467c 90%, #273259 91%)',
+    padding: '1em 0 0',
     fontSize: '1.15em',
     width: '100%'
   },
   bmMorphShape: {
-    fill: '#373a47'
+    fill: '#273259'
   },
   bmItemList: {
     color: '#b8b7ad'

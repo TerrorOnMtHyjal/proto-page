@@ -6,12 +6,13 @@ import { formatOption } from '../lib/tools';
 
 const ControlButtonsWrapper = styled.div`
   display: flex;
-  margin-bottom: 10px;
-  margin: 10px 20px;
+  margin: 20px 20px 0 20px;
   width: 260px;
 `;
 
 const ControlButton = styled.div`
+  cursor: pointer;
+  user-select: none;
   display: flex;
   width: 130px;
 
@@ -65,7 +66,14 @@ class FontControlBar extends Component {
           </ControlButton>
         </ControlButtonsWrapper>
 
-        <OptionsSlider type={this.props.type} current={[this.props.currentVariant, this.props.currentSize]} isOpen={this.state.isOpen} loadedMenu={this.state.loadedMenu} items={this.props[this.state.loadedMenu]} />
+        <OptionsSlider 
+          type={this.props.type} 
+          current={[this.props.currentVariant, this.props.currentSize]} 
+          isOpen={this.state.isOpen} 
+          loadedMenu={this.state.loadedMenu} 
+          items={this.props[this.state.loadedMenu]} 
+        />
+
       </div>
     );
   }
