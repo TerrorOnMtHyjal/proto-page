@@ -23,7 +23,7 @@ const CategoryButton = styled.button`
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 24px;
+  font-size: 30px;
   border: none;
   border-radius: 5px;
   box-shadow: 0 3px #2f6a31;
@@ -61,6 +61,35 @@ const CurrentFont = styled.p`
   opacity: 0.8;
 `;
 
+const CategoryLetter = styled.p`
+  ${props => {
+    switch(props.family){
+      
+      case "serif":
+        return `font-family: Lora;
+                font-weight: 700;`
+
+      case "sans-serif":
+        return `font-family: Roboto;
+                font-weight: 700;`
+
+      case "display":
+        return `font-family: Rye;`
+        
+      case "handwriting":
+        return `font-family: "Permanent Marker";
+                font-size: 26px;`
+
+      case "monospace":
+        return `font-family: VT323;
+                font-size: 40px;`
+
+      default:
+        return '';
+    }
+  }}
+`;
+
 class ControlHeader extends Component {
 
   constructor(props){
@@ -77,11 +106,13 @@ class ControlHeader extends Component {
   }
 
   render() {
+    
     return (
       <HeaderWrapper>
+
         <Controls>
           <CategoryButton onClick={() => this.changeMenuState()}>
-          <p>E</p> 
+            <CategoryLetter family={this.props.currentCategory}>S</CategoryLetter> 
           </CategoryButton>
 
           <FontControls>
@@ -89,7 +120,9 @@ class ControlHeader extends Component {
             <CurrentFont> { this.props.family } </CurrentFont>
           </FontControls>
         </Controls>
+
         <OptionsSlider current={[this.props.currentCategory]} type={this.props.type} isOpen={this.state.isOpen} loadedMenu={"category"} items={this.props.categories}/>
+
       </HeaderWrapper>
     );
   }
