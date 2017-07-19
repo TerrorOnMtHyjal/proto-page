@@ -89,7 +89,7 @@ class ControlHeader extends Component {
             <CurrentFont> { this.props.family } </CurrentFont>
           </FontControls>
         </Controls>
-        <OptionsSlider type={this.props.type} isOpen={this.state.isOpen} loadedMenu={"category"} items={this.props.categories}/>
+        <OptionsSlider current={[this.props.currentCategory]} type={this.props.type} isOpen={this.state.isOpen} loadedMenu={"category"} items={this.props.categories}/>
       </HeaderWrapper>
     );
   }

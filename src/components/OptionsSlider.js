@@ -35,6 +35,7 @@ class OptionsSlider extends Component {
       return (
         <OptionButton key={`${item}${this.props.type}`} onClick={() => this.props.dispatch(updateActiveFont(item, this.props.type, this.props.loadedMenu))}>
           <p>{formatOption(item)}</p>
+          { this.props.current.includes(item) ? <i className="fa fa-check fa-lg" aria-hidden="true"></i> : undefined }
         </OptionButton>
       ) 
     });

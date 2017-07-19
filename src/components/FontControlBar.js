@@ -53,6 +53,7 @@ class FontControlBar extends Component {
 
     return (
       <div>
+
         <ControlButtonsWrapper>
           <ControlButton onClick={() => this.changeMenuState("variant")}>
             <i className="fa fa-italic fa-lg" aria-hidden="true"></i> 
@@ -63,7 +64,8 @@ class FontControlBar extends Component {
             <p>{formatOption(type.currentSize)}</p>
           </ControlButton>
         </ControlButtonsWrapper>
-        <OptionsSlider type={this.props.type} isOpen={this.state.isOpen} loadedMenu={this.state.loadedMenu} items={this.props[this.state.loadedMenu]} />
+
+        <OptionsSlider type={this.props.type} current={[this.props.currentVariant, this.props.currentSize]} isOpen={this.state.isOpen} loadedMenu={this.state.loadedMenu} items={this.props[this.state.loadedMenu]} />
       </div>
     );
   }
