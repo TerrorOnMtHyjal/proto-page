@@ -8,13 +8,13 @@ const strings = {
     `Digital protein at the speed of internet`,
     `Bacon ipsum dolor amet swine sunt shank ball tip porchetta`,
     `Capicola ea pastrami, sausage corned beef`,
-    "TONGUE NULLA HAM",
-    "DESERUNT T-BONE",
-    "NON GROUND ROUND",
+    "Tongue Nulla Ham",
+    "Deserunt T-Bone",
+    "Ground Round",
   ],
   subheader : [
     <span>Startup bacon ipsum <span>solutions</span> and <span>deliverable</span> ham technologies</span>,
-    `Deus ex pork. Yesterday delivery. All we need is your mouth.`
+    `Deus ex pork. Instant delivery. All we need is your mouth.`
     // `Laborum ullamco nisi, shank nulla meatloaf brisket t-bone shoulder boudin eu shankle sunt.`,
      //`Startup bacon ipsum solutions and deliverable ham technologies.`,
     // `Capicola ea pastrami, sausage corned beef doner beef ribs short loin lorem kielbasa consectetur boudin.`

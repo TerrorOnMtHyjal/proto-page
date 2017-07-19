@@ -8,6 +8,14 @@ const ControlsWrapper = styled.div`
   color: white;
 `;
 
+const RandomButton = styled.button`
+  position: fixed;
+  bottom: 48px;
+  left: 20px;
+  height: 40px;
+  width: 260px;
+`;
+
 class Controls extends Component {
 
   generateControls(elements){
@@ -23,7 +31,8 @@ class Controls extends Component {
     return (
       <ControlsWrapper className={this.props.className}>
         {this.generateControls(this.props.activeFonts)}
-        <button onClick={() => this.props.dispatch(randomizeFonts())}> Randomize Fonts </button>
+
+        <RandomButton onClick={() => this.props.dispatch(randomizeFonts())}><i className="fa fa-random" aria-hidden="true"></i>Randomize Fonts</RandomButton>
       </ControlsWrapper>
     );
   }

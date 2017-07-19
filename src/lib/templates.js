@@ -95,20 +95,36 @@ export const template = [
   },
   {
     rowStyle : `
+      position: relative;
       display: flex;
-      justify-content: center;
+      justify-content: right;
       width: 100%;
-      text-align: center;
-      background-color: #white;
+      text-align: right;
+      background: #fff;
       padding: 50px 0;
       color: #1b1d1f;
+      z-index: 1;
+
+      &:before {
+        background: inherit;
+        top: 0;
+        content: '';
+        display: block;
+        height: 50%;
+        left: 0;
+        position: absolute;
+        right: 0;
+        transform: skewY(-2.5deg);
+        transform-origin: 1%;
+        z-index: -1;
+      }
     `,
     row : {
       wrapper : {
         baseStyle : `
           display: flex;
           flex-flow: column;
-          width: 80%;
+          width: 90%;
           
           & > h1 {
             font-size: 1.5em;
@@ -127,6 +143,8 @@ export const template = [
           `,
           "768" : `
             font-size: 20px;
+            width: 70%;
+            margin: 0 auto;
           `,
           "1024" : `
             font-size: 22px;

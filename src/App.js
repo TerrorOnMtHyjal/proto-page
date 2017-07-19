@@ -20,7 +20,8 @@ const menuStyles = {
     color: '#ff00ae',
     padding:"10px 10px 10px 50px",
     borderRadius: "0 30px 30px 0",
-    backgroundColor: "#373a47"
+    backgroundColor: "#373a47",
+    zIndex:"2"
   },
   bmBurgerBars: {
 
@@ -31,6 +32,9 @@ const menuStyles = {
   },
   bmCross: {
     background: '#bdc3c7'
+  },
+  bmMenuWrap: {
+    zIndex:"3"
   },
   bmMenu: {
     background: '#373a47',

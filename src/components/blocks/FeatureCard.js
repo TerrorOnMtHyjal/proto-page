@@ -77,8 +77,13 @@ class FeatureCard extends Component {
       }
 
       @media only screen and (min-width: 1400px){
+        align-items: center;
         margin-top: 20px;
         width: 70%;
+
+        & > h1 {
+          padding-bottom: 0.8em;
+        }
       }
     `;
      
