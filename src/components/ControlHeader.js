@@ -16,7 +16,7 @@ const CategoryButton = styled.button`
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 20px;
+  font-size: 24px;
   border: none;
   border-radius: 5px;
   box-shadow: 0 3px #2f6a31;
@@ -27,7 +27,7 @@ const CategoryButton = styled.button`
   }
 
   &:active {
-    background-color: #3e8e41;
+    background-color: #367c39;
     box-shadow: 0 2px #2f6a31;
     transform: translateY(2px);
   }

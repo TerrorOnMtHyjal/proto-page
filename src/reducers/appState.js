@@ -25,7 +25,7 @@ const initialState= {
       family : 'Roboto Slab',
       variant : 'regular',
       availableVariants : ['100','300','regular','700'],
-      category : 'sans-serif',
+      category : 'serif',
       size : 100,
       locked: false
     }
