@@ -31,17 +31,18 @@ class FontControlBar extends Component {
     super(props);
 
     this.state = {
-      loadedMenu : undefined
+      isOpen : false,
+      loadedMenu : "variant"
     }
   }
 
   changeMenuState(clicked){
-    if(clicked === this.state.loadedMenu){
-      this.setState({loadedMenu : undefined}, () => {
+    if(clicked === this.state.loadedMenu && this.state.isOpen){
+      this.setState({...this.state.loadedMenu, isOpen : false}, () => {
 
       })
     } else {
-      this.setState({loadedMenu : clicked}, () => {
+      this.setState({loadedMenu : clicked, isOpen : true}, () => {
 
       });
     }
@@ -62,7 +63,7 @@ class FontControlBar extends Component {
             <p>{formatOption(type.currentSize)}</p>
           </ControlButton>
         </ControlButtonsWrapper>
-        <OptionsSlider type={this.props.type} loadedMenu={this.state.loadedMenu} items={this.props[this.state.loadedMenu]} />
+        <OptionsSlider type={this.props.type} isOpen={this.state.isOpen} loadedMenu={this.state.loadedMenu} items={this.props[this.state.loadedMenu]} />
       </div>
     );
   }
@@ -74,10 +75,8 @@ const mapState = ({ appState }, ownProps) => {
   return {
     currentVariant : activeFont.variant,
     currentSize : activeFont.size,
-    currentCategory : activeFont.category,
     variant : activeFont.availableVariants,
-    size : appState.sizes,
-    category : appState.categories
+    size : appState.sizes
   }
 };
 

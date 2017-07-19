@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import ElementLock from './ElementLock';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
+import OptionsSlider from './OptionsSlider';
 
 const ControlWrapper = styled.div`
   display: flex;
@@ -77,4 +79,4 @@ class ControlHeader extends Component {
   }
 }
 
-export default ControlHeader;
+export default connect()(ControlHeader);
