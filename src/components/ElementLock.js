@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { toggleLock, updateActiveFont } from '../actions/actions';
-import ToggleButton from 'react-toggle-button';
+import Toggle from 'react-toggle-button';
 import styled from 'styled-components';
 
 const ElementLockWrapper = styled.div`
@@ -11,13 +11,10 @@ const ElementLockWrapper = styled.div`
   font-weight: 700;
 `;
 
-const LockControl = styled.div`
+const Icon = styled.span`
   display: flex;
   align-items: center;
-
-  & > i {
-    margin-right: 10px;
-  }
+  font-size: 18px;
 `;
 
 class ElementLock extends Component {
@@ -26,14 +23,13 @@ class ElementLock extends Component {
       <ElementLockWrapper>
 
         <p>{this.props.type}</p>
-        <LockControl>
-          <i className="fa fa-lock"></i>
-          <ToggleButton 
-            value={this.props.locked} 
-            onToggle={() => this.props.dispatch(updateActiveFont(!this.props.locked, this.props.type, "locked"))} 
-            colors={{active : {base: 'rgb(255,0,174)'}}}
-          />
-        </LockControl>
+        <Toggle
+          activeLabel={<Icon><i className="fa fa-lock" aria-hidden="true"></i></Icon>}
+          inactiveLabel={<Icon><i className="fa fa-unlock" aria-hidden="true"></i></Icon>}
+          value={this.props.locked} 
+          onToggle={() => this.props.dispatch(updateActiveFont(!this.props.locked, this.props.type, "locked"))} 
+          colors={{active : {base: 'rgb(255,0,174)'}}}
+        />
 
       </ElementLockWrapper>
     );

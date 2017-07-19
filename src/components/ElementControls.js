@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 import FontControlBar from './FontControlBar';
 import ElementLock from './ElementLock';
+import ControlHeader from './ControlHeader';
 
 const ControlWrapper = styled.div`
   display: flex;
@@ -11,7 +12,7 @@ const ControlWrapper = styled.div`
   width: 100%;
 `;
 
-const ControlHeader = styled.div`
+const ControlHeaderOld = styled.div`
   display: flex;
   flex-flow: column;
   justify-content: space-between;
@@ -27,11 +28,13 @@ class ElementControls extends Component {
   render() {
     return (
       <ControlWrapper>
-        <ControlHeader>
+        <ControlHeader type={this.props.type} locked={this.props.locked} family={this.props.activeFonts[this.props.type].family} />
+        <FontControlBar type={this.props.type} />
+        {/*<ControlHeader>
           <ElementLock locked={this.props.locked} type={this.props.type}/>
           <p>{this.props.activeFonts[this.props.type].family}</p>
         </ControlHeader>
-        <FontControlBar type={this.props.type}/>
+        <FontControlBar type={this.props.type}/>*/}
       </ControlWrapper>
     );
   }

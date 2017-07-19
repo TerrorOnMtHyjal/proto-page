@@ -22,7 +22,7 @@ class Controls extends Component {
     const controls = [];
 
     for (let element in elements){
-      controls.push(<ElementControls key={element} type={element} />)
+      controls.push(<ElementControls key={`${element}Controls`} type={element} />)
     }  
     return controls;
   }
@@ -31,7 +31,6 @@ class Controls extends Component {
     return (
       <ControlsWrapper className={this.props.className}>
         {this.generateControls(this.props.activeFonts)}
-
         <RandomButton onClick={() => this.props.dispatch(randomizeFonts())}><i className="fa fa-random" aria-hidden="true"></i>Randomize Fonts</RandomButton>
       </ControlsWrapper>
     );
