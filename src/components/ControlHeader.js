@@ -4,7 +4,12 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 import OptionsSlider from './OptionsSlider';
 
-const ControlWrapper = styled.div`
+const HeaderWrapper = styled.div`
+  display: flex;
+  flex-flow: column;
+`;
+
+const Controls = styled.div`
   display: flex;
   padding: 0 20px 10px 20px;
 `;
@@ -57,26 +62,46 @@ const CurrentFont = styled.p`
 `;
 
 class ControlHeader extends Component {
+
+  constructor(props){
+    super(props);
+
+    this.state = {
+      isOpen : false
+    }
+
+  }
+
+  changeMenuState(){
+    this.setState({isOpen : !this.state.isOpen})
+  }
+
   render() {
     return (
-      <ControlWrapper>
+      <HeaderWrapper>
+        <Controls>
+          <CategoryButton onClick={() => this.changeMenuState()}>
+          <p>E</p> 
+          </CategoryButton>
 
-
-        <CategoryButton>
-         <p>E</p> 
-        </CategoryButton>
-
-
-        <FontControls>
-          <ElementLock locked={ this.props.locked } type={ this.props.type }/>
-          <CurrentFont> { this.props.family } </CurrentFont>
-        </FontControls>
-
-
-
-      </ControlWrapper>
+          <FontControls>
+            <ElementLock locked={ this.props.locked } type={ this.props.type }/>
+            <CurrentFont> { this.props.family } </CurrentFont>
+          </FontControls>
+        </Controls>
+        <OptionsSlider type={this.props.type} isOpen={this.state.isOpen} loadedMenu={"category"} items={this.props.categories}/>
+      </HeaderWrapper>
     );
   }
 }
 
-export default connect()(ControlHeader);
+const mapState = ({ appState }, ownProps) => {
+  const activeFont = appState.activeFonts[ownProps.type];
+
+  return {
+    currentCategory : activeFont.category,
+    categories : appState.categories
+  }
+}
+
+export default connect(mapState)(ControlHeader);
