@@ -21,15 +21,18 @@ const Controls = styled.div`
 `;
 
 const CategoryButton = styled.button`
-
+  display: flex;
   margin-right: 15px;
-  min-width: 40px;
-  min-height: 40px;
+  width: 40px;
+  height: 40px;
+  max-width: 40px;
+  max-height: 40px;
   background-color: #4CAF50; 
   color: white;
   text-align: center;
   text-decoration: none;
   display: inline-block;
+  overflow: hidden;
   font-size: 30px;
   border: none;
   border-radius: 5px;
@@ -75,22 +78,45 @@ const CategoryLetter = styled.p`
       
       case "serif":
         return `font-family: Lora;
-                font-weight: 700;`
+                font-weight: 700;
+                font-size: 1.1em;
+                margin-top: -1px;
+                &:before {
+                  content: "S"
+                }`
 
       case "sans-serif":
         return `font-family: Roboto;
-                font-weight: 700;`
+                font-weight: 700;
+                font-size: 1.1em;
+                &:before {
+                  content: "S"
+                }`
 
       case "display":
-        return `font-family: Rye;`
+        return `font-family: Rye;
+                margin-top: 2px;
+                margin-left: 1px;
+                &:before {
+                  content: "D"
+                }`
         
       case "handwriting":
-        return `font-family: "Permanent Marker";
-                font-size: 26px;`
+        return `font-family: "Kaushan Script";
+                font-size: 32px;
+                margin-left: -5px;
+                margin-top: -4px;
+                &:before {
+                  content: "H"
+                }`
 
       case "monospace":
-        return `font-family: VT323;
-                font-size: 40px;`
+        return `font-family: Inconsolata;
+                font-weight: 700;
+                font-size: 1.25em;
+                &:before {
+                  content: "M"
+                }`
 
       default:
         return '';
@@ -119,7 +145,7 @@ class ControlHeader extends Component {
 
         <Controls>
           <CategoryButton isOpen={this.state.isOpen} onClick={() => this.changeMenuState()}>
-            <CategoryLetter family={this.props.currentCategory}>S</CategoryLetter> 
+            <CategoryLetter family={this.props.currentCategory}></CategoryLetter> 
           </CategoryButton>
 
           <FontControls>
