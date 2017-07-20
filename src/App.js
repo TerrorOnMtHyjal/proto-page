@@ -41,14 +41,14 @@ const menuStyles = {
   bmMenu: {
     background: 'linear-gradient(0deg, #36467c 90%, #273259 91%)',
     padding: '1em 0 0',
-    fontSize: '1.15em',
-    width: '100%'
+    fontSize: '1.15em'
   },
   bmMorphShape: {
     fill: '#273259'
   },
   bmItemList: {
-    color: '#b8b7ad'
+    color: '#b8b7ad',
+    minWidth: "300px"
   },
   bmOverlay: {
     background: 'rgba(0, 0, 0, 0.3)'

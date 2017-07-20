@@ -7,10 +7,14 @@ import { formatOption } from '../lib/tools';
 const ControlButtonsWrapper = styled.div`
   display: flex;
   margin: 20px 20px 0 20px;
-  width: 260px;
+
+  &:button:first-child {
+    opacity: 0.2;
+  }
 `;
 
-const ControlButton = styled.div`
+const ControlButton = styled.button`
+  height: 40px;
   cursor: pointer;
   user-select: none;
   display: flex;
@@ -21,8 +25,7 @@ const ControlButton = styled.div`
   }
 
   & > p {
-    text-align: center;
-    flex-grow: 2;
+    flex-grow: 4;
   }
 `;
 
