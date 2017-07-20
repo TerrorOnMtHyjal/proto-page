@@ -52,7 +52,6 @@ const CategoryButton = styled.button`
   &:focus {
     outline: 0;
   }
-
 `;
 
 const FontControls = styled.div`
