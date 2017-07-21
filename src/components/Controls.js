@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { randomizeFonts } from '../actions/actions';
 import styled from 'styled-components';
 import ElementControls from './ElementControls';
+import ModalControl from './ModalControl';
 
 const ControlsWrapper = styled.div`
   color: white;
@@ -32,6 +33,7 @@ class Controls extends Component {
     return (
       <ControlsWrapper className={this.props.className}>
         {this.generateControls(this.props.activeFonts)}
+        <ModalControl/>
         <RandomButton onClick={() => this.props.dispatch(randomizeFonts())}><i className="fa fa-random" aria-hidden="true"></i>Randomize Fonts</RandomButton>
       </ControlsWrapper>
     );
