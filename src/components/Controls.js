@@ -1,21 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { randomizeFonts } from '../actions/actions';
 import styled from 'styled-components';
 import ElementControls from './ElementControls';
-import ModalControl from './ModalControl';
+import FixedControls from './FixedControls';
 
 const ControlsWrapper = styled.div`
   color: white;
   font-family: 'Roboto', sans-serif;
-`;
-
-const RandomButton = styled.button`
-  position: fixed;
-  bottom: 48px;
-  left: 20px;
-  height: 40px;
-  width: 260px;
 `;
 
 class Controls extends Component {
@@ -33,8 +24,7 @@ class Controls extends Component {
     return (
       <ControlsWrapper className={this.props.className}>
         {this.generateControls(this.props.activeFonts)}
-        <ModalControl/>
-        <RandomButton onClick={() => this.props.dispatch(randomizeFonts())}><i className="fa fa-random" aria-hidden="true"></i>Randomize Fonts</RandomButton>
+        <FixedControls />
       </ControlsWrapper>
     );
   }

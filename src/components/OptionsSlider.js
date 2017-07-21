@@ -13,6 +13,7 @@ const Options = styled.div`
   transition: height 0.5s ease-in-out;
   overflow-y: hidden;
   margin-top: 10px;
+  background-color: #0e83cd;
 `;
 
 const OptionButton = styled.div`

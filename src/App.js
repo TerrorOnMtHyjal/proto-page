@@ -21,7 +21,7 @@ const menuStyles = {
     padding:"10px 10px 10px 50px",
     borderRadius: "0 30px 30px 0",
     backgroundColor: "#273259",
-    zIndex:"2",
+    zIndex:"1000",
     cursor: "pointer"
   },
   bmBurgerBars: {
@@ -36,7 +36,7 @@ const menuStyles = {
     background: '#bdc3c7'
   },
   bmMenuWrap: {
-    zIndex:"3"
+    zIndex:"3000"
   },
   bmMenu: {
     background: 'linear-gradient(0deg, #36467c 90%, #273259 91%)',
