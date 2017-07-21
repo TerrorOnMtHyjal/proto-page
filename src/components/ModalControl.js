@@ -3,10 +3,38 @@ import { connect } from 'react-redux';
 import Modal from 'react-modal';
 import styled from 'styled-components';
 
-const CSSBlock = styled.div`
-  padding: 20px;
+const CodeBlock = styled.div`
+  background: rgba(0,0,0,0.08);
+  font-family: 'Roboto Mono';
+  font-size: 12px;
+  line-height: 18px;
+  padding: 11px 16px;
+  word-break: break-all;
   margin: 10px 0;
-  background-color: grey;
+
+  //must be an easier way to do this!
+  & > p {
+    all: inherit;
+    padding: 0;
+    margin: 0;
+    background: none;
+  }
+`;
+
+const CodeResult = styled.div`
+  padding-bottom: 20px;
+  
+  & > h3 {
+    margin-bottom: 5px;
+  }
+  
+  & > p {
+    margin-bottom: 10px;
+  }
+
+  ${props => props.css ? `
+    border-top: 2px solid #eee;
+    ` : undefined}
 `;
 
 const modalStyles = {
@@ -31,12 +59,14 @@ const modalStyles = {
     background                 : '#fff',
     overflow                   : 'auto',
     WebkitOverflowScrolling    : 'touch',
-    borderRadius               : '4px',
     outline                    : 'none',
-    padding                    : '20px',
     zIndex : 11
   }
 };
+
+const ModalInner = styled.div`
+
+`;
 
 
 class ModalControl extends Component {
@@ -77,10 +107,11 @@ class ModalControl extends Component {
       code += `|`;
     }
 
-    return `<link href="https://fonts.googleapis.com/css?family=${code.slice(0, -1)}" rel="stylesheet">;`
+    return <CodeBlock>{`<link href="https://fonts.googleapis.com/css?family=${code.slice(0, -1)}" rel="stylesheet">;`}</CodeBlock>
   }
 
   generateCSS({ family, variant, category}){
+
     let code = [];
 
     code.push(<p key="familyCode">{`font-family: '${family}', ${category === "handwriting" || category === "display" ? "cursive" : category};`}</p>);
@@ -90,7 +121,7 @@ class ModalControl extends Component {
       variant.includes("italic") && code.push(<p key="styleCode">font-style: italic;</p>);
     }
 
-    return <CSSBlock>{code}</CSSBlock>;
+    return <CodeBlock>{code}</CodeBlock>;
   }
 
   render() {
@@ -103,10 +134,23 @@ class ModalControl extends Component {
           contentLabel="This is modal, friend."
           style={modalStyles}
         >
-        <p>{this.generateCode(this.props.fonts)}</p>
-        {this.generateCSS(this.props.fonts.header)}
-        {this.generateCSS(this.props.fonts.subheader)}
-        {this.generateCSS(this.props.fonts.paragraph)}
+        <ModalInner>
+          <CodeResult>
+            <h3>Embed Fonts</h3>
+            <p>To embed your fonts into a webpage, copy this code into the ${`<head>`} of your HTML document:</p>
+            {this.generateCode(this.props.fonts)}
+          </CodeResult>
+          <CodeResult css>
+            <h3>Specify in CSS</h3>
+            <p>Use the following CSS rules to specify these families:</p>
+            <h4>Header</h4>
+            {this.generateCSS(this.props.fonts.header)}
+            <h4>Subheader</h4>
+            {this.generateCSS(this.props.fonts.subheader)}
+            <h4>Paragraph</h4>
+            {this.generateCSS(this.props.fonts.paragraph)}
+          </CodeResult>
+        </ModalInner>
         </Modal>
       </div>
     );
