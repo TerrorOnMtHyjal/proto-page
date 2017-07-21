@@ -28,7 +28,7 @@ class ElementLock extends Component {
           inactiveLabel={<Icon><i className="fa fa-unlock" aria-hidden="true"></i></Icon>}
           value={this.props.locked} 
           onToggle={() => this.props.dispatch(updateActiveFont(!this.props.locked, this.props.type, "locked"))} 
-          colors={{active : {base: 'rgb(255,0,174)'}}}
+          colors={{active : {base: '#E91E63'}}}
         />
 
       </ElementLockWrapper>

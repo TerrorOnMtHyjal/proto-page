@@ -13,24 +13,25 @@ const ModalButton = styled.button`
   align-items: center;
   height: 50px;
   width: 100%;
+  border-radius: 3px;
 
   & > i {
     margin-left: -5px;
   }
 
-  background-color: #FF5722; 
+  background-color: #E91E63; 
   color: white;
   overflow: hidden;
   border: none;
-  box-shadow: 0 3px #BF360C;
+  box-shadow: 0 3px #AD1457;
   cursor: pointer;
 
   &:hover {
-    background-color: #E64A19;
+    background-color: #D81B60;
   }
   &:active {
-    background-color: #D84315;
-    box-shadow: 0 2px #BF360C;
+    background-color: #C2185B;
+    box-shadow: 0 2px #AD1457;
     transform: translateY(2px);
   }
   &:focus {
@@ -94,7 +95,7 @@ class ModalControl extends Component {
   render() {
     return (
       <ModalControlWrapper>
-        <ModalButton onClick={this.openModal}><i className="fa fa-code fa-3x" aria-hidden="true"></i></ModalButton>
+        <ModalButton onClick={this.openModal}><i className="fa fa-code fa-2x" aria-hidden="true"></i></ModalButton>
         <Modal isOpen={this.state.modalIsOpen} onRequestClose={this.closeModal} contentLabel="This is modal, friend." style={modalStyles}>
           <ModalContent />
         </Modal>

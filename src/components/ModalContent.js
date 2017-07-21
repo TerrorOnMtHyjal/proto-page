@@ -39,12 +39,12 @@ const CodeBlock = styled.div`
 
 class ModalContent extends Component {
 
-  generateCSS({ family, variant, category}){
+  generateCSS({ family, variant, category }){
     let code = [];
     code.push(<p key="familyCode">font-family: '{family}', {category === "handwriting" || category === "display" ? "cursive" : category};</p>);
 
-    if(variant != "regular"){
-      variant != "italic" && code.push(<p key="weightCode">font-weight: {variant.replace('italic', '')};</p>);
+    if(variant !== "regular"){
+      variant !== "italic" && code.push(<p key="weightCode">font-weight: {variant.replace('italic', '')};</p>);
       variant.includes("italic") && code.push(<p key="styleCode">font-style: italic;</p>);
     }
 
@@ -77,7 +77,7 @@ class ModalContent extends Component {
       code += familyCode;
     }
 
-    return <CodeBlock>{`<link href="https://fonts.googleapis.com/css?family=`}<span>{code.slice(0,-1)}</span>{`" rel="stylesheet">;`}</CodeBlock>
+    return <CodeBlock>{`<link href="https://fonts.googleapis.com/css?family=`}<span>{code.slice(0,-1)}</span>{`" rel="stylesheet">`}</CodeBlock>
   }
 
   render() {

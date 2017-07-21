@@ -56,16 +56,31 @@ const menuStyles = {
 }
 
 class App extends Component {
+  
+  constructor(props){
+    super(props);
+
+    this.state = {
+      isOpen : true
+    }
+
+  }
   componentWillMount(){
     this.props.dispatch(seedFonts());
     this.props.dispatch(applyFonts());
+  }
+
+  componentDidMount(){
+    this.setState = {
+      isOpen : true
+    };
   }
 
 //move menu and styles to Menu.js, export entire component
   render() {
       return (
         <div id="outer-container">
-          <Menu customBurgerIcon={ <CogWrapper><i className="fa fa-cog fa-spin fa-3x" aria-hidden="true"></i></CogWrapper> } pageWrapId="page-wrap" outerContainerId="outer-container" styles={menuStyles}>
+          <Menu isOpen={this.state.isOpen} customBurgerIcon={ <CogWrapper><i className="fa fa-cog fa-spin fa-3x" aria-hidden="true"></i></CogWrapper> } pageWrapId="page-wrap" outerContainerId="outer-container" styles={menuStyles}>
             <Controls />
           </Menu>
           <div id="page-wrap">

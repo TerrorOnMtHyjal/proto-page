@@ -7,7 +7,7 @@ import FixedControls from './FixedControls';
 const ControlsWrapper = styled.div`
   color: white;
   font-family: 'Roboto', sans-serif;
-  padding-bottom: 110px;
+  padding-bottom: 120px;
 `;
 
 class Controls extends Component {

@@ -39,6 +39,7 @@ const CategoryButton = styled.button`
     }`
   }
 
+  transition: background-color 0.25s ease-out, color 0.25s ease-out, box-shadow 0.25s ease-out;
   display: flex;
   margin-right: 15px;
   width: 40px;
@@ -110,7 +111,6 @@ const CategoryLetter = styled.p`
         return `font-family: "Kaushan Script";
                 font-size: 32px;
                 margin-left: -5px;
-                margin-top: -4px;
                 &:before {
                   content: "H"
                 }`
@@ -119,6 +119,7 @@ const CategoryLetter = styled.p`
         return `font-family: Inconsolata;
                 font-weight: 700;
                 font-size: 1.25em;
+                margin-top: -1px;
                 &:before {
                   content: "M"
                 }`
