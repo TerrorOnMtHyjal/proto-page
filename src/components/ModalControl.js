@@ -30,7 +30,7 @@ const CodeResult = styled.div`
   & > h3 {
     margin-bottom: 5px;
   }
-  
+
   & > h4 {
     margin-top: 10px;
   }
@@ -92,6 +92,7 @@ class ModalControl extends Component {
     this.closeModal = this.closeModal.bind(this);
   }
 
+
   openModal() {
     this.setState({modalIsOpen: true});
   }
@@ -104,21 +105,36 @@ class ModalControl extends Component {
     this.setState({modalIsOpen: false});
   }
 
+
   generateCode(fonts) {
+    let families = {};
     let code = ``;
 
+    //gather all families, avoiding duplicates and all variants
     for(let type in fonts){
-      code += `${fonts[type].family.replace(' ','+')}`;
+      const {family, variant} = fonts[type];
 
-      if(fonts[type].variant != "regular"){
-        code += `:${fonts[type].variant.replace('talic','')}`;
-      }
-
-      code += `|`;
+      !families[family] && (families[family] = { element: type, variants : [] });
+      families[family].variants.push(variant.replace('talic', ''));
     }
 
-    return <CodeBlock>{`<link href="https://fonts.googleapis.com/css?family=`}<span>{code.slice(0, -1)}</span>{` rel="stylesheet">;`}</CodeBlock>
+    for(let family in families){
+      let familyCode = family.replace(' ','+');
+      const variants = families[family].variants;
+
+      //check if "regular" or "i" exists as well as a weight, if so, join them and replace "regular" w/ "400"
+      if(variants.includes("regular") || variants.includes("i")){
+        variants.length > 1 ? familyCode += `:${variants.join().replace("regular", "400").replace("i", "400i")}|` : familyCode += `|`;
+      } else {
+        familyCode += `:${variants.join()}|`;
+      }
+
+      code += familyCode;
+    }
+
+    return <CodeBlock>{`<link href="https://fonts.googleapis.com/css?family=`}<span>{code.slice(0,-1)}</span>{` rel="stylesheet">;`}</CodeBlock>
   }
+
 
   generateCSS({ family, variant, category}){
 
@@ -133,6 +149,7 @@ class ModalControl extends Component {
 
     return <CodeBlock>{code}</CodeBlock>;
   }
+
 
   render() {
     return (
