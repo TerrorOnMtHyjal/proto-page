@@ -4,15 +4,11 @@ export const SEED_FONTS = 'SEED_FONTS';
 export const SEED_FONTS_REQUESTED = 'SEED_FONTS_REQUESTED';
 export const SEED_FONTS_SUCCESSFUL = 'SEED_FONTS_SUCCESSFUL';
 export const SEED_FONTS_ERROR = 'SEED_FONTS_ERROR';
-export const UPDATE_FONTS = 'UPDATE_FONTS';
-export const UPDATE_VARIANT = 'UPDATE_VARIANT';
-export const UPDATE_CATEGORY = 'UPDATE_CATEGORY';
-export const APPLY_FONTS = 'APPLY_FONTS';
 export const NEW_FONTS_REQUESTED = 'NEW_FONTS_REQUESTED';
 export const NEW_FONTS_SUCCESSFUL = 'NEW_FONTS_SUCCESSFUL';
-export const TOGGLE_LOCK = 'TOGGLE_LOCK';
 export const UPDATE_ACTIVE_FONT = 'UPDATE_ACTIVE_FONT';
 export const REPLACE_ACTIVE_FONTS = 'REPLACE_ACTIVE_FONTS';
+export const TOGGLE_POPULAR = 'TOGGLE_POPULAR';
 
 export const seedFonts = () => (dispatch) => {
   dispatch(seedFontsRequested());
@@ -77,6 +73,13 @@ function seedFontsError(err) {
   };
 }
 
+export const togglePopular = (bool) => {
+  return {
+    type : TOGGLE_POPULAR,
+    bool
+  }
+}
+
 export const applyFonts = () => (dispatch, getState) => {
   const { header, subheader, paragraph } = getState().appState.activeFonts;
 
@@ -109,14 +112,14 @@ function newFontsSuccessful(){
 }
 
 export const randomizeFonts = () => (dispatch, getState) => {
-  const {activeFonts, fontsLibrary} = getState().appState;
+  const {activeFonts, fontsLibrary, popular} = getState().appState;
   const newFonts = {};
 
   for(let element in activeFonts){
     const currentElement = activeFonts[element];
 
     if(!currentElement.locked){
-      const newFont = getRandomFont(fontsLibrary[currentElement.category]);
+      const newFont = getRandomFont(fontsLibrary[currentElement.category], popular);
 
       newFonts[element] = {
         family : newFont.family,
@@ -140,6 +143,6 @@ function replaceActiveFonts(newFonts){
   }
 }
 
-function getRandomFont(category){
-  return category[Math.floor(Math.random()*category.length)];
+function getRandomFont(category, popular){
+  return popular ? category[Math.floor(Math.random()*(category.length / 4))] : category[Math.floor(Math.random()*category.length)];
 }

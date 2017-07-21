@@ -38,9 +38,9 @@ class ElementControls extends Component {
   }
 }
 
-const mapState = (state, ownProps) => ({
-  locked : state.appState.activeFonts[ownProps.type].locked,
-  activeFonts : state.appState.activeFonts
+const mapState = ({ appState }, ownProps) => ({
+  locked : appState.activeFonts[ownProps.type].locked,
+  activeFonts : appState.activeFonts
 });
 
 export default connect(mapState)(ElementControls);

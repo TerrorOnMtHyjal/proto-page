@@ -23,16 +23,17 @@ class Controls extends Component {
 
   render() {
     return (
-      <ControlsWrapper className={this.props.className}>
+      <ControlsWrapper className={ this.props.className }>
         {this.generateControls(this.props.activeFonts)}
-        <FixedControls />
+        <FixedControls popular={ this.props.popular }/>
       </ControlsWrapper>
     );
   }
 }
 
-const mapState = (state) => ({
-  activeFonts : state.appState.activeFonts
+const mapState = ({ appState }) => ({
+  activeFonts : appState.activeFonts,
+  popular : appState.popular
 });
 
 export default connect(mapState)(Controls);

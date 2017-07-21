@@ -45,7 +45,8 @@ const initialState= {
     },
   },
   sizes : [50, 100, 150, 200, 300],
-  categories : ['sans-serif', 'serif', 'handwriting', 'monospace', 'display']
+  categories : ['sans-serif', 'serif', 'handwriting', 'monospace', 'display'],
+  popular : false
 }
 
 export default function appState(state=initialState, action){
@@ -56,9 +57,6 @@ export default function appState(state=initialState, action){
 
     case actions.SEED_FONTS_SUCCESSFUL:
       return { ...state, isFetchingSeed : action.isFetchingSeed, fontsLibrary : action.fontsLibrary};
-
-    case actions.UPDATE_FONTS:
-      return { ...state, activeFonts : action.newFonts};
 
     case actions.NEW_FONTS_REQUESTED:
       return { ...state, isFetchingFonts : action.isFetchingFonts};
@@ -85,6 +83,11 @@ export default function appState(state=initialState, action){
           ...state.activeFonts,
           ...action.newFonts
         }
+      }
+    
+    case actions.TOGGLE_POPULAR:
+      return {
+        ...state, popular : action.bool
       }
 
     default:

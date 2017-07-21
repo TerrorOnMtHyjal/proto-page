@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { randomizeFonts } from '../actions/actions';
+import { randomizeFonts, togglePopular } from '../actions/actions';
 import ModalControl from './ModalControl';
+import Toggle from 'react-toggle-button';
 import styled from 'styled-components';
 
 const ControlsWrapper = styled.div`
@@ -22,6 +23,15 @@ const ControlsWrapper = styled.div`
     height: 40px;
     width: 100%;
     background: linear-gradient(to top, rgba(54, 70, 124, 1), rgba(54, 70, 124, 0));;
+  }
+`;
+
+const PopularWrapper = styled.div`
+  display: flex;
+  padding-bottom: 10px;
+  
+  & > p {
+    font-size: 16px;
   }
 `;
 
@@ -63,10 +73,26 @@ const RandomButton = styled.button`
   }
 `;
 
+const Icon = styled.span`
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+`;
+
 class FixedControls extends Component {
   render() {
     return (
       <ControlsWrapper>
+        <PopularWrapper>
+          <Toggle
+            activeLabel={<Icon><i className="fa fa-check" aria-hidden="true"></i></Icon>}
+            inactiveLabel={<Icon><i className="fa fa-times" aria-hidden="true"></i></Icon>}
+            value={this.props.popular} 
+            onToggle={() => this.props.dispatch(togglePopular(!this.props.popular))} 
+            colors={{active : {base: 'rgb(255,0,174)'}}}
+          />
+          <p>Only show popular fonts?</p>
+        </PopularWrapper>
         <ButtonsWrapper>
           <ModalControl/>
           <RandomButton onClick={() => this.props.dispatch(randomizeFonts())}><i className="fa fa-random fa-3x" aria-hidden="true"></i></RandomButton>
