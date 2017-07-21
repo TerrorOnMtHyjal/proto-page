@@ -13,19 +13,26 @@ const CodeBlock = styled.div`
   margin: 10px 0;
 
   //must be an easier way to do this!
-  & > p {
-    all: inherit;
-    padding: 0;
-    margin: 0;
-    background: none;
+  & > p, span {
+    font-family: 'Roboto Mono';
+    font-size: inherit;
+    line-height: inherit;
+    word-break: break-all;
+  }
+
+  & > span {
+    font-weight: 700;
   }
 `;
 
 const CodeResult = styled.div`
-  padding-bottom: 20px;
   
   & > h3 {
     margin-bottom: 5px;
+  }
+  
+  & > h4 {
+    margin-top: 10px;
   }
   
   & > p {
@@ -34,7 +41,10 @@ const CodeResult = styled.div`
 
   ${props => props.css ? `
     border-top: 2px solid #eee;
-    ` : undefined}
+    padding: 20px 0;
+    ` : `
+    padding-bottom: 20px;
+    `}
 `;
 
 const modalStyles = {
@@ -107,7 +117,7 @@ class ModalControl extends Component {
       code += `|`;
     }
 
-    return <CodeBlock>{`<link href="https://fonts.googleapis.com/css?family=${code.slice(0, -1)}" rel="stylesheet">;`}</CodeBlock>
+    return <CodeBlock>{`<link href="https://fonts.googleapis.com/css?family=`}<span>{code.slice(0, -1)}</span>{` rel="stylesheet">;`}</CodeBlock>
   }
 
   generateCSS({ family, variant, category}){
@@ -137,7 +147,7 @@ class ModalControl extends Component {
         <ModalInner>
           <CodeResult>
             <h3>Embed Fonts</h3>
-            <p>To embed your fonts into a webpage, copy this code into the ${`<head>`} of your HTML document:</p>
+            <p>To embed your fonts into a webpage, copy this code into the {`<head>`} of your HTML document:</p>
             {this.generateCode(this.props.fonts)}
           </CodeResult>
           <CodeResult css>
