@@ -8,8 +8,33 @@ const ModalControlWrapper = styled.div`
   flex-grow: 1;
 `;
 const ModalButton = styled.button`
+  justify-content: center;
+  align-items: center;
   height: 50px;
   width: 100%;
+
+  & > i {
+    margin-left: -5px;
+  }
+
+  background-color: #FF5722; 
+  color: white;
+  overflow: hidden;
+  border: none;
+  box-shadow: 0 3px #BF360C;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #E64A19;
+  }
+  &:active {
+    background-color: #D84315;
+    box-shadow: 0 2px #BF360C;
+    transform: translateY(2px);
+  }
+  &:focus {
+    outline: 0;
+  }
 `;
 
 const modalStyles = {
@@ -68,7 +93,7 @@ class ModalControl extends Component {
   render() {
     return (
       <ModalControlWrapper>
-        <ModalButton onClick={this.openModal}><i className="fa fa-code" aria-hidden="true"></i>Get Code</ModalButton>
+        <ModalButton onClick={this.openModal}><i className="fa fa-code fa-3x" aria-hidden="true"></i></ModalButton>
         <Modal isOpen={this.state.modalIsOpen} onRequestClose={this.closeModal} contentLabel="This is modal, friend." style={modalStyles}>
           <ModalContent />
         </Modal>

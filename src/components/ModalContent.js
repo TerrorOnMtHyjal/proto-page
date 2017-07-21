@@ -7,6 +7,7 @@ const CodeResult = styled.div`
     margin-bottom: 5px;
   }
   & > h4 {
+    text-align: center;
     margin-top: 10px;
   } 
   & > p {
@@ -64,7 +65,7 @@ class ModalContent extends Component {
 
     //check if "regular" or "i" exists as well as a weight, if so, join them and replace "regular" w/ "400" and "i" w/ "400i"
     for(let family in families){
-      let familyCode = family.replace(' ','+');
+      let familyCode = family.replace(/\s/g,'+');
       const variants = families[family].variants;
 
       if(variants.includes("regular") || variants.includes("i")){
@@ -99,7 +100,7 @@ class ModalContent extends Component {
           <h4>Paragraph</h4>
           {this.generateCSS(this.props.fonts.paragraph)}
         </CodeResult>
-        
+
       </div>
     );
   }
