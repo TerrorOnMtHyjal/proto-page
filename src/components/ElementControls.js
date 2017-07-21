@@ -32,7 +32,7 @@ class ElementControls extends Component {
     return (
       <ControlWrapper type={this.props.type}>
         <ControlHeader type={this.props.type} locked={this.props.locked} family={this.props.activeFonts[this.props.type].family} />
-        <FontControlBar type={this.props.type} />
+        <FontControlBar type={this.props.type} locked={this.props.locked}/>
       </ControlWrapper>
     );
   }
