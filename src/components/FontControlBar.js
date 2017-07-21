@@ -42,6 +42,7 @@ class FontControlBar extends Component {
 
     const type = this.props;
     const ControlButton = styled.button`
+      position: relative;
       display: flex;
       align-items: center;
       height: 40px;
@@ -60,6 +61,28 @@ class FontControlBar extends Component {
           border-right: 1px solid #0D47A1;
           border-radius: 4px 0 0 4px;`
         : `border-radius: 0 4px 4px 0;`
+      }
+
+      ${props => props.controlType === "variant" && props.counter > 1 ? `
+          &:after {
+            position: absolute;
+            left: -10px;
+            top: -12.5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 14px;
+            font-weight: bold;
+            font-style: italic;
+            z-index: 100;
+            content: '${props.counter}';
+            color: white;
+            background-color: #FF5722;
+            width: 25px;
+            height: 25px;
+            border-radius: 15px;
+          }`
+        : undefined
       }
 
       ${props => props.controlType === this.state.loadedMenu && this.state.isOpen ? activeStyles : undefined};
@@ -94,7 +117,7 @@ class FontControlBar extends Component {
       <div>
 
         <ControlButtonsWrapper>
-          <ControlButton controlType="variant" onClick={() => this.changeMenuState("variant")}>
+          <ControlButton controlType="variant" counter={this.props.variant.length} onClick={() => this.changeMenuState("variant")}>
             <i className="fa fa-italic fa-lg" aria-hidden="true"></i> 
             <p>{formatOption(type.currentVariant)}</p>
           </ControlButton>
