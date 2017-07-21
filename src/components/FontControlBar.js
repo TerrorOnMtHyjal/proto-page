@@ -45,10 +45,10 @@ class FontControlBar extends Component {
 
       ${props => props.disabled ? `
         background-color: #9E9E9E;
-        box-shadow: 0 2px #212121;
         color: #757575;
 
         &:after {
+          color: gray;
           background-color: #424242;
         }
       `:`
@@ -58,6 +58,7 @@ class FontControlBar extends Component {
         cursor: pointer;
 
         &:after {
+          color: white;
           background-color: #FF5722;
         }
 
@@ -99,7 +100,6 @@ class FontControlBar extends Component {
             font-style: italic;
             z-index: 100;
             content: '${props.counter}';
-            color: white;
             width: 25px;
             height: 25px;
             border-radius: 15px;
@@ -107,7 +107,7 @@ class FontControlBar extends Component {
         : undefined
       }
 
-      ${props => props.controlType === this.state.loadedMenu && this.state.isOpen ? activeStyles : undefined};
+      ${props => props.controlType === this.state.loadedMenu && this.state.isOpen && !props.disabled ? activeStyles : undefined};
 
       & > i {
         margin-left: 10px;
@@ -143,7 +143,7 @@ class FontControlBar extends Component {
         <OptionsSlider 
           type={this.props.type} 
           current={[this.props.currentVariant, this.props.currentSize]} 
-          isOpen={this.state.isOpen} 
+          isOpen={!this.props.locked && this.state.isOpen} 
           loadedMenu={this.state.loadedMenu} 
           items={this.props[this.state.loadedMenu]} 
         />

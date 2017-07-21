@@ -6,6 +6,7 @@ import styled from 'styled-components';
 
 const ControlsWrapper = styled.div`
   position: fixed;
+  padding-top: 5px;
   padding-bottom: 50px;
   background-color: #36467c;
   bottom: 0px;
@@ -17,8 +18,8 @@ const ControlsWrapper = styled.div`
   &:before {
     content: '';
     position: absolute;
-    top: -30px;
-    height: 30px;
+    top: -40px;
+    height: 40px;
     width: 100%;
     background: linear-gradient(to top, rgba(54, 70, 124, 1), rgba(54, 70, 124, 0));;
   }

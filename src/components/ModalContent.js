@@ -67,9 +67,9 @@ class ModalContent extends Component {
     for(let family in families){
       let familyCode = family.replace(/\s/g,'+');
       const variants = families[family].variants;
-
+      
       if(variants.includes("regular") || variants.includes("i")){
-        variants.length > 1 ? familyCode += `:${variants.join().replace("regular", "400").replace("i", "400i")}|` : familyCode += `|`;
+        variants.length > 1 || variants.includes("i") ? familyCode += `:${variants.join().replace("regular", "400").replace("i", "400i")}|` : familyCode += `|`;
       } else {
         familyCode += `:${variants.join()}|`;
       }

@@ -22,23 +22,23 @@ const Controls = styled.div`
 
 const CategoryButton = styled.button`
   ${props => props.disabled ? `
-    background-color: #9E9E9E;
-    box-shadow: 0 2px #212121;
-    color: #757575;
-  `:`
-    background-color: #4CAF50;
-    box-shadow: 0 3px #2f6a31;
-    color: white;
-    cursor: pointer;
+      background-color: #9E9E9E;
+      color: #757575;
+    `:`
+      background-color: #4CAF50;
+      box-shadow: 0 3px #2f6a31;
+      color: white;
+      cursor: pointer;
 
-    &:hover {
-      background-color: #3e8e41;
-    }
+      &:hover {
+        background-color: #3e8e41;
+      }
 
-    &:active {
-      ${activeStyles}
-  }`
+      &:active {
+        ${activeStyles}
+    }`
   }
+
   display: flex;
   margin-right: 15px;
   width: 40px;
@@ -149,7 +149,7 @@ class ControlHeader extends Component {
       <HeaderWrapper>
 
         <Controls>
-          <CategoryButton disabled={ this.props.locked } isOpen={ this.state.isOpen } onClick={() => this.changeMenuState()}>
+          <CategoryButton disabled={ this.props.locked } isOpen={ !this.props.locked && this.state.isOpen } onClick={() => this.changeMenuState()}>
             <CategoryLetter family={ this.props.currentCategory }></CategoryLetter> 
           </CategoryButton>
 
@@ -162,7 +162,7 @@ class ControlHeader extends Component {
         <OptionsSlider 
           current={[this.props.currentCategory]} 
           type={this.props.type} 
-          isOpen={this.state.isOpen} 
+          isOpen={!this.props.locked && this.state.isOpen} 
           loadedMenu={"category"} 
           items={this.props.categories}
         />

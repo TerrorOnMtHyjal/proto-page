@@ -7,6 +7,7 @@ const ModalControlWrapper = styled.div`
   flex-basis: 0;
   flex-grow: 1;
 `;
+
 const ModalButton = styled.button`
   justify-content: center;
   align-items: center;
