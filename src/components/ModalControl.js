@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Modal from 'react-modal';
 import styled from 'styled-components';
 
@@ -13,11 +14,13 @@ const modalStyles = {
     zIndex : 10
   },
   content : {
-    width: "100px",
-    height: "100px",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
+    width: "800px",
+    height: "600px",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    margin: "auto",
     border                     : '1px solid #ccc',
     background                 : '#fff',
     overflow                   : 'auto',
@@ -55,20 +58,43 @@ class ModalControl extends Component {
     this.setState({modalIsOpen: false});
   }
 
+  generateCode(fonts) {
+    let code = ``;
+
+    for(let type in fonts){
+      code += `${fonts[type].family}`;
+
+      if(fonts[type].variant != "regular"){
+        code += `:${fonts[type].variant.replace('talic','')}`;
+      }
+
+      code += `|`;
+    }
+
+    return `<link href="https://fonts.googleapis.com/css?family=${code.slice(0, -1)}" rel="stylesheet">;`
+  }
+
   render() {
     return (
       <div>
-        <button onClick={this.openModal}>Open Modal</button>
+        <button onClick={this.openModal}><i className="fa fa-code" aria-hidden="true"></i>Get Code</button>
         <Modal
           isOpen={this.state.modalIsOpen}
           onRequestClose={this.closeModal}
           contentLabel="This is modal, friend."
           style={modalStyles}
         >
+        <p>{this.generateCode(this.props.fonts)}</p>
         </Modal>
       </div>
     );
   }
 }
 
-export default ModalControl;
+const mapState = ({ appState }) => {
+  return {
+    fonts : appState.activeFonts
+  }
+};
+
+export default connect(mapState)(ModalControl);
