@@ -18,7 +18,6 @@ const Options = styled.div`
 const OptionButton = styled.div`
   cursor: pointer;
   user-select: none;
-  font-weight: bold;
   border-bottom: 1px solid rgba(39, 50, 89, 0.15);
   display: flex;
   align-items: center;

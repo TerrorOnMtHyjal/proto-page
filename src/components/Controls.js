@@ -6,6 +6,7 @@ import ElementControls from './ElementControls';
 
 const ControlsWrapper = styled.div`
   color: white;
+  font-family: 'Roboto', sans-serif;
 `;
 
 const RandomButton = styled.button`

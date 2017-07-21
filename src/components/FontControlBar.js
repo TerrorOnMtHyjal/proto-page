@@ -44,7 +44,6 @@ class FontControlBar extends Component {
     const ControlButton = styled.button`
       display: flex;
       align-items: center;
-      font-size: 1.1em;
       height: 40px;
       cursor: pointer;
       user-select: none;
@@ -67,11 +66,16 @@ class FontControlBar extends Component {
 
       & > i {
         margin-left: 10px;
-        width: 20%;
+        width: 15%;
+        color: #0D47A1;
       }
 
       & > p {
-        width: 80%;
+        width: 85%;
+        text-align: center;
+        font-size: 17px;
+        font-weight: bold;
+        margin-right: 5px;
       }
 
       &:hover {
