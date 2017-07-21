@@ -21,14 +21,30 @@ const Controls = styled.div`
 `;
 
 const CategoryButton = styled.button`
+  ${props => props.disabled ? `
+    background-color: #9E9E9E;
+    box-shadow: 0 2px #212121;
+    color: #757575;
+  `:`
+    background-color: #4CAF50;
+    box-shadow: 0 3px #2f6a31;
+    color: white;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #3e8e41;
+    }
+
+    &:active {
+      ${activeStyles}
+  }`
+  }
   display: flex;
   margin-right: 15px;
   width: 40px;
   height: 40px;
   max-width: 40px;
   max-height: 40px;
-  background-color: #4CAF50; 
-  color: white;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -36,16 +52,6 @@ const CategoryButton = styled.button`
   font-size: 30px;
   border: none;
   border-radius: 5px;
-  box-shadow: 0 3px #2f6a31;
-  cursor: pointer;
-
-  &:hover {
-    background-color: #3e8e41;
-  }
-
-  &:active {
-    ${activeStyles}
-  }
 
   ${props => props.isOpen && activeStyles}
 
@@ -143,8 +149,8 @@ class ControlHeader extends Component {
       <HeaderWrapper>
 
         <Controls>
-          <CategoryButton isOpen={this.state.isOpen} onClick={() => this.changeMenuState()}>
-            <CategoryLetter family={this.props.currentCategory}></CategoryLetter> 
+          <CategoryButton disabled={ this.props.locked } isOpen={ this.state.isOpen } onClick={() => this.changeMenuState()}>
+            <CategoryLetter family={ this.props.currentCategory }></CategoryLetter> 
           </CategoryButton>
 
           <FontControls>

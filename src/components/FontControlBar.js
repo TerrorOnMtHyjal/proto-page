@@ -42,20 +42,43 @@ class FontControlBar extends Component {
 
     const type = this.props;
     const ControlButton = styled.button`
+
+      ${props => props.disabled ? `
+        background-color: #9E9E9E;
+        box-shadow: 0 2px #212121;
+        color: #757575;
+
+        &:after {
+          background-color: #424242;
+        }
+      `:`
+        background-color: #1E88E5;
+        box-shadow: 0 2px #0D47A1;
+        color: white;
+        cursor: pointer;
+
+        &:after {
+          background-color: #FF5722;
+        }
+
+        &:hover {
+          background-color: #1976D2;
+        }
+
+        &:active {
+          ${activeStyles}
+        }`
+      }
+      
       position: relative;
       display: flex;
       align-items: center;
       height: 40px;
-      cursor: pointer;
       user-select: none;
       width: 50%;
-      background-color: #1E88E5;
-      color: white;
       text-align: center;
       text-decoration: none;
       border: none;
-      box-shadow: 0 2px #0D47A1;
-      cursor: pointer;
 
       ${props => props.controlType === "variant" ? `
           border-right: 1px solid #0D47A1;
@@ -77,7 +100,6 @@ class FontControlBar extends Component {
             z-index: 100;
             content: '${props.counter}';
             color: white;
-            background-color: #FF5722;
             width: 25px;
             height: 25px;
             border-radius: 15px;
@@ -90,7 +112,6 @@ class FontControlBar extends Component {
       & > i {
         margin-left: 10px;
         width: 15%;
-        color: #0D47A1;
       }
 
       & > p {
@@ -101,27 +122,19 @@ class FontControlBar extends Component {
         margin-right: 5px;
       }
 
-      &:hover {
-        background-color: #1976D2;
-      }
-
       &:focus {
         outline: 0;
-      }
-
-      &:active {
-        ${activeStyles}
       }
   `;
     return (
       <div>
 
         <ControlButtonsWrapper>
-          <ControlButton controlType="variant" counter={this.props.variant.length} onClick={() => this.changeMenuState("variant")}>
+          <ControlButton disabled={this.props.locked || this.props.variant.length == 1} controlType="variant" counter={this.props.variant.length} onClick={() => this.changeMenuState("variant")}>
             <i className="fa fa-italic fa-lg" aria-hidden="true"></i> 
             <p>{formatOption(type.currentVariant)}</p>
           </ControlButton>
-          <ControlButton controlType="size" onClick={() => this.changeMenuState("size")}>
+          <ControlButton disabled={this.props.locked} controlType="size" onClick={() => this.changeMenuState("size")}>
             <i className="fa fa-text-height fa-lg" aria-hidden="true"></i> 
             <p>{formatOption(type.currentSize)}</p>
           </ControlButton>
