@@ -1,3 +1,4 @@
+//Formats string for proper capitalization and spacing in the menu.
 export const formatOption =  option => {
   let formattedOption = option;
 

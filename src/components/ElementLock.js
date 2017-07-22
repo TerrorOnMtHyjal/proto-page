@@ -1,20 +1,21 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { toggleLock, updateActiveFont } from '../actions/actions';
-import Toggle from 'react-toggle-button';
-import styled from 'styled-components';
+import React, { Component }                 from 'react';
+import { connect }                          from 'react-redux';
+import Toggle                               from 'react-toggle-button';
+import styled                               from 'styled-components';
+
+import { toggleLock, updateActiveFont }     from '../actions/actions';
 
 const ElementLockWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  text-transform: uppercase;
-  font-weight: 700;
+  display:                                  flex;
+  justify-content:                          space-between;
+  text-transform:                           uppercase;
+  font-weight:                              700;
 `;
 
 const Icon = styled.span`
-  display: flex;
-  align-items: center;
-  font-size: 18px;
+  display:                                  flex;
+  align-items:                              center;
+  font-size:                                18px;
 `;
 
 class ElementLock extends Component {

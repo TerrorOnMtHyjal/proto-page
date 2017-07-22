@@ -10,6 +10,7 @@ export const UPDATE_ACTIVE_FONT = 'UPDATE_ACTIVE_FONT';
 export const REPLACE_ACTIVE_FONTS = 'REPLACE_ACTIVE_FONTS';
 export const TOGGLE_POPULAR = 'TOGGLE_POPULAR';
 
+
 export const seedFonts = () => (dispatch) => {
   dispatch(seedFontsRequested());
 
@@ -43,13 +44,6 @@ export const seedFonts = () => (dispatch) => {
     });
 };
 
-export const updateActiveFont = (option, element, updateType) => ({
-  type : UPDATE_ACTIVE_FONT,
-  option,
-  updateType,
-  element
-});
-
 function seedFontsRequested() {
   return {
     type : SEED_FONTS_REQUESTED,
@@ -73,43 +67,7 @@ function seedFontsError(err) {
   };
 }
 
-export const togglePopular = (bool) => {
-  return {
-    type : TOGGLE_POPULAR,
-    bool
-  }
-}
 
-export const applyFonts = () => (dispatch, getState) => {
-  const { header, subheader, paragraph } = getState().appState.activeFonts;
-
-  WebFont.load({
-    classes : false,
-    loading: function() {
-      dispatch(newFontsRequested());
-    },
-    active: function() {
-      dispatch(newFontsSuccessful());
-    },
-    google: {
-      families: [`${header.family}:${header.availableVariants.join()}`, `${subheader.family}:${subheader.availableVariants.join()}`, `${paragraph.family}:${paragraph.availableVariants.join()}`]
-    }
-  });
-}
-
-function newFontsRequested(){
-  return {
-    type : NEW_FONTS_REQUESTED,
-    isFetchingFonts : true
-  }
-}
-
-function newFontsSuccessful(){
-  return {
-    type : NEW_FONTS_SUCCESSFUL,
-    isFetchingFonts : false
-  }
-}
 
 export const randomizeFonts = () => (dispatch, getState) => {
   const {activeFonts, fontsLibrary, popular} = getState().appState;
@@ -145,4 +103,55 @@ function replaceActiveFonts(newFonts){
 
 function getRandomFont(category, popular){
   return popular ? category[Math.floor(Math.random()*(category.length / 4))] : category[Math.floor(Math.random()*category.length)];
+}
+
+//exported?!
+export const applyFonts = () => (dispatch, getState) => {
+  const { header, subheader, paragraph } = getState().appState.activeFonts;
+
+  WebFont.load({
+    classes : false,
+    loading: function() {
+      dispatch(newFontsRequested());
+    },
+    active: function() {
+      dispatch(newFontsSuccessful());
+    },
+    google: {
+      families: [`${header.family}:${header.availableVariants.join()}`, `${subheader.family}:${subheader.availableVariants.join()}`, `${paragraph.family}:${paragraph.availableVariants.join()}`]
+    }
+  });
+}
+
+function newFontsRequested(){
+  return {
+    type : NEW_FONTS_REQUESTED,
+    isFetchingFonts : true
+  }
+}
+
+function newFontsSuccessful(){
+  return {
+    type : NEW_FONTS_SUCCESSFUL,
+    isFetchingFonts : false
+  }
+}
+
+
+
+export const updateActiveFont = (option, element, updateType) => ({
+  type : UPDATE_ACTIVE_FONT,
+  option,
+  updateType,
+  element
+});
+
+
+
+
+export const togglePopular = (bool) => {
+  return {
+    type : TOGGLE_POPULAR,
+    bool
+  }
 }

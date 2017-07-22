@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
+import React, { Component }             from 'react';
+import styled                           from 'styled-components';
 
 const StyledMain = styled.main`
-  display: flex;
-  flex-direction: column;
-  width: 100vw;
+  display:                              flex;
+  flex-direction:                       column;
+  width:                                100vw;
 `;
 
 //put generation in a lifecycle function
@@ -18,17 +18,17 @@ class TemplateBuilder extends Component {
 
       const Row = styled.div`
         display: flex;
-        ${currentRow.rowStyle}
+        ${ currentRow.rowStyle }
       `;
 
       const InnerWrapper = styled.div`
-        ${currentRow.row.wrapper ? currentRow.row.wrapper.baseStyle : undefined};
-        ${currentRow.row.wrapper ? this.generateInnerMedias(currentRow.row.wrapper.medias) : undefined};
+        ${ currentRow.row.wrapper ? currentRow.row.wrapper.baseStyle : undefined }
+        ${ currentRow.row.wrapper ? this.generateInnerMedias(currentRow.row.wrapper.medias) : undefined }
       `;
 
       generatedTemplate.push(
-        <Row key={`Row${current}`}>
-          {currentRow.row.wrapper ? <InnerWrapper key={`${current}Inner`}> {currentRow.row.elements} </InnerWrapper> : currentRow.row.elements}
+        <Row key={ `Row${current}` }>
+          { currentRow.row.wrapper ? <InnerWrapper key={ `${current}Inner` }> { currentRow.row.elements } </InnerWrapper> : currentRow.row.elements }
         </Row>
       );
     }
@@ -52,7 +52,7 @@ class TemplateBuilder extends Component {
   render() { 
     return (
       <StyledMain>
-        {this.generateTemplate(this.props.template)}
+        { this.generateTemplate(this.props.template) }
       </StyledMain>
     );
   }

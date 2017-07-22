@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
-import { connect } from 'react-redux';
+import React, { Component }             from 'react';
+import { connect }                      from 'react-redux';
+import styled                           from 'styled-components';
 
 const strings = {
   header : [

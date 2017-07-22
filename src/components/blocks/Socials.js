@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
+import React, { Component }         from 'react';
+import styled                       from 'styled-components';
 
 const StyledSocials = styled.img`
-  width: 15%;
-  height: 15%;
-  margin-left: 50px;
+  width:                            15%;
+  height:                           15%;
+  margin-left:                      50px;
 `;
 
 class Socials extends Component {

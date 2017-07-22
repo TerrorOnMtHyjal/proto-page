@@ -1,59 +1,59 @@
-import React, { Component } from 'react';
-import styled from "styled-components";
+import React, { Component }                   from 'react';
+import styled                                 from "styled-components";
 
 class Navbar extends Component {
   render() {
 
     const NavbarWrapper = styled.div`
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin: 0 15%;
-      width: 70%;
+      display:                                flex;
+      justify-content:                        space-between;
+      align-items:                            center;
+      margin:                                 0 15%;
+      width:                                  70%;
 
       @media screen and (max-width: 768px){
-        width: 100%;
-        margin: 0 2%;
+        width:                                100%;
+        margin:                               0 2%;
       }
     `;
 
     const Logo = styled.div`
-      font-family: 'Changa', sans-serif;
-      font-weight: 600;
-      font-size: 3em;
+      font-family:                            'Changa', sans-serif;
+      font-weight:                            600;
+      font-size:                              3em;
 
       & > span {
-        font-family: 'Changa', sans-serif;
-        font-weight: 200;
+        font-family:                          'Changa', sans-serif;
+        font-weight:                          200;
       }
 
       @media screen and (max-width: 768px){
-        font-size: 2em;
+        font-size:                            2em;
       }
     `;
 
     const NavbarMenu = styled.ul`
-      text-align: center;
-      list-style-type: none;
+      text-align:                             center;
+      list-style-type:                        none;
 
       & > li {
-        font-family: 'Changa', sans-serif;
-        font-weight: 600;
-        display: inline-block;
-        padding-left: 20px;
+        font-family:                          'Changa', sans-serif;
+        font-weight:                          600;
+        display:                              inline-block;
+        padding-left:                         20px;
       }
 
       & > i {
-        display: none; 
+        display:                              none; 
       }
 
       @media screen and (max-width: 1150px){
         & > li {
-          display: none;
+          display:                            none;
         }
 
         & > i {
-          display: block;
+          display:                            block;
         }
       }
     `;
