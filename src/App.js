@@ -14,6 +14,7 @@ import { template }                  from './lib/templates';
 const CogWrapper = styled.div``;
 
 const PageWrapper = styled.div`
+  transition: all 0.5s ease-out !important;
   ${props => props.isOpen ? `
     transform: translate3d(0px, 0px, 0px) !important;
     
@@ -64,6 +65,7 @@ const menuStyles = {
     background:         '#bdc3c7'
   },
   bmMenuWrap: {
+    transition:         'all 0.5s ease-out',
     zIndex:             '3000'
   },
   bmMenu: {
