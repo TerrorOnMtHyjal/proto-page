@@ -1,62 +1,76 @@
 import React, { Component }                   from 'react';
 import styled                                 from "styled-components";
 
+const NavbarWrapper = styled.div`
+  position:                               absolute;
+  top:                                    0;
+  height:                                 75px;
+  width:                                  100vw;
+  padding:                                0 2%;
+  display:                                flex;
+  justify-content:                        space-between;
+  align-items:                            center;
+  font-family:                            'Changa', sans-serif;
+  z-index:                                1000;
+  background-color:                       transparent;
+
+  @media screen and (min-width: 320px){
+    padding: 0 5%;
+  }
+
+  @media screen and (min-width: 768px){
+    height: 100px;
+  }
+
+  @media screen and (min-width: 1400px){
+    padding: 0 10%;
+  }
+`;
+
+const Logo = styled.div`
+  font-weight:                            600;
+  font-size:                              2em;
+
+  & > span {
+    font-weight:                          200;
+  }
+
+  @media screen and (min-width: 480px){
+    font-size:                            2.5em;
+  }
+
+  @media screen and (min-width: 768px){
+    font-size:                            3em;
+  }
+`;
+
+const NavbarMenu = styled.ul`
+  text-align:                             center;
+  list-style-type:                        none;
+
+  & > li {
+    display:                              none;
+    padding-left:                         20px;
+    font-weight:                          600;
+  }
+
+  & > i {
+    display:                              block; 
+  }
+
+  @media screen and (min-width: 1150px){
+    & > li {
+      display:                            inline-block;
+    }
+
+    & > i {
+      display:                            none;
+    }
+  }
+`;
+
 class Navbar extends Component {
   render() {
-
-    const NavbarWrapper = styled.div`
-      font-family:                            'Changa', sans-serif;
-      display:                                flex;
-      justify-content:                        space-between;
-      align-items:                            center;
-      margin:                                 0 15%;
-      width:                                  70%;
-
-      @media screen and (max-width: 767px){
-        width:                                100%;
-        margin:                               0 2%;
-      }
-    `;
-
-    const Logo = styled.div`
-      font-weight:                            600;
-      font-size:                              3em;
-
-      & > span {
-        font-weight:                          200;
-      }
-
-      @media screen and (max-width: 767px){
-        font-size:                            2em;
-      }
-    `;
-
-    const NavbarMenu = styled.ul`
-      text-align:                             center;
-      list-style-type:                        none;
-
-      & > li {
-        font-weight:                          600;
-        display:                              inline-block;
-        padding-left:                         20px;
-      }
-
-      & > i {
-        display:                              none; 
-      }
-
-      @media screen and (max-width: 1150px){
-        & > li {
-          display:                            none;
-        }
-
-        & > i {
-          display:                            block;
-        }
-      }
-    `;
-
-
     return (
       <NavbarWrapper>
         <Logo>Proto<span>Page</span></Logo>

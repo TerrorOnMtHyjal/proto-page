@@ -8,8 +8,7 @@ import styled, { ThemeProvider }     from 'styled-components';
 import { seedFonts, applyFonts }     from './actions/actions';
 import Controls                      from './containers/Controls';
 import Menu                          from './components/Menu';
-import TemplateBuilder               from './components/TemplateBuilder';
-import { template }                  from './lib/templates';
+import Template                      from './containers/Template';
 
 
 const CogWrapper = styled.div``;
@@ -95,7 +94,7 @@ class App extends Component {
 
   componentDidMount(){
     const isOpen = true;
-    this.props.dispatch(toggleMenu(isOpen));
+    // this.props.dispatch(toggleMenu(isOpen));
   }
 
   generateTheme(elements){
@@ -141,7 +140,7 @@ class App extends Component {
 
 
           <PageWrapper isOpen={this.props.isOpen} id="page-wrap">
-            <TemplateBuilder template={template} />
+            <Template/>
           </PageWrapper>
 
         </div>
