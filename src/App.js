@@ -11,6 +11,7 @@ import Menu                          from './components/Menu';
 import TemplateBuilder               from './components/TemplateBuilder';
 import { template }                  from './lib/templates';
 
+
 const CogWrapper = styled.div``;
 
 const PageWrapper = styled.div`
@@ -96,12 +97,7 @@ class App extends Component {
     const isOpen = true;
     this.props.dispatch(toggleMenu(isOpen));
   }
-
-  onPageOpen(){
-    console.log("run");
-  }
-
-
+  
   render() {
     return (
       <div id="outer-container">
