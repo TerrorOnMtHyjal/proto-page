@@ -12,6 +12,7 @@
     "react-radio-group": "^3.0.2",
     "react-redux": "^5.0.5",
     "react-router": "^4.1.1",
+    "react-scripts": "1.0.10",
     "react-toggle": "^4.0.1",
     "react-toggle-button": "^2.1.0",
     "redux": "^3.7.1",
@@ -21,7 +22,7 @@
     "webfontloader": "^1.6.28"
   },
   "devDependencies": {
-    "react-scripts": "1.0.7"
+    "react-scripts": "1.0.10"
   },
   "scripts": {
     "start": "react-scripts start",

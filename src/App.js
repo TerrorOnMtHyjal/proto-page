@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { seedFonts, applyFonts } from './actions/actions';
+import {action as toggleMenu} from 'redux-burger-menu';
 import ReactLoading from 'react-loading';
 import Controls from './components/Controls';
 import TemplateBuilder from './containers/TemplateBuilder';
@@ -71,16 +72,15 @@ class App extends Component {
   }
 
   componentDidMount(){
-    this.setState = {
-      isOpen : true
-    };
+    const isOpen = true;
+    this.props.dispatch(toggleMenu(isOpen));
   }
 
 //move menu and styles to Menu.js, export entire component
   render() {
       return (
         <div id="outer-container">
-          <Menu isOpen={this.state.isOpen} customBurgerIcon={ <CogWrapper><i className="fa fa-cog fa-spin fa-3x" aria-hidden="true"></i></CogWrapper> } pageWrapId="page-wrap" outerContainerId="outer-container" styles={menuStyles}>
+          <Menu isOpen={true} customBurgerIcon={ <CogWrapper><i className="fa fa-cog fa-spin fa-3x" aria-hidden="true"></i></CogWrapper> } pageWrapId="page-wrap" outerContainerId="outer-container" styles={menuStyles}>
             <Controls />
           </Menu>
           <div id="page-wrap">
