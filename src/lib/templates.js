@@ -1,6 +1,5 @@
 import React                       from 'react';
 import FeatureCard                 from '../components/blocks/FeatureCard';
-import Socials                     from '../components/blocks/Socials';
 import Text                        from '../components/blocks/Text';
 import Navbar                      from '../components/blocks/Navbar';
 import Button                      from '../components/blocks/Button';
@@ -23,7 +22,6 @@ export const template = [
     rowStyle: `
       width:                       100vw;
       position:                    relative;
-      display:                     flex;
       align-items:                 center;
       background-image:            url(https://static.pexels.com/photos/186461/pexels-photo-186461.jpeg);
       background-attachment:       fixed;
@@ -47,9 +45,7 @@ export const template = [
         baseStyle: `
           z-index:                 10;
           display:                 flex;
-          align-items:             left;
           flex-flow:               column;
-          font-size:               16px;
           margin:                  105px 2% 0 2%;
 
           & > h1 {
@@ -94,9 +90,6 @@ export const template = [
   {
     rowStyle: `
       position:                   relative;
-      display:                    flex;
-      justify-content:            right;
-      width:                      100%;
       text-align:                 right;
       background:                 #fff;
       padding:                    50px 0;
@@ -160,8 +153,6 @@ export const template = [
   },
   {
     rowStyle: `
-      width:                      100%;
-      background-color:           white;
       margin:                     0 auto;
     `,
     row: {

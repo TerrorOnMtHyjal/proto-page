@@ -90,7 +90,7 @@ class App extends Component {
   
   componentWillMount(){
     this.props.dispatch(seedFonts());
-    this.props.dispatch(applyFonts());
+    this.props.dispatch(applyFonts(["header", "subheader", "paragraph"]));
   }
 
   componentDidMount(){

@@ -33,7 +33,6 @@ const OptionButton = styled.div`
   & > p {
     transition:                         padding-left 0.1s ease-in-out;
     padding-left:                       ${props => props.checked ? "10px" : undefined};
-
   }
 
   & > i {

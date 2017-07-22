@@ -5,6 +5,7 @@ class Navbar extends Component {
   render() {
 
     const NavbarWrapper = styled.div`
+      font-family:                            'Changa', sans-serif;
       display:                                flex;
       justify-content:                        space-between;
       align-items:                            center;
@@ -18,12 +19,10 @@ class Navbar extends Component {
     `;
 
     const Logo = styled.div`
-      font-family:                            'Changa', sans-serif;
       font-weight:                            600;
       font-size:                              3em;
 
       & > span {
-        font-family:                          'Changa', sans-serif;
         font-weight:                          200;
       }
 
@@ -37,7 +36,6 @@ class Navbar extends Component {
       list-style-type:                        none;
 
       & > li {
-        font-family:                          'Changa', sans-serif;
         font-weight:                          600;
         display:                              inline-block;
         padding-left:                         20px;

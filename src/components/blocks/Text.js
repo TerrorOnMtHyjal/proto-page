@@ -2,18 +2,22 @@ import React, { Component }             from 'react';
 import { connect }                      from 'react-redux';
 import styled                           from 'styled-components';
 
+const Highlight = styled.span`
+  color: #fcad26;
+`;
+
 const strings = {
   header : [
     `Eat meat over the cloud`,
     `Digital protein at the speed of internet`,
     `Bacon ipsum dolor amet swine sunt shank ball tip porchetta`,
     `Capicola ea pastrami, sausage corned beef`,
-    "Tongue Nulla Ham",
-    "Deserunt T-Bone",
-    "Ground Round",
+    'Tongue Nulla Ham',
+    'Deserunt T-Bone',
+    'Ground Round',
   ],
   subheader : [
-    <span>Startup bacon ipsum <span className="highlight">solutions</span> and <span className="highlight">deliverable</span> ham technologies</span>,
+    <span>Startup bacon ipsum <Highlight>solutions</Highlight> and <Highlight>deliverable</Highlight> ham technologies</span>,
     `Deus ex pork. Instant delivery. All we need is your mouth.`
     // `Laborum ullamco nisi, shank nulla meatloaf brisket t-bone shoulder boudin eu shankle sunt.`,
      //`Startup bacon ipsum solutions and deliverable ham technologies.`,
@@ -58,13 +62,9 @@ class Text extends Component {
       font-weight: ${weight};
       font-style: ${style};
       font-size: ${this.props.scale ? size * this.props.scale : size}%;
-      line-height: ${(this.props.scale ? 16 * this.props.scale : 16) * 2}px;
+      line-height: ${(this.props.scale ? 18 * this.props.scale : 18) * 2}px;
       margin: 0;
       padding: 0;
-
-      & .highlight {
-        color: #fcad26;
-      }
     `;
 
     return (

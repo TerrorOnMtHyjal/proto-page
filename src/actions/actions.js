@@ -90,8 +90,10 @@ export const randomizeFonts = () => (dispatch, getState) => {
     }
   }
 
-  dispatch(replaceActiveFonts(newFonts));
-  dispatch(applyFonts());
+  const isUpdateable = Object.keys(newFonts).length > 0;
+
+  isUpdateable && dispatch(replaceActiveFonts(newFonts));
+  isUpdateable && dispatch(applyFonts(Object.keys(newFonts)));
 }
 
 function replaceActiveFonts(newFonts){
@@ -106,8 +108,15 @@ function getRandomFont(category, popular){
 }
 
 //exported?!
-export const applyFonts = () => (dispatch, getState) => {
-  const { header, subheader, paragraph } = getState().appState.activeFonts;
+export const applyFonts = (elements) => (dispatch, getState) => {
+  const activeFonts = getState().appState.activeFonts;
+  const fontsToRequest = [];
+
+  elements.forEach(element => {
+    const currentElement = activeFonts[element];
+
+    fontsToRequest.push(`${currentElement.family}:${currentElement.availableVariants.join()}`)
+  });
 
   WebFont.load({
     classes : false,
@@ -118,7 +127,7 @@ export const applyFonts = () => (dispatch, getState) => {
       dispatch(newFontsSuccessful());
     },
     google: {
-      families: [`${header.family}:${header.availableVariants.join()}`, `${subheader.family}:${subheader.availableVariants.join()}`, `${paragraph.family}:${paragraph.availableVariants.join()}`]
+      families: fontsToRequest
     }
   });
 }
