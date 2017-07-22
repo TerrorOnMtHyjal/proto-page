@@ -13,6 +13,35 @@ import { template }                  from './lib/templates';
 
 const CogWrapper = styled.div``;
 
+const PageWrapper = styled.div`
+  ${props => props.isOpen ? `
+    transform: translate3d(0px, 0px, 0px) !important;
+    
+    @media only screen and (min-width: 600px){
+      transform: translate3d(300px, 0px, 0px) !important;
+    }
+
+    @media only screen and (min-width: 768px){
+      transform: translate3d(200px, 0px, 0px) !important;
+    }
+
+    @media only screen and (min-width: 900px){
+      transform: translate3d(180px, 0px, 0px) !important;
+    }
+
+    @media only screen and (min-width: 1050px){
+      transform: translate3d(160px, 0px, 0px) !important;
+    }
+
+    @media only screen and (min-width: 1150px){
+      transform: translate3d(150px, 0px, 0px) !important;
+    }
+    `:`
+      transform: translate3d(0px, 0px, 0px) !important;
+    `
+  };
+`;
+
 const menuStyles = {
   bmBurgerButton: {
     position:           'fixed',
@@ -63,8 +92,11 @@ class App extends Component {
 
   componentDidMount(){
     const isOpen = true;
-
     this.props.dispatch(toggleMenu(isOpen));
+  }
+
+  onPageOpen(){
+    console.log("run");
   }
 
 
@@ -83,9 +115,9 @@ class App extends Component {
         </Menu>
 
 
-        <div id="page-wrap">
+        <PageWrapper isOpen={this.props.isOpen} id="page-wrap">
           <TemplateBuilder template={template} />
-        </div>
+        </PageWrapper>
 
 
       </div>
@@ -93,9 +125,10 @@ class App extends Component {
   }
 }
 
-const mapState = ({ appState }) => ({
+const mapState = ({ appState, burgerMenu }) => ({
   isFetchingFonts:  appState.isFetchingFonts,
-  isFetchingSeed:   appState.isFetchingSeed
+  isFetchingSeed:   appState.isFetchingSeed,
+  isOpen : burgerMenu.isOpen
 });
 
 export default connect(mapState)(App);

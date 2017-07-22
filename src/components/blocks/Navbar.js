@@ -11,7 +11,7 @@ class Navbar extends Component {
       margin:                                 0 15%;
       width:                                  70%;
 
-      @media screen and (max-width: 768px){
+      @media screen and (max-width: 767px){
         width:                                100%;
         margin:                               0 2%;
       }
@@ -27,7 +27,7 @@ class Navbar extends Component {
         font-weight:                          200;
       }
 
-      @media screen and (max-width: 768px){
+      @media screen and (max-width: 767px){
         font-size:                            2em;
       }
     `;
