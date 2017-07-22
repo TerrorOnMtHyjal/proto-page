@@ -14,7 +14,6 @@ export const template = [
       z-index:                     1000;
       height:                      105px;
       background-color:            transparent;
-      color:                       white;
     `,
     row: {
       elements:                    [<Navbar key="navbar"/>]
@@ -31,7 +30,6 @@ export const template = [
       background-position:         100%;
       background-repeat:           no-repeat;
       background-size:             cover;
-      color :                      white;
 
       &:before {
         content:                   '';

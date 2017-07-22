@@ -13,7 +13,7 @@ const strings = {
     "Ground Round",
   ],
   subheader : [
-    <span>Startup bacon ipsum <span>solutions</span> and <span>deliverable</span> ham technologies</span>,
+    <span>Startup bacon ipsum <span className="highlight">solutions</span> and <span className="highlight">deliverable</span> ham technologies</span>,
     `Deus ex pork. Instant delivery. All we need is your mouth.`
     // `Laborum ullamco nisi, shank nulla meatloaf brisket t-bone shoulder boudin eu shankle sunt.`,
      //`Startup bacon ipsum solutions and deliverable ham technologies.`,
@@ -62,17 +62,8 @@ class Text extends Component {
       margin: 0;
       padding: 0;
 
-      & > span {
-        font-family: inherit;
-        font-weight: inherit;
-        font-style: inherit;
-      }
-
-      & > span > span {
-        font-family: inherit;
-        font-weight: inherit;
-        font-style: inherit;
-        color: #fce326;
+      & .highlight {
+        color: #fcad26;
       }
     `;
 

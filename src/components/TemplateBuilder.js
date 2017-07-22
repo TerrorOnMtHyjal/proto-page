@@ -5,6 +5,7 @@ const StyledMain = styled.main`
   display:                              flex;
   flex-direction:                       column;
   width:                                100vw;
+  color:                                white;
 `;
 
 //put generation in a lifecycle function
