@@ -107,7 +107,6 @@ function getRandomFont(category, popular){
   return popular ? category[Math.floor(Math.random()*(category.length / 4))] : category[Math.floor(Math.random()*category.length)];
 }
 
-//exported?!
 export const applyFonts = (elements) => (dispatch, getState) => {
   const activeFonts = getState().appState.activeFonts;
   const fontsToRequest = [];

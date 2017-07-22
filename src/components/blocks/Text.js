@@ -37,46 +37,33 @@ const strings = {
 }
 
 class Text extends Component {
+
+  componentWillUnmount(){
+    console.log("see ya")
+  }
   
-  render(){
-    const {family, variant, size} = this.props[this.props.type];  
+  render(){ 
     const Tag = this.props.tag;
     const content = strings[this.props.type][this.props.string];
-    let weight = variant.replace(/\D/g,'');
-    let style = variant.replace(/[0-9]/g, '');    
-
-    if(variant === "regular"){
-      weight = "normal";
-      style = "normal";
-    } else if(variant === "italic"){
-      weight = "normal";
-      style = "italic";
-    }
 
     const StyledTag = styled(Tag)`
       ${this.props.rules};
     `;
 
     const Scaler = styled.span`
-      font-family: ${family};
-      font-weight: ${weight};
-      font-style: ${style};
-      font-size: ${this.props.scale ? size * this.props.scale : size}%;
-      line-height: ${(this.props.scale ? 18 * this.props.scale : 18) * 2}px;
-      margin: 0;
-      padding: 0;
+      font-family: ${props => props.theme[this.props.type].family};
+      font-weight: ${props => props.theme[this.props.type].weight};
+      font-style: ${props => props.theme[this.props.type].style};
+      font-size: ${props => props.theme[this.props.type].size}%;
+      line-height: 1em;
+      opacity: ${props => props.loading ? '0' : '1'};
+      transition: all 0.25 ease-in;
     `;
 
     return (
-      <StyledTag><Scaler className="text">{content}</Scaler></StyledTag>
+      <StyledTag><Scaler>{content}</Scaler></StyledTag>
     )
   }
 }
 
-const mapState = (state) => ({
-  header : state.appState.activeFonts.header,
-  subheader : state.appState.activeFonts.subheader,
-  paragraph : state.appState.activeFonts.paragraph
-});
-
-export default connect(mapState)(Text);
+export default Text;

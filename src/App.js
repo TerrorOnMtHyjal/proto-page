@@ -3,7 +3,7 @@ import { connect }                   from 'react-redux';
 import Joyride                       from 'react-joyride';
 import {action as toggleMenu}        from 'redux-burger-menu';
 import ReactLoading                  from 'react-loading';
-import styled                        from 'styled-components';
+import styled, { ThemeProvider }     from 'styled-components';
 
 import { seedFonts, applyFonts }     from './actions/actions';
 import Controls                      from './containers/Controls';
@@ -97,28 +97,57 @@ class App extends Component {
     const isOpen = true;
     this.props.dispatch(toggleMenu(isOpen));
   }
+
+  generateTheme(elements){
+    const newTheme = {}
+
+    for(let current in elements){
+      const { family, variant, size } = elements[current];
+      let weight = variant.replace(/\D/g,'');
+      let style = variant.replace(/[0-9]/g, '');
+
+      if(variant === "regular"){
+        weight = "normal";
+        style = "normal";
+      } else if(variant === "italic"){
+        weight = "normal";
+        style = "italic";
+      }
+
+      newTheme[current] = {
+        family,
+        weight,
+        variant,
+        style,
+        size
+      };
+    }
+    return newTheme;
+  }
   
   render() {
     return (
-      <div id="outer-container">
+      <ThemeProvider theme={this.generateTheme(this.props.activeFonts)}>
+        <div id="outer-container">
 
 
-        <Menu 
-          customBurgerIcon={ <CogWrapper><i className="fa fa-cog fa-spin fa-3x" aria-hidden="true"></i></CogWrapper> } 
-          pageWrapId="page-wrap" 
-          outerContainerId="outer-container" 
-          styles={ menuStyles }
-        >
-          <Controls />
-        </Menu>
+          <Menu 
+            customBurgerIcon={ <CogWrapper><i className="fa fa-cog fa-spin fa-3x" aria-hidden="true"></i></CogWrapper> } 
+            pageWrapId="page-wrap" 
+            outerContainerId="outer-container" 
+            styles={ menuStyles }
+          >
+            <Controls />
+          </Menu>
 
 
-        <PageWrapper isOpen={this.props.isOpen} id="page-wrap">
-          <TemplateBuilder template={template} />
-        </PageWrapper>
+          <PageWrapper isOpen={this.props.isOpen} id="page-wrap">
+            <TemplateBuilder template={template} />
+          </PageWrapper>
 
 
-      </div>
+        </div>
+      </ThemeProvider>
     );
   }
 }
@@ -126,7 +155,8 @@ class App extends Component {
 const mapState = ({ appState, burgerMenu }) => ({
   isFetchingFonts:  appState.isFetchingFonts,
   isFetchingSeed:   appState.isFetchingSeed,
-  isOpen : burgerMenu.isOpen
+  isOpen: burgerMenu.isOpen,
+  activeFonts: appState.activeFonts
 });
 
 export default connect(mapState)(App);
