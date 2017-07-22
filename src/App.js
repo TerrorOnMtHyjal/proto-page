@@ -130,7 +130,6 @@ class App extends Component {
       <ThemeProvider theme={this.generateTheme(this.props.activeFonts)}>
         <div id="outer-container">
 
-
           <Menu 
             customBurgerIcon={ <CogWrapper><i className="fa fa-cog fa-spin fa-3x" aria-hidden="true"></i></CogWrapper> } 
             pageWrapId="page-wrap" 
@@ -144,7 +143,6 @@ class App extends Component {
           <PageWrapper isOpen={this.props.isOpen} id="page-wrap">
             <TemplateBuilder template={template} />
           </PageWrapper>
-
 
         </div>
       </ThemeProvider>
