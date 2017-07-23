@@ -4,71 +4,58 @@ import styled                       from 'styled-components';
 
 
 const StyledButton = styled.a`
+  font-family: "Roboto", serif;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #fcad26;
 	background:                       none;
 	cursor:                           pointer;
-	padding:                          0.75em 2.5em 0.75em 0.75em;
+	padding:                          1em;
 	overflow:                         hidden;
-	display:                          inline-block;
-	margin:                           50px 0;
+	margin:                           50px 0 75px 0;
 	text-transform:                   uppercase;
 	letter-spacing:                   1px;
 	font-weight:                      700;
 	outline:                          none;
-	position:                         relative;
-	transition:                       all 0.3s;
-  background:                       #fcad26;
+  background:                       transparent;
 	color:                            #fff;
-  width:                            6em;
-  font-size:                        0.75em;
+  width:                            30%;
+  min-width: 150px;
+  font-size:                        1.1rem;
+  transition: border 0.35s ease;
+
+  &::after {
+    position: absolute;
+    content: '';
+    width: 0;
+    height: 3px;
+    bottom: 0;
+    left: 0;
+    transition: all 0.35s ease;
+    background-color: #fcad26;
+  }
 
   &:hover {
-	  background:                     #f29e0d;
+    border: 1px solid transparent;
+  }
+
+  &:hover::after {
+    width: 100%;
   }
 
   &:active {
-    background:                     #f58500;
-    top:                            2px;
-}
-
-  &:before{
-    position:                       absolute;
-	  height:                         100%;
-	  left:                           auto;
-    right:                          -0.5em;
-	  top:                            0;
-	  line-height:                    2.2;
-	  font-size:                      1.5em;
-	  width:                          60px;
-	  z-index:                        2;
-    content:                        "\f178";
-    font-family:                    "FontAwesome";
+    background:                     #f88500;
   }
 
-  &:after{
-    width:                          38%;
-    height:                         200%;
-    background:                     rgba(255,255,255,0.1);
-    z-index:                        1;
-    right:                          0;
-    top:                            0;
-    margin:                         -5px 0 0 -5px;
-    transform-origin:               0 0;
-	  transform:                      rotate(-20deg);
-    content:                        '';
-	  position:                       absolute;
-    transition:                     all 0.3s;
-  }
-
-  &:hover:after{
-    width:                          40%;
-  }
 `;
 
 class Button extends Component {
   render() {
     return (
       <StyledButton>
-        <span>PRIME RIB</span> 
+        <span>WE HAVE IT</span> 
       </StyledButton>
     );
   }

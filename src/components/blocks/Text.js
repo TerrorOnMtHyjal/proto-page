@@ -17,7 +17,7 @@ const strings = {
     'Ground Round',
   ],
   subheader : [
-    <span>Startup bacon ipsum <Highlight>solutions</Highlight> and <Highlight>deliverable</Highlight> ham technologies</span>,
+    <span>Startup bacon adhoc <Highlight>solutions</Highlight> and <Highlight>deliverable</Highlight> ham technologies</span>,
     `Deus ex pork. Instant delivery. All we need is your mouth.`
     // `Laborum ullamco nisi, shank nulla meatloaf brisket t-bone shoulder boudin eu shankle sunt.`,
      //`Startup bacon ipsum solutions and deliverable ham technologies.`,

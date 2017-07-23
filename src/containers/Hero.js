@@ -7,7 +7,6 @@ import Button from '../components/blocks/Button';
 const HeroWrapper = styled.div`
   width:                       100vw;
   position:                    relative;
-  align-items:                 center;
   background-image:            url(https://static.pexels.com/photos/186461/pexels-photo-186461.jpeg);
   background-attachment:       fixed;
   background-position:         100%;
@@ -27,39 +26,51 @@ const HeroWrapper = styled.div`
 `;
 
 const TextWrapper = styled.div`
-  z-index:                    10;
   display:                    flex;
   flex-flow:                  column;
-  margin:                     105px 2% 0 2%;
+  font-size: 22px;
+  margin-left: 2%;
+  padding-top: 75px;
+  z-index: 10;
+  width: 15em;
+
+  & > h1, h3 {
+    z-index: 1;
+  }
 
   & > h1 {
-    font-size:                2.5em;
+    margin-bottom: 0.5em;
   }
 
   & > h3 {
-    margin-top:               30px;
+    font-size: 0.9em;
+  }
+
+  @media screen and (min-width: 320px){
+    margin-left: 5%;
   }
 
   @media screen and (min-width: 480px){
-    font-size:             20px;
+    font-size: 26px; 
   }
+
+  @media screen and (min-width: 550px){
+
+  }
+
   @media screen and (min-width: 768px){
-    font-size:             28px;
-    margin:                105px 15% 0 15%;
-    width:                 70%;
+    padding-top: 100px;
+    font-size: 34px;
+
+    & > h3 {
+      font-size: 0.75em;
+    }
   }
-  @media screen and (min-width: 1024px){
-    font-size:             30px;
-    margin:                150px 15% 0 15%;
-    width:                 60%;
+  @media screen and (min-width: 1150px){
+    font-size: 42px;
   }
-  @media screen and (min-width: 1200px){
-    width:                 50%;
-  }
-  @media screen and (min-width: 1650px){
-    font-size:             32px;
-    margin:                150px 15% 75px 15%;
-    width:                 35%;
+  @media screen and (min-width: 1400px){
+    margin: 0 10%;
   }
 `;
 

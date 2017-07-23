@@ -63,7 +63,7 @@ class Call extends Component {
     return (
       <CallWrapper>
         <TextWrapper>
-          <Text type="header" string="1" tag="h1"/>, 
+          <Text type="header" string="1" tag="h1"/> 
           <Text type="subheader" string="1" tag="h3"/>
         </TextWrapper>
       </CallWrapper>
