@@ -60,33 +60,30 @@ const ControlButton = styled.button`
   border:                                   none;
   border-radius:                            0 4px 4px 0;
 
-
-  ${props => props.controlType === "variant" && props.counter > 1 ? `
-      &::after {
-        transition:                         background-color 0.25s ease-out, color 0.25s ease-out;
-        position:                           absolute;
-        left:                               -10px;
-        top:                                -12.5px;
-        display:                            flex;
-        justify-content:                    center;
-        align-items:                        center;
-        font-size:                          14px;
-        font-weight:                        bold;
-        font-style:                         italic;
-        z-index:                            100;
-        content:                            '${props.counter}';
-        width:                              25px;
-        height:                             25px;
-        border-radius:                      15px;
-      }`
-    : `&::after {}`
-  }
-
-  ${props => props.controlType === props.state.loadedMenu && props.state.isOpen && !props.disabled ? activeStyles : undefined};
-
   &:focus {
     outline:                                0;
   }
+
+  &::after {
+    display:                            inline;
+    transition:                         background-color 0.25s ease-out, color 0.25s ease-out;
+    position:                           absolute;
+    left:                               -10px;
+    top:                                -12.5px;
+    display:                            flex;
+    justify-content:                     center;
+    align-items:                         center;
+    font-size:                           14px;
+    font-weight:                         bold;
+    font-style:                          italic;
+    z-index:                             100;
+    width:                              25px;
+    height:                             25px;
+    border-radius:                       15px;
+    content: 'h';
+  }
+
+  ${props => props.controlType === props.state.loadedMenu && props.state.isOpen && !props.disabled ? activeStyles : undefined};
 `;
 
 const Icon = styled.i`
@@ -126,8 +123,18 @@ class FontControlBar extends Component {
 
     const variantButtonStyles = {
       borderRight:                         "1px solid #0D47A1",
-      borderRadius:                        "4px 0 0 4px"
+      borderRadius:                        "4px 0 0 4px",
+      '&::after': {
+        fontSize: "40px",
+        content: "'10'"
+      },
     };
+
+    const sizeButtonStyles = {
+      '&::after': {
+        display: "none"
+      },
+    }
 
     return (
       <div>
@@ -138,7 +145,6 @@ class FontControlBar extends Component {
             state={this.state} 
             disabled={ variantIsDisabled } 
             controlType="variant" 
-            counter={ variant.length } 
             onClick={ () => this.changeMenuState("variant") }
           >
             <Icon className="fa fa-italic fa-lg" aria-hidden="true"></Icon> 
@@ -146,6 +152,7 @@ class FontControlBar extends Component {
           </ControlButton>
 
           <ControlButton 
+            style={sizeButtonStyles}
             state={this.state} 
             disabled={sizeIsDisabled} 
             controlType="size" 
