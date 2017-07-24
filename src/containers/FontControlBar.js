@@ -60,48 +60,45 @@ const ControlButton = styled.button`
   border:                                   none;
   border-radius:                            0 4px 4px 0;
 
-  &:focus {
-    outline:                                0;
-  }
 
-  &::after {
-    display:                            inline;
-    transition:                         background-color 0.25s ease-out, color 0.25s ease-out;
-    position:                           absolute;
-    left:                               -10px;
-    top:                                -12.5px;
-    display:                            flex;
-    justify-content:                     center;
-    align-items:                         center;
-    font-size:                           14px;
-    font-weight:                         bold;
-    font-style:                          italic;
-    z-index:                             100;
-    width:                              25px;
-    height:                             25px;
-    border-radius:                       15px;
-    content: 'h';
+  ${props => props.controlType === "variant" && props.counter > 1 ? `
+      &::after {
+        transition:                         background-color 0.25s ease-out, color 0.25s ease-out;
+        position:                           absolute;
+        left:                               -10px;
+        top:                                -12.5px;
+        display:                            flex;
+        justify-content:                    center;
+        align-items:                        center;
+        font-size:                          14px;
+        font-weight:                        bold;
+        font-style:                         italic;
+        z-index:                            100;
+        content:                            '${props.counter}';
+        width:                              25px;
+        height:                             25px;
+        border-radius:                      15px;
+      }`
+    : `&::after {}`
   }
 
   ${props => props.controlType === props.state.loadedMenu && props.state.isOpen && !props.disabled ? activeStyles : undefined};
 
-
-  & > i {
-    margin-left:                            10px;
-    width:                                  15%;
-  }
-
-  & > p {
-    width:                                  85%;
-    text-align:                             center;
-    font-size:                              17px;
-    font-weight:                            bold;
-    margin-right:                           5px;
-  }
-
   &:focus {
     outline:                                0;
   }
+`;
+
+const Icon = styled.i`
+  margin-left:                            10px;
+  width:                                  15%;
+`;
+
+const CurrentSelection = styled.p`
+  width:                                  85%;
+  text-align:                             center;
+  font-size:                              17px;
+  font-weight:                            bold;
 `;
 
 class FontControlBar extends Component {
@@ -129,20 +126,8 @@ class FontControlBar extends Component {
 
     const variantButtonStyles = {
       borderRight:                         "1px solid #0D47A1",
-      borderRadius:                        "4px 0 0 4px",
-      '&::after': {
-        fontSize: "40px",
-        content: "'10'"
-      },
+      borderRadius:                        "4px 0 0 4px"
     };
-
-    const sizeButtonStyles = {
-      '&::after': {
-        display: "none"
-      },
-    }
-    
-    const type = this.props;
 
     return (
       <div>
@@ -151,26 +136,23 @@ class FontControlBar extends Component {
           <ControlButton
             style={variantButtonStyles} 
             state={this.state} 
-            disabled={ this.props.locked || this.props.variant.length == 1 } 
+            disabled={ variantIsDisabled } 
             controlType="variant" 
+            counter={ variant.length } 
             onClick={ () => this.changeMenuState("variant") }
           >
             <Icon className="fa fa-italic fa-lg" aria-hidden="true"></Icon> 
             <CurrentSelection>{formatOption(currentVariant)}</CurrentSelection>
-            <i className="fa fa-italic fa-lg" aria-hidden="true"></i> 
-            <p>{formatOption(type.currentVariant)}</p>
           </ControlButton>
 
           <ControlButton 
-            style={sizeButtonStyles}
             state={this.state} 
-            disabled={this.props.locked} 
-            controlType="size" onClick={() => this.changeMenuState("size")}
+            disabled={sizeIsDisabled} 
+            controlType="size" 
+            onClick={() => this.changeMenuState("size")}
           >
             <Icon className="fa fa-text-height fa-lg" aria-hidden="true"></Icon> 
             <CurrentSelection>{formatOption(currentSize)}</CurrentSelection>
-            <i className="fa fa-text-height fa-lg" aria-hidden="true"></i> 
-            <p>{formatOption(type.currentSize)}</p>
           </ControlButton>
 
         </ControlButtonsWrapper>
