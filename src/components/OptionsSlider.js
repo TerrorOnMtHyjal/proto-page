@@ -28,58 +28,45 @@ const OptionButton = styled.div`
   height:                               ${OPTION_HEIGHT}px;
   padding:                              ${OPTION_VERTICAL_PADDING}px ${OPTION_HORIZONTAL_PADDING}px;
   outline:                              none;
-  background-color:                     ${props => props.checked ? "#0c6ba7" : "#0e83cd"};
-  
-  & > p {
-    transition:                         padding-left 0.1s ease-in-out;
-    padding-left:                       ${props => props.checked ? "10px" : undefined};
-  }
-
-  ${props => props.checked && `& > i {opacity: 0.2;}`}
+  background-color:                     #0e83cd;
+  transition:                           padding-left 0.1s ease-in-out;
 
   &:hover {
-    background-color:                   ${props => !props.checked ? "orange" : undefined};
-
-    & > p {
-      padding-left:                     ${props => !props.checked ? "10px" : undefined}
-    }
+    background-color:                   orange;
+    padding-left: 30px;
   }
 `;
 
-class OptionsSlider extends Component {
+const Icon = styled.div`
+  opacity: 0.2;
+`;
 
-  generateOptions(items){
+class OptionsSlider extends Component {
+  generateItems(items){
     return items.map(item => {
-      const checkedItem = this.props.current.includes(item);
-         
-      if(checkedItem){
-        return(
-          <OptionButton 
-            checked 
-            key={ `${item}${this.props.type}` } 
-            onClick={ () => this.props.dispatch(updateActiveFont(item, this.props.type, this.props.loadedMenu)) }
-          >
-            <p>{ formatOption(item) }</p> 
-            <i className="fa fa-check fa-lg" aria-hidden="true"></i> 
-          </OptionButton>
-        );
-      } else {
-        return (
-          <OptionButton 
-            key={ `${item}${this.props.type}` } 
-            onClick={ () => this.props.dispatch(updateActiveFont(item, this.props.type, this.props.loadedMenu)) }
-          > 
-            <p>{ formatOption(item) }</p>
-          </OptionButton>
-        );
-      }
+      const isChecked = this.props.current.includes(item);
+      const checkedStyles = {
+        backgroundColor: "#0c6ba7",
+        paddingLeft: "30px",
+      };
+
+      return (
+        <OptionButton 
+        style={isChecked ? checkedStyles : undefined}
+        key={ `${item}${this.props.type}` } 
+        onClick={ () => this.props.dispatch(updateActiveFont(item, this.props.type, this.props.loadedMenu))}
+        >
+          <p>{formatOption(item)}</p>
+          {isChecked && <Icon className="fa fa-check fa-lg"/>}
+        </OptionButton>
+      );
     });
   }
 
   render() {
     return (
       <Options isOpen={ this.props.isOpen } items={ this.props.items }>
-        { this.generateOptions(this.props.items) }
+        { this.generateItems(this.props.items) }
       </Options>
     );
   }

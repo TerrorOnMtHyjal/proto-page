@@ -43,12 +43,12 @@ const Scaler = styled.span`
 
 class Text extends Component { 
   render(){
-
-    const style = {
-      fontFamily: this.props.theme[this.props.type].family,
-      fontWeight: this.props.theme[this.props.type].weight,
-      fontStyle: this.props.theme[this.props.type].style,
-      fontSize: this.props.theme[this.props.type].size + "%",
+    const {family, style, weight, size} = this.props.theme[this.props.type];
+    const styles = {
+      fontFamily: family,
+      fontWeight: weight,
+      fontStyle: style,
+      fontSize: size + "%",
       lineHeight: "1em"
     };
 
@@ -56,7 +56,7 @@ class Text extends Component {
     const content = strings[this.props.type][this.props.string];
 
     return (
-      <Tag><Scaler style={style} type={this.props.type}>{content}</Scaler></Tag>
+      <Tag><Scaler style={styles} type={this.props.type}>{content}</Scaler></Tag>
     )
   }
 }
