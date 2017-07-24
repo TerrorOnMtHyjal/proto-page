@@ -125,9 +125,9 @@ class FontControlBar extends Component {
   }
 
   render() {
-    const type = this.props;
-    const variantIsDisabled = this.props.locked || this.props.variant.length == 1;
-    const sizeIsDisabled = this.props.locked;
+    const {type, locked, variant, currentVariant, currentSize} = this.props;
+    const variantIsDisabled = locked || variant.length == 1;
+    const sizeIsDisabled = locked;
 
     return (
       <div>
@@ -137,11 +137,11 @@ class FontControlBar extends Component {
             state={this.state} 
             disabled={ variantIsDisabled } 
             controlType="variant" 
-            counter={ this.props.variant.length } 
+            counter={ variant.length } 
             onClick={ () => this.changeMenuState("variant") }
           >
             <Icon className="fa fa-italic fa-lg" aria-hidden="true"></Icon> 
-            <CurrentSelection>{formatOption(type.currentVariant)}</CurrentSelection>
+            <CurrentSelection>{formatOption(currentVariant)}</CurrentSelection>
           </ControlButton>
 
           <ControlButton 
@@ -151,15 +151,15 @@ class FontControlBar extends Component {
             onClick={() => this.changeMenuState("size")}
           >
             <Icon className="fa fa-text-height fa-lg" aria-hidden="true"></Icon> 
-            <CurrentSelection>{formatOption(type.currentSize)}</CurrentSelection>
+            <CurrentSelection>{formatOption(currentSize)}</CurrentSelection>
           </ControlButton>
 
         </ControlButtonsWrapper>
 
         <OptionsSlider 
           type={this.props.type} 
-          current={[this.props.currentVariant, this.props.currentSize]} 
-          isOpen={!this.props.locked && this.state.isOpen} 
+          current={[currentVariant, currentSize]} 
+          isOpen={!locked && this.state.isOpen} 
           loadedMenu={this.state.loadedMenu} 
           items={this.props[this.state.loadedMenu]} 
         />
