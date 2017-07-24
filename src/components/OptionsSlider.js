@@ -11,7 +11,6 @@ const OPTION_VERTICAL_PADDING =         10;
 const OPTION_HORIZONTAL_PADDING =       20;
 
 const Options = styled.div`
-  height:                               ${props => props.isOpen ? `${props.items.length * OPTION_HEIGHT}px` : "0px"};
   transition:                           height 0.5s ease-in-out;
   overflow-y:                           hidden;
   margin-top:                           10px;
