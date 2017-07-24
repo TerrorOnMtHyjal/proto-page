@@ -24,7 +24,7 @@ const ControlButton = styled.button`
     color:                                  #757575;
     cursor:                                 disabled;
 
-    &:after {
+    &::after {
       color:                                gray;
       background-color:                     #424242;
     }
@@ -34,7 +34,7 @@ const ControlButton = styled.button`
     color:                                  white;
     cursor:                                 pointer;
 
-    &:after {
+    &::after {
       color:                                white;
       background-color:                     #FF5722;
     }
@@ -160,7 +160,7 @@ class FontControlBar extends Component {
         <OptionsSlider 
           type={this.props.type} 
           current={[currentVariant, currentSize]} 
-          isOpen={!locked && this.state.isOpen} 
+          isOpen={(!locked && variant.length > 1) && this.state.isOpen} 
           loadedMenu={this.state.loadedMenu} 
           items={this.props[this.state.loadedMenu]} 
         />
