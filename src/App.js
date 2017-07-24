@@ -11,7 +11,9 @@ import Menu                          from './components/Menu';
 import Template                      from './containers/Template';
 
 
-const CogWrapper = styled.div``;
+const CogWrapper = styled.div`
+
+`;
 
 const PageWrapper = styled.div`
   transition: all 0.5s ease-out !important;
@@ -94,7 +96,9 @@ class App extends Component {
 
   componentDidMount(){
     const isOpen = true;
-    // this.props.dispatch(toggleMenu(isOpen));
+    setTimeout(function() { 
+      this.props.dispatch(toggleMenu(isOpen)); 
+    }.bind(this), 2500 );
   }
 
   generateTheme(elements){

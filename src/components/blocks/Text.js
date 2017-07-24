@@ -1,6 +1,6 @@
 import React, { Component }             from 'react';
 import { connect }                      from 'react-redux';
-import styled                           from 'styled-components';
+import styled, { withTheme }            from 'styled-components';
 
 const Highlight = styled.span`
   color: #fcad26;
@@ -36,34 +36,29 @@ const strings = {
   ]
 }
 
-class Text extends Component {
 
-  componentWillUnmount(){
-    console.log("see ya")
-  }
-  
-  render(){ 
-    const Tag = this.props.tag;
+const Scaler = styled.span`
+
+`;
+
+class Text extends Component { 
+  render(){
+
+    const style = {
+      fontFamily: this.props.theme[this.props.type].family,
+      fontWeight: this.props.theme[this.props.type].weight,
+      fontStyle: this.props.theme[this.props.type].style,
+      fontSize: this.props.theme[this.props.type].size + "%",
+      lineHeight: "1em"
+    };
+
+    const Tag = `${this.props.tag}`;
     const content = strings[this.props.type][this.props.string];
 
-    const StyledTag = styled(Tag)`
-      ${this.props.rules};
-    `;
-
-    const Scaler = styled.span`
-      font-family: ${props => props.theme[this.props.type].family};
-      font-weight: ${props => props.theme[this.props.type].weight};
-      font-style: ${props => props.theme[this.props.type].style};
-      font-size: ${props => props.theme[this.props.type].size}%;
-      line-height: 1em;
-      opacity: ${props => props.loading ? '0' : '1'};
-      transition: all 0.25 ease-in;
-    `;
-
     return (
-      <StyledTag><Scaler>{content}</Scaler></StyledTag>
+      <Tag><Scaler style={style} type={this.props.type}>{content}</Scaler></Tag>
     )
   }
 }
 
-export default Text;
+export default withTheme(Text);

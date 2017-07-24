@@ -84,7 +84,7 @@ const ControlButton = styled.button`
         height:                             25px;
         border-radius:                      15px;
       }`
-    : undefined
+    : `&::after {}`
   }
 
   ${props => props.controlType === props.state.loadedMenu && props.state.isOpen && !props.disabled ? activeStyles : undefined};
@@ -131,7 +131,6 @@ class FontControlBar extends Component {
   }
 
   render() {
-
     const type = this.props;
 
     return (

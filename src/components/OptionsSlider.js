@@ -35,9 +35,7 @@ const OptionButton = styled.div`
     padding-left:                       ${props => props.checked ? "10px" : undefined};
   }
 
-  & > i {
-    opacity:                            0.2;
-  }
+  ${props => props.checked && `& > i {opacity: 0.2;}`}
 
   &:hover {
     background-color:                   ${props => !props.checked ? "orange" : undefined};

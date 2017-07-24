@@ -118,6 +118,7 @@ export const applyFonts = (elements) => (dispatch, getState) => {
   });
 
   WebFont.load({
+    classes: false,
     timeout: 5000,
     loading: function() {
       dispatch(newFontsRequested());
