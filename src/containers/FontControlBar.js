@@ -58,13 +58,8 @@ const ControlButton = styled.button`
   text-align:                               center;
   text-decoration:                          none;
   border:                                   none;
+  border-radius:                            0 4px 4px 0;
 
-  ${props => props.controlType === "variant" ? `
-      border-right:                         1px solid #0D47A1;
-      border-radius:                        4px 0 0 4px;
-    `:`
-      border-radius:                        0 4px 4px 0;`
-  }
 
   ${props => props.controlType === "variant" && props.counter > 1 ? `
       &::after {
@@ -129,11 +124,17 @@ class FontControlBar extends Component {
     const variantIsDisabled = locked || variant.length == 1;
     const sizeIsDisabled = locked;
 
+    const variantButtonStyles = {
+      borderRight:                         "1px solid #0D47A1",
+      borderRadius:                        "4px 0 0 4px"
+    };
+
     return (
       <div>
         <ControlButtonsWrapper>
 
-          <ControlButton 
+          <ControlButton
+            style={variantButtonStyles} 
             state={this.state} 
             disabled={ variantIsDisabled } 
             controlType="variant" 
