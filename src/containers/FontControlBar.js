@@ -84,18 +84,24 @@ const ControlButton = styled.button`
   }
 
   ${props => props.controlType === props.state.loadedMenu && props.state.isOpen && !props.disabled ? activeStyles : undefined};
-`;
 
-const Icon = styled.i`
-  margin-left:                            10px;
-  width:                                  15%;
-`;
 
-const CurrentSelection = styled.p`
-  width:                                  85%;
-  text-align:                             center;
-  font-size:                              17px;
-  font-weight:                            bold;
+  & > i {
+    margin-left:                            10px;
+    width:                                  15%;
+  }
+
+  & > p {
+    width:                                  85%;
+    text-align:                             center;
+    font-size:                              17px;
+    font-weight:                            bold;
+    margin-right:                           5px;
+  }
+
+  &:focus {
+    outline:                                0;
+  }
 `;
 
 class FontControlBar extends Component {
@@ -135,6 +141,8 @@ class FontControlBar extends Component {
         display: "none"
       },
     }
+    
+    const type = this.props;
 
     return (
       <div>
@@ -143,23 +151,26 @@ class FontControlBar extends Component {
           <ControlButton
             style={variantButtonStyles} 
             state={this.state} 
-            disabled={ variantIsDisabled } 
+            disabled={ this.props.locked || this.props.variant.length == 1 } 
             controlType="variant" 
             onClick={ () => this.changeMenuState("variant") }
           >
             <Icon className="fa fa-italic fa-lg" aria-hidden="true"></Icon> 
             <CurrentSelection>{formatOption(currentVariant)}</CurrentSelection>
+            <i className="fa fa-italic fa-lg" aria-hidden="true"></i> 
+            <p>{formatOption(type.currentVariant)}</p>
           </ControlButton>
 
           <ControlButton 
             style={sizeButtonStyles}
             state={this.state} 
-            disabled={sizeIsDisabled} 
-            controlType="size" 
-            onClick={() => this.changeMenuState("size")}
+            disabled={this.props.locked} 
+            controlType="size" onClick={() => this.changeMenuState("size")}
           >
             <Icon className="fa fa-text-height fa-lg" aria-hidden="true"></Icon> 
             <CurrentSelection>{formatOption(currentSize)}</CurrentSelection>
+            <i className="fa fa-text-height fa-lg" aria-hidden="true"></i> 
+            <p>{formatOption(type.currentSize)}</p>
           </ControlButton>
 
         </ControlButtonsWrapper>
