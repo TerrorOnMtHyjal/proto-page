@@ -64,8 +64,12 @@ class OptionsSlider extends Component {
   }
 
   render() {
+    const optionsHeight = {
+      height: this.props.isOpen ? `${this.props.items.length * OPTION_HEIGHT}px` : "0px"
+    };
+
     return (
-      <Options isOpen={ this.props.isOpen } items={ this.props.items }>
+      <Options style={optionsHeight}>
         { this.generateItems(this.props.items) }
       </Options>
     );
