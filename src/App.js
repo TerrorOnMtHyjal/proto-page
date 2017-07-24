@@ -17,31 +17,15 @@ const CogWrapper = styled.div`
 
 const PageWrapper = styled.div`
   transition: all 0.5s ease-out !important;
-  ${props => props.isOpen ? `
-    transform: translate3d(0px, 0px, 0px) !important;
-    
+  transform: translate3d(0px, 0px, 0px) !important;
+  ${props => props.isOpen && `  
     @media only screen and (min-width: 600px){
-      transform: translate3d(300px, 0px, 0px) !important;
+      transform: translate3d(280px, 0px, 0px) !important;
     }
 
-    @media only screen and (min-width: 768px){
-      transform: translate3d(200px, 0px, 0px) !important;
-    }
-
-    @media only screen and (min-width: 900px){
-      transform: translate3d(180px, 0px, 0px) !important;
-    }
-
-    @media only screen and (min-width: 1050px){
-      transform: translate3d(160px, 0px, 0px) !important;
-    }
-
-    @media only screen and (min-width: 1150px){
-      transform: translate3d(150px, 0px, 0px) !important;
-    }
-    `:`
-      transform: translate3d(0px, 0px, 0px) !important;
-    `
+    @media only screen and (min-width: 1400px){
+      transform: translate3d(100px, 0px, 0px) !important;
+    }`
   };
 `;
 

@@ -23,7 +23,7 @@ const NavbarWrapper = styled.div`
   }
 
   @media screen and (min-width: 1400px){
-    padding: 0 10%;
+    padding: 0 15%;
   }
 `;
 

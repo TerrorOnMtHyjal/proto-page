@@ -70,7 +70,7 @@ const TextWrapper = styled.div`
     font-size: 42px;
   }
   @media screen and (min-width: 1400px){
-    margin: 0 10%;
+    margin: 0 15%;
   }
 `;
 
