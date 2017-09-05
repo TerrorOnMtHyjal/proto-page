@@ -34,7 +34,7 @@ Bottommost the user finds two large, clearly labelled and colored buttons to ran
 
 Requested fonts are called and provided by the [Web Font Loader](https://github.com/typekit/webfontloader) library, co-developed by Google and Typekit. Upon launch of the application, all available fonts are captured via this library and stored in Redux, for easier randomization. Upon a request for randomization, new fonts are generated from the state fonts library filtered by user settings and requested. The app then captures the requested font and all variants available to it. 
 
-```
+
 ## Stack
 - React
 - Redux
