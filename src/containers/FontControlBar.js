@@ -113,10 +113,12 @@ class FontControlBar extends Component {
   }
 
   changeMenuState(clicked){
-    clicked === this.state.loadedMenu && this.state.isOpen ? 
+
+    if(clicked === this.state.loadedMenu && this.state.isOpen ){
       this.setState({ ...this.state.loadedMenu, isOpen : false })
-    :
+    } else {
       this.setState({ loadedMenu : clicked, isOpen : true })
+    }
   }
 
   render() {
