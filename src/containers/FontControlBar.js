@@ -162,7 +162,7 @@ class FontControlBar extends Component {
         <OptionsSlider 
           type={this.props.type} 
           current={[currentVariant, currentSize]} 
-          isOpen={(!locked && variant.length > 1) && this.state.isOpen} 
+          isOpen={!locked && (variant.length > 1 || this.state.loadedMenu === "size") && this.state.isOpen} 
           loadedMenu={this.state.loadedMenu} 
           items={this.props[this.state.loadedMenu]} 
         />
