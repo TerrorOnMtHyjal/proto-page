@@ -1,3 +1,3 @@
 FROM nginx
 
-ADD build /user/share/nginx/html
+ADD build /usr/share/nginx/html
