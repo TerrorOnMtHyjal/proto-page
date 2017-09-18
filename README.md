@@ -45,4 +45,4 @@ Requested fonts are called and provided by the [Web Font Loader](https://github.
 
 - Remove FOUT on randomization.
 - Utilize all capabilities of Web Font Loader, opening the application to other font libraries.
-- Flesh out the prototyp page, providing a testbed section with common element layouts.
+- Flesh out the prototype page, providing a testbed section with common element layouts.
